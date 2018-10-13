@@ -15,12 +15,10 @@ public class NPC : MonoBehaviour {
     public status currentStatus = status.WALKING;
     public Transform destination;
     public NavMeshAgent agent;
+    public Animator anim;
+
 
     private int nextUpdate = 1;
-
-    // Use this for initialization
-    void Start() {
-    }
 
     // Update is called once per frame
     void Update() {
@@ -39,6 +37,7 @@ public class NPC : MonoBehaviour {
                 destination = attractions[attractionIndex].transform;
 
                 agent.SetDestination(new Vector3(destination.position.x, transform.position.y, destination.position.z));
+                anim.SetBool("moving", true);
             }
         }
 
@@ -46,6 +45,8 @@ public class NPC : MonoBehaviour {
             if (agent.remainingDistance <= agent.stoppingDistance) {
                 if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f) {
                     if (destination) {
+                        anim.SetBool("moving", false);
+
                         AttractionController attraction = destination.gameObject.GetComponent<AttractionController>();
                         // Check if target is really an attraction
                         if (attraction) {
@@ -53,7 +54,7 @@ public class NPC : MonoBehaviour {
                             attraction.AddNPCToQueue(gameObject);
 
                             // Hide NPC
-                            MeshRenderer render = gameObject.GetComponentInChildren<MeshRenderer>();
+                            SkinnedMeshRenderer render = gameObject.GetComponentInChildren<SkinnedMeshRenderer>();
                             render.enabled = false;
                         }
 

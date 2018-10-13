@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class AttractionController : MonoBehaviour {
 
+    public int id = 0;
+
     // Duration of one run
     public double duration = 120;
     public int npcAmount = 10;
@@ -58,6 +60,12 @@ public class AttractionController : MonoBehaviour {
                 // ToDo: Send Attraction stopped signal
             }
         }
+    }
+
+    public void AddNPCToQueue(GameObject npc) {
+        npcsWaiting.Enqueue(npc);
+        NPC npcScript = npc.GetComponent<NPC>();
+        npcScript.SetStatus(NPC.status.QUEUE);
     }
 
     public void StartAttraction() {

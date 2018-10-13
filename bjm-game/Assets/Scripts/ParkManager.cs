@@ -42,8 +42,8 @@ public class ParkManager : MonoBehaviour {
             {
                 if (allBuildingSpots[i].myAttraction == null)
                 {
-                    allBuildingSpots[i].BuildAttraction(attrToBuild);
-                    AddAttraction(attrToBuild);
+                    AttractionController createdAttraction = allBuildingSpots[i].BuildAttraction(attrToBuild);
+                    AddAttraction(createdAttraction);
                     break;
                 }
             }

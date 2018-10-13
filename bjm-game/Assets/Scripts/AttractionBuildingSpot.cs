@@ -10,6 +10,9 @@ public class AttractionBuildingSpot : MonoBehaviour {
     public AnimationCurve spawnCurve;
     public float spawnAnimationDuration = 2;
     public AttractionController myAttraction = null;
+
+    AudioSource landingSound;
+
 	// Use this for initialization
 	void Start () {
         if (transform.GetChild(0) == null)
@@ -24,13 +27,15 @@ public class AttractionBuildingSpot : MonoBehaviour {
             
             buildingSite = transform.GetChild(0).gameObject;
         }
-	}
-	
+
+        landingSound = GetComponent<AudioSource>();
+    }
 
 
-    public void BuildAttraction(AttractionController _attraction)
+
+    public AttractionController BuildAttraction(AttractionController _attraction)
     {
-        if (myAttraction != null) return; // Wenn bereits eine Attraktion steht, nicht erneut bauen.
+        if (myAttraction != null) return myAttraction; // Wenn bereits eine Attraktion steht, nicht erneut bauen.
         buildingSite.SetActive(false);
         GameObject attraction = (GameObject)Instantiate(_attraction.gameObject);
 
@@ -49,6 +54,7 @@ public class AttractionBuildingSpot : MonoBehaviour {
         //Moved die Attraktion auf Bodenhöhe
         StartCoroutine(MoveToPosition(attraction.transform, spawnPosition, transform.position,spawnAnimationDuration));
 
+        return ac;
     }
 
 
@@ -66,8 +72,9 @@ public class AttractionBuildingSpot : MonoBehaviour {
 
             yield return null;
         }
-       GameObject particles = Instantiate(attractionBuildParticles);
-       particles.transform.position = this.transform.position + Vector3.up;
+        GameObject particles = Instantiate(attractionBuildParticles);
+        particles.transform.position = this.transform.position + Vector3.up;
+        landingSound.Play();
     }
 
     private void OnDrawGizmos()

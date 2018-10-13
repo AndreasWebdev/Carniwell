@@ -9,51 +9,48 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1932127140589814}
+  m_RootGameObject: {fileID: 1344988221003076}
   m_IsPrefabAsset: 1
---- !u!1 &1932127140589814
+--- !u!1 &1344988221003076
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4203286944420598}
-  - component: {fileID: 114627149717342886}
+  - component: {fileID: 4858806181333054}
+  - component: {fileID: 114596014588860270}
   m_Layer: 0
-  m_Name: _AttractionDatabase
+  m_Name: NPCSpawn
   m_TagString: Untagged
-  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4203286944420598
+--- !u!4 &4858806181333054
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1932127140589814}
+  m_GameObject: {fileID: 1344988221003076}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 12.49, z: 0}
+  m_LocalPosition: {x: 0, y: 0.2, z: -12.48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114627149717342886
+--- !u!114 &114596014588860270
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1932127140589814}
+  m_GameObject: {fileID: 1344988221003076}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09a8ff1912826c9499570e2e467c52eb, type: 3}
+  m_Script: {fileID: 11500000, guid: c9a3927a861ea4043a556278e5edde86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attractionPrefabs:
-  - {fileID: 114639087864332666, guid: 2475e11f0b777fb418b608b03520510a, type: 2}
-  - {fileID: 114068588414489912, guid: 78d262764cd459f42a4aff2386f760e9, type: 2}
-  - {fileID: 114824940564243042, guid: 8438265c40dce784bb9d34c108508345, type: 2}
-  - {fileID: 114221178643330690, guid: 2783d6a76ec83cb489721b5d2d679675, type: 2}
-  - {fileID: 114118951684116704, guid: 0f4c3c5fdd8bdc044bf2cbfb608f3aaa, type: 2}
+  npc: {fileID: 1046674951104528, guid: 5855c4d47d9d87d429b79110f4f0cc74, type: 2}
+  spawnTime: 5
+  spawnPoint: {fileID: 4858806181333054}

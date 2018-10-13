@@ -8,35 +8,83 @@ public class NPC : MonoBehaviour {
     public enum status {
         QUEUE,
         WALKING,
-        ATTRACTION
+        ATTRACTION,
+        IDLE
     }
 
     public int happiness = 100;
-    public status currentStatus = status.WALKING;
+    public status currentStatus = status.IDLE;
     public Transform destination;
     public NavMeshAgent agent;
     public Animator anim;
 
 
     private int nextUpdate = 1;
+    private AttractionController lastVisitedAttraction;
+
+    private int idleTime = 5;
+    public int remainingIdleTime = 0;
+    private bool walkRandom = true;
+
+    Vector3 GetRandomLocation() {
+        NavMeshTriangulation navMeshData = NavMesh.CalculateTriangulation();
+
+        // Pick the first indice of a random triangle in the nav mesh
+        int t = Random.Range(0, navMeshData.indices.Length - 3);
+
+        // Select a random point on it
+        Vector3 point = Vector3.Lerp(navMeshData.vertices[navMeshData.indices[t]], navMeshData.vertices[navMeshData.indices[t + 1]], Random.value);
+        Vector3.Lerp(point, navMeshData.vertices[navMeshData.indices[t + 2]], Random.value);
+
+        return point;
+    }
 
     // Update is called once per frame
     void Update() {
-        //agent.SetDestination(new Vector3(0f, 0.695f,10f));
-
         // If the next update is reached
         if (Time.time >= nextUpdate) {
             nextUpdate = Mathf.FloorToInt(Time.time) + 1;
             UpdateEverySecond();
         }
 
-        if (!destination && currentStatus == status.WALKING) {
-            AttractionController[] attractions = GameObject.FindObjectsOfType<AttractionController>();
-            if (attractions.Length > 0) {
-                int attractionIndex = Random.Range(0, attractions.Length);
-                destination = attractions[attractionIndex].transform;
+        // Create new path
+        if (currentStatus == status.IDLE && remainingIdleTime == 0) {
+            // 50:50 Chance calculator
+            // 1 = attraction
+            // 0 = random
+            walkRandom = (Random.value > 0.75f);
 
-                agent.SetDestination(new Vector3(destination.position.x, transform.position.y, destination.position.z));
+            // Show NPC
+            SkinnedMeshRenderer render = gameObject.GetComponentInChildren<SkinnedMeshRenderer>();
+            render.enabled = true;
+            currentStatus = status.WALKING;
+
+            if (!walkRandom) {
+                ParkManager parkManager = GameObject.FindObjectOfType<ParkManager>();
+                if (parkManager) {
+                    List<AttractionController> attractions = parkManager.activeAttractions;
+                    if (attractions.Count > 0) {
+                        int attractionIndex = Random.Range(0, attractions.Count);
+
+                        // Do not move to last attraction again
+                        if (!lastVisitedAttraction || lastVisitedAttraction != attractions[attractionIndex]) {
+                            destination = attractions[attractionIndex].transform;
+
+                            lastVisitedAttraction = attractions[attractionIndex];
+
+                            agent.SetDestination(new Vector3(destination.position.x, transform.position.y, destination.position.z));
+                            anim.SetBool("moving", true);
+                        }
+                    } else {
+                        currentStatus = status.IDLE;
+                    }
+                } else {
+                    currentStatus = status.IDLE;
+                }
+            } else {
+                remainingIdleTime = idleTime;
+                Vector3 pos = GetRandomLocation();
+                agent.SetDestination(new Vector3(pos.x, transform.position.y, pos.z));
                 anim.SetBool("moving", true);
             }
         }
@@ -52,6 +100,7 @@ public class NPC : MonoBehaviour {
                         if (attraction) {
 
                             attraction.AddNPCToQueue(gameObject);
+                            remainingIdleTime = 0;
 
                             // Hide NPC
                             SkinnedMeshRenderer render = gameObject.GetComponentInChildren<SkinnedMeshRenderer>();
@@ -59,6 +108,9 @@ public class NPC : MonoBehaviour {
                         }
 
                         destination = null;
+                    } else if(walkRandom && currentStatus == status.WALKING && remainingIdleTime != 0) {
+                        currentStatus = status.IDLE;
+                        anim.SetBool("moving", false);
                     }
                 }
             }
@@ -75,6 +127,10 @@ public class NPC : MonoBehaviour {
             //    if (happiness < 100) {
             //        ++happiness;
             //    }
+        }
+
+        if (walkRandom && currentStatus == status.IDLE) {
+            --remainingIdleTime;
         }
     }
 

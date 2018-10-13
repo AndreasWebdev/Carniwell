@@ -82,14 +82,14 @@ public class AttractionController : MonoBehaviour {
             }
 
             // Only start attraction if there are some NPCS who wanna drive
-            //if (npcsActive.Count > 0) {
+            if (npcsActive.Count > 0) {
                 // Start attraction
                 timeLeft = duration;
                 StartAnimation();
-            //} else {
+            } else {
                 // TODO: Throw error message - No NPCS
-                //Debug.Log("No NPCs available");
-            //}
+                Debug.Log("No NPCs available");
+            }
         }
     }
 
@@ -112,7 +112,7 @@ public class AttractionController : MonoBehaviour {
                 npcsActive.Remove(npc);
                 NPC npcScript = npc.GetComponent<NPC>();
 
-                npcScript.SetStatus(NPC.status.WALKING);
+                npcScript.SetStatus(NPC.status.IDLE);
                 npcScript.AddHappiness(happinessReward);
             }
         }

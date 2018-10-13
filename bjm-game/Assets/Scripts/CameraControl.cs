@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class CameraControl : MonoBehaviour {
 
+
+    public float minX, maxX;
+    public float minY, maxY;
+    public float minZ, maxZ;
     public Transform playerTransfrom;
     public float cameraSmoothing = 3f;
 
@@ -17,6 +21,11 @@ public class CameraControl : MonoBehaviour {
 	void FixedUpdate ()
     {
         Vector3 targetCamPos = playerTransfrom.position + camPosOffset;
-        transform.position = Vector3.Lerp(transform.position, targetCamPos, cameraSmoothing * Time.deltaTime);
+        
+        Vector3 newPosClamped = new Vector3(Mathf.Clamp(targetCamPos.x, minX, maxX), Mathf.Clamp(targetCamPos.y, minY, maxY), Mathf.Clamp(targetCamPos.z, minZ, maxZ));
+
+        transform.position = Vector3.Lerp(transform.position, newPosClamped, cameraSmoothing * Time.deltaTime);
+
+        transform.position = newPosClamped;
     }
 }

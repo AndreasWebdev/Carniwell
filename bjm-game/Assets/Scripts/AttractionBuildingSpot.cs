@@ -54,7 +54,7 @@ public class AttractionBuildingSpot : MonoBehaviour {
         }
         AttractionController ac = attraction.GetComponent<AttractionController>();
         myAttraction = ac;
-
+        attraction.transform.parent = this.transform;
         //Moved die Attraktion auf Bodenhöhe
         StartCoroutine(MoveToPosition(attraction.transform, spawnPosition, transform.position,spawnAnimationDuration));
 

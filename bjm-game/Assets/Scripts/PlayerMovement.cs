@@ -12,11 +12,12 @@ public class PlayerMovement : MonoBehaviour {
 
     public Animator anim;
 
+    HUDManager hud; 
     void Awake()
     {
         playerRigidbody = GetComponent<Rigidbody>();
         floorMask = LayerMask.GetMask("Floor");
-        
+        hud = FindObjectOfType<HUDManager>();
     }
 
     void FixedUpdate()
@@ -53,5 +54,20 @@ public class PlayerMovement : MonoBehaviour {
             anim.SetBool("moving", false);
         }
         
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponentInParent<AttractionController>() != null)
+        {
+            hud.SetupCurrentAttraction(other.GetComponentInParent<AttractionController>());
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.GetComponentInParent<AttractionController>())
+        {
+            hud.LeaveAttraction();
+        }
     }
 }

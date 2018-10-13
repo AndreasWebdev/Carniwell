@@ -1,23 +1,14 @@
 fileFormatVersion: 2
-guid: 87bae461fb67aba48a5fc54853003734
+guid: b52ee294e58b4b143ae856101c8d4cb5
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: Entrance_out
-    2100002: Entrance_out_top
-    2100004: Entrance_flag_1
-    2100006: Entrance_flag
-    2100008: Entrance_door
-    2100010: Entrance_door_2
-    2100012: Entrance_shield
-    2100014: Entrance_lamp
-    2100016: Entrance_cable
-    2100018: Entrance_light
+    2100000: Material
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Cube_001
+    4300000: Cube
     7400000: Default Take
     9500000: //RootNode
   externalObjects: {}
@@ -78,7 +69,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 1
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2

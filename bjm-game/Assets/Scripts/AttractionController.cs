@@ -8,7 +8,7 @@ using UnityEngine;
 public class AttractionController : MonoBehaviour {
 
     public int id = 0;
-
+    public Transform entrancePosition;
     // Duration of one run
     public double duration = 120;
     public int npcAmount = 10;
@@ -138,5 +138,20 @@ public class AttractionController : MonoBehaviour {
         } else {
             gameObject.BroadcastMessage("Deactivate");
         }
+    }
+
+    public void Ansage()
+    {
+
+    }
+
+    public void Special()
+    {
+
+    }
+
+    public void Notstop()
+    {
+        //Todo: Spieler bestrafen, NPCs schlechte Laune verpassen
     }
 }

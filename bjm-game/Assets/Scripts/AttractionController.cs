@@ -15,15 +15,21 @@ public class AttractionController : MonoBehaviour {
     private double timeLeft;
 
     private int nextUpdate = 1;
+    private bool isAnimation = false;
 
-    private Ferris_Wheel wheel;
     public List<GameObject> npcsActive;
     private Queue<GameObject> npcsWaiting;
 
     // Use this for initialization
     void Start() {
         timeLeft = duration;
-        wheel = gameObject.GetComponent<Ferris_Wheel>();
+
+        if(gameObject.GetComponent<Animator>()) {
+            isAnimation = true;
+        }
+
+        npcsWaiting = new Queue<GameObject>();
+        npcsActive = new List<GameObject>();
     }
 
     // Update is called once per frame
@@ -32,18 +38,13 @@ public class AttractionController : MonoBehaviour {
             nextUpdate = Mathf.FloorToInt(Time.time) + 1;
             UpdateEverySecond();
         }
-    }
 
-    void OnGUI() {
-        Event e = Event.current;
-        if (e.isKey) {
-            if(e.keyCode == KeyCode.A) {
-                Debug.Log("Attraction started");
-                StartAttraction();
-            } else if(e.keyCode == KeyCode.B) {
-                Debug.Log("Attraction stopped");
-                StopAttraction();
-            }
+        if (Input.GetKeyUp(KeyCode.A)) {
+            Debug.Log("Attraction started");
+            StartAttraction();
+        } else if (Input.GetKeyUp(KeyCode.B)) {
+            Debug.Log("Attraction stopped");
+            StopAttraction();
         }
     }
 
@@ -59,8 +60,10 @@ public class AttractionController : MonoBehaviour {
         }
     }
 
-    void StartAttraction() {
+    public void StartAttraction() {
         if (!running) {
+            running = true;
+
             // Move waiting NPCs to attraction
             for (int i = 0; i < npcAmount; ++i) {
                 if (npcsWaiting.Count == 0) {
@@ -74,21 +77,21 @@ public class AttractionController : MonoBehaviour {
             }
 
             // Only start attraction if there are some NPCS who wanna drive
-            if (npcsActive.Count > 0) {
+            //if (npcsActive.Count > 0) {
                 // Start attraction
                 timeLeft = duration;
-                running = true;
-                wheel.Activate();
-            } else {
+                StartAnimation();
+            //} else {
                 // TODO: Throw error message - No NPCS
-            }
+                //Debug.Log("No NPCs available");
+            //}
         }
     }
 
-    void StopAttraction() {
+    public void StopAttraction() {
         if (running) {
             running = false;
-            wheel.Deactivate();
+            StopAnimation();
 
             int happinessReward = 0;
 
@@ -107,6 +110,28 @@ public class AttractionController : MonoBehaviour {
                 npcScript.SetStatus(NPC.status.WALKING);
                 npcScript.AddHappiness(happinessReward);
             }
+        }
+    }
+
+    void StartAnimation() {
+        if(isAnimation) {
+            Animator anim = gameObject.GetComponent<Animator>();
+            if (anim) {
+                anim.SetBool("active", true);
+            }
+        } else {
+            gameObject.BroadcastMessage("Activate");
+        }
+    }
+
+    void StopAnimation() {
+        if (isAnimation) {
+            Animator anim = gameObject.GetComponent<Animator>();
+            if (anim) {
+                anim.SetBool("active", false);
+            }
+        } else {
+            gameObject.BroadcastMessage("Deactivate");
         }
     }
 }

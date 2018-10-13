@@ -34,7 +34,7 @@ public class NPC : MonoBehaviour {
     void UpdateEverySecond() {
         if (currentStatus.Equals(status.QUEUE)) {
             if (happiness > 0) {
-                --happiness;
+                AddHappiness(-1);
             }
         //} else if (currentStatus.Equals(status.ATTRACTION)) {
         //    if (happiness < 100) {
@@ -57,5 +57,9 @@ public class NPC : MonoBehaviour {
 
     public void AddHappiness(int reward) {
         happiness += reward;
+
+        if(happiness <= 0) {
+            // Remove NPC
+        }
     }
 }

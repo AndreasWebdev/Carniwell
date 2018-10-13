@@ -6,6 +6,7 @@ public class ParkManager : MonoBehaviour {
 
     public List<AttractionController> activeAttractions = new List<AttractionController>();
 
+
 	// Use this for initialization
 	void Start () {
 		
@@ -56,7 +57,7 @@ public class ParkManager : MonoBehaviour {
         //Gibt es schon eine Attraktion dieser Art?
         for (int i = 0; i < activeAttractions.Count; i++)
         {
-            if(activeAttractions[i] == _attraction)
+            if(activeAttractions[i].id == _attraction.id)
             {
                 return true;
             }

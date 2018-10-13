@@ -10,12 +10,14 @@ public class HUDManager : MonoBehaviour {
     public Animator UIAttractionStartAnim;
     public Animator UIAttractionControlAnim;
 
+    [Header("Happiness")]
     public Slider happinessSlider;
     public Image happinessSliderFilling;
     public Color goodColor, mediumColor, badColor;
 
-
+    [Header("Waiting for Visitors Panel")]
     public TextMeshProUGUI waitingText;
+    public TextMeshProUGUI freeSlotsText;
 	// Use this for initialization
 	void Start () {
         waitingText.text = "0";
@@ -28,6 +30,7 @@ public class HUDManager : MonoBehaviour {
         if (currentAttraction != null)
         {
             waitingText.text = currentAttraction.npcsWaiting.Count.ToString();
+            freeSlotsText.text = currentAttraction.npcsActive.Count.ToString() + "/" + currentAttraction.npcAmount.ToString() + "\n Sitze frei";
         }
         
     }
@@ -36,13 +39,20 @@ public class HUDManager : MonoBehaviour {
     {
         if (currentAttraction == null) return;
 
+        if (!currentAttraction.running)
+        {
+            currentAttraction.StartAttraction();
+            UIAttractionControlAnim.SetBool("isOpen", true);
+            UIAttractionStartAnim.SetBool("isOpen", false);
+        } 
+        
+    }
+    public void StopAttraction()
+    {
+        if (currentAttraction == null) return;
         if (currentAttraction.running)
         {
-           currentAttraction.StopAttraction();
-        }
-        else
-        {
-           currentAttraction.StartAttraction();
+            currentAttraction.StopAttraction();
         }
     }
 

@@ -37,6 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4452722203788608}
   - component: {fileID: 95097480464256798}
+  - component: {fileID: 114824940564243042}
   m_Layer: 0
   m_Name: Freefall
   m_TagString: Untagged
@@ -453,3 +454,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114824940564243042
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1244626538643830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee55c3823c95b0e4eb7e18e3aec8b37b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 15
+  npcAmount: 8
+  npcsActive: []

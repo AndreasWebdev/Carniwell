@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4322458319861794}
   - component: {fileID: 114084619307220058}
+  - component: {fileID: 114639087864332666}
   m_Layer: 0
   m_Name: Ferris Wheel
   m_TagString: Untagged
@@ -1067,7 +1068,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0c38b7eca323434787ec59774c5e9b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   speed: 10
   RotatingObject: {fileID: 4291300335721818}
   cabins:
@@ -1079,3 +1080,17 @@ MonoBehaviour:
   - {fileID: 4302672596881584}
   - {fileID: 4410365287366394}
   - {fileID: 4336634736499066}
+--- !u!114 &114639087864332666
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1118578642372306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee55c3823c95b0e4eb7e18e3aec8b37b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 20
+  npcAmount: 8
+  npcsActive: []

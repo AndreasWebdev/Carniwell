@@ -15,9 +15,13 @@ public class VisitorManager : MonoBehaviour {
     public int currentVisitorsNeeded;
 
     private int nextUpdate = 1;
+
+    HUDManager hud;
     // Use this for initialization
     void Start () {
         currentVisitorsNeeded = baseVisitorsNeeded;
+
+        hud = FindObjectOfType<HUDManager>();
 	}
 	
 	// Update is called once per frame
@@ -47,6 +51,11 @@ public class VisitorManager : MonoBehaviour {
        }
 
         happinessPercentage = globalHappinessPoints / npcCount;
+        if(hud == null) hud = FindObjectOfType<HUDManager>();
+
+        hud.UpdateHappiness(globalHappinessPoints);
+        
+
     }
 
     public void AddSatisfiedVisitors(int _amount)

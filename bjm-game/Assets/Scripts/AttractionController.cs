@@ -116,6 +116,7 @@ public class AttractionController : MonoBehaviour {
 
                 npcScript.SetStatus(NPC.status.IDLE);
                 npcScript.AddHappiness(happinessReward);
+                npcScript.DoneAttraction();
             }
         }
     }

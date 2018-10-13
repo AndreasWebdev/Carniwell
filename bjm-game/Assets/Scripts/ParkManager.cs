@@ -74,9 +74,7 @@ public class ParkManager : MonoBehaviour {
         {
             return;
         }
-
         
-
         //Füge Attraktion der Liste hinzu
         activeAttractions.Add(_attraction);
     }

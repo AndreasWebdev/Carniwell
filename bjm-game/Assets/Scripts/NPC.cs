@@ -26,10 +26,19 @@ public class NPC : MonoBehaviour {
     public int remainingIdleTime = 0;
     private bool walkRandom = true;
 
+    VisitorManager vm;
+
     Vector3 GetRandomLocation() {
         Vector2 actualPos = new Vector2(transform.position.x, transform.position.z);
         Vector2 randomPos = actualPos + Random.insideUnitCircle * 10;
         return new Vector3(randomPos.x, transform.position.y, randomPos.y);
+    }
+
+    private void Start()
+    {
+        
+        vm = FindObjectOfType<VisitorManager>();
+        vm.allVisitors.Add(this);
     }
 
     // Update is called once per frame
@@ -146,6 +155,16 @@ public class NPC : MonoBehaviour {
         if (happiness <= 0) {
             // Remove NPC
         }
+    }
+
+    public void DoneAttraction()
+    {
+        vm.AddSatisfiedVisitors(1);
+    }
+
+    private void OnDestroy()
+    {
+        vm.allVisitors.Remove(this);
     }
 }
 

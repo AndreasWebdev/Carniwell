@@ -28,9 +28,9 @@ public class AttractionBuildingSpot : MonoBehaviour {
 	
 
 
-    public void BuildAttraction(AttractionController _attraction)
+    public AttractionController BuildAttraction(AttractionController _attraction)
     {
-        if (myAttraction != null) return; // Wenn bereits eine Attraktion steht, nicht erneut bauen.
+        if (myAttraction != null) return myAttraction; // Wenn bereits eine Attraktion steht, nicht erneut bauen.
         buildingSite.SetActive(false);
         GameObject attraction = (GameObject)Instantiate(_attraction.gameObject);
 
@@ -49,6 +49,7 @@ public class AttractionBuildingSpot : MonoBehaviour {
         //Moved die Attraktion auf Bodenhöhe
         StartCoroutine(MoveToPosition(attraction.transform, spawnPosition, transform.position,spawnAnimationDuration));
 
+        return ac;
     }
 
 

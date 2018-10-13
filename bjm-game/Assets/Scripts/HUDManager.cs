@@ -14,7 +14,11 @@ public class HUDManager : MonoBehaviour {
     public void SetupCurrentAttraction(AttractionController _attraction)
     {
         currentAttraction = _attraction;
-        _attraction.StartAttraction();
+        if (_attraction.running) {
+            _attraction.StopAttraction();
+        } else {
+            _attraction.StartAttraction();
+        }
         bottomHudAnim.SetBool("isOpen", true);
     }
     public void LeaveAttraction()

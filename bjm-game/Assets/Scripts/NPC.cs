@@ -27,16 +27,9 @@ public class NPC : MonoBehaviour {
     private bool walkRandom = true;
 
     Vector3 GetRandomLocation() {
-        NavMeshTriangulation navMeshData = NavMesh.CalculateTriangulation();
-
-        // Pick the first indice of a random triangle in the nav mesh
-        int t = Random.Range(0, navMeshData.indices.Length - 3);
-
-        // Select a random point on it
-        Vector3 point = Vector3.Lerp(navMeshData.vertices[navMeshData.indices[t]], navMeshData.vertices[navMeshData.indices[t + 1]], Random.value);
-        Vector3.Lerp(point, navMeshData.vertices[navMeshData.indices[t + 2]], Random.value);
-
-        return point;
+        Vector2 actualPos = new Vector2(transform.position.x, transform.position.z);
+        Vector2 randomPos = actualPos + Random.insideUnitCircle * 10;
+        return new Vector3(randomPos.x, transform.position.y, randomPos.y);
     }
 
     // Update is called once per frame
@@ -68,12 +61,14 @@ public class NPC : MonoBehaviour {
 
                         // Do not move to last attraction again
                         if (!lastVisitedAttraction || lastVisitedAttraction != attractions[attractionIndex]) {
-                            destination = attractions[attractionIndex].transform;
+                            destination = attractions[attractionIndex].entrancePosition;
 
                             lastVisitedAttraction = attractions[attractionIndex];
 
                             agent.SetDestination(new Vector3(destination.position.x, transform.position.y, destination.position.z));
                             anim.SetBool("moving", true);
+                        } else {
+                            currentStatus = status.IDLE;
                         }
                     } else {
                         currentStatus = status.IDLE;
@@ -83,8 +78,7 @@ public class NPC : MonoBehaviour {
                 }
             } else {
                 remainingIdleTime = idleTime;
-                Vector3 pos = GetRandomLocation();
-                agent.SetDestination(new Vector3(pos.x, transform.position.y, pos.z));
+                agent.SetDestination(GetRandomLocation());
                 anim.SetBool("moving", true);
             }
         }
@@ -95,7 +89,7 @@ public class NPC : MonoBehaviour {
                     if (destination) {
                         anim.SetBool("moving", false);
 
-                        AttractionController attraction = destination.gameObject.GetComponent<AttractionController>();
+                        AttractionController attraction = lastVisitedAttraction.GetComponent<AttractionController>();
                         // Check if target is really an attraction
                         if (attraction) {
 
@@ -129,7 +123,7 @@ public class NPC : MonoBehaviour {
             //    }
         }
 
-        if (walkRandom && currentStatus == status.IDLE) {
+        if (walkRandom && currentStatus == status.IDLE && remainingIdleTime > 0) {
             --remainingIdleTime;
         }
     }

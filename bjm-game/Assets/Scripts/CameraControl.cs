@@ -16,6 +16,10 @@ public class CameraControl : MonoBehaviour {
     void Start ()
     {
         camPosOffset = transform.position - playerTransfrom.position;
+        if(playerTransfrom == null)
+        {
+            playerTransfrom = FindObjectOfType<PlayerMovement>().transform;
+        }
     }
 	
 	void FixedUpdate ()

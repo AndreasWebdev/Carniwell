@@ -54,6 +54,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visitorsSatisfied: 0
   happinessPercentage: 0
+  allVisitors: []
   baseVisitorsNeeded: 20
   multiplierPerStage: 2
   currentVisitorsNeeded: 0

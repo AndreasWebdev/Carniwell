@@ -10,11 +10,13 @@ public class PlayerMovement : MonoBehaviour {
     float touchRayLength = 100f;
     int floorMask;
 
+    public Animator anim;
 
     void Awake()
     {
         playerRigidbody = GetComponent<Rigidbody>();
         floorMask = LayerMask.GetMask("Floor");
+        
     }
 
     void FixedUpdate()
@@ -39,7 +41,14 @@ public class PlayerMovement : MonoBehaviour {
 
                 Quaternion rotation = Quaternion.LookRotation(moveDir);
                 playerRigidbody.MoveRotation(rotation);
+
+                anim.SetBool("moving",true);
+                
             }
+        }else
+        {
+            anim.SetBool("moving", false);
         }
+        
     }
 }

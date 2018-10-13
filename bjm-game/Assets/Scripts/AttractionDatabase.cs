@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AttractionDatabase : MonoBehaviour {
-    public GameObject buildingSitePrefab;
+    
     public List<AttractionController> attractionPrefabs;
 	// Use this for initialization
 	void Start () {

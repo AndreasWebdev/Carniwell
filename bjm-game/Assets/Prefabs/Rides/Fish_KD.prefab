@@ -87,6 +87,8 @@ GameObject:
   - component: {fileID: 4466699043046138}
   - component: {fileID: 114068588414489912}
   - component: {fileID: 95503897482455568}
+  - component: {fileID: 65344449178039682}
+  - component: {fileID: 208014060977429842}
   m_Layer: 0
   m_Name: Fish_KD
   m_TagString: Untagged
@@ -133,7 +135,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1871428017285734}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 8.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4243576730667412}
@@ -160,8 +162,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1153051272028204}
   m_LocalRotation: {x: 0, y: 0, z: 0.28244355, w: 0.95928395}
-  m_LocalPosition: {x: -0.05613456, y: 0.091604576, z: 1.5349808}
-  m_LocalScale: {x: 1.2797309, y: 1.2797309, z: 1.2797309}
+  m_LocalPosition: {x: -0.05613456, y: 0.091604576, z: 1.764}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
   m_Children:
   - {fileID: 4762465713701368}
   m_Father: {fileID: 4243576730667412}
@@ -187,7 +189,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1213357838558376}
   m_LocalRotation: {x: 0, y: 0, z: 0.000000029802319, w: 1}
-  m_LocalPosition: {x: 0.00000010373852, y: 0.00000001196743, z: 0.9084712}
+  m_LocalPosition: {x: 0.00000010373852, y: 0.00000001196743, z: 0.642}
   m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1}
   m_Children:
   - {fileID: 4558393174185838}
@@ -368,6 +370,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1847568798251018}
   m_Mesh: {fileID: 4300000, guid: bb53a27d88b757f4db18e21f0bd86c95, type: 3}
+--- !u!65 &65344449178039682
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1871428017285734}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6, y: 4.1, z: 6}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &95503897482455568
 Animator:
   serializedVersion: 3
@@ -397,6 +411,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee55c3823c95b0e4eb7e18e3aec8b37b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 0
   duration: 5
   npcAmount: 10
   npcsActive: []
+--- !u!208 &208014060977429842
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1871428017285734}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 2.75, y: 2.75, z: 2.75}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5

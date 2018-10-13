@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class AttractionController : MonoBehaviour {
 
+    public int id = 0;
+
     // Duration of one run
     public double duration = 120;
     public int npcAmount = 10;
@@ -17,8 +19,8 @@ public class AttractionController : MonoBehaviour {
     private int nextUpdate = 1;
     private bool isAnimation = false;
 
-    public List<GameObject> npcsActive;
-    private Queue<GameObject> npcsWaiting;
+    public List<GameObject> npcsActive = new List<GameObject>();
+    public Queue<GameObject> npcsWaiting = new Queue<GameObject>();
 
     // Use this for initialization
     void Start() {
@@ -27,9 +29,6 @@ public class AttractionController : MonoBehaviour {
         if(gameObject.GetComponent<Animator>()) {
             isAnimation = true;
         }
-
-        npcsWaiting = new Queue<GameObject>();
-        npcsActive = new List<GameObject>();
     }
 
     // Update is called once per frame
@@ -58,6 +57,12 @@ public class AttractionController : MonoBehaviour {
                 // ToDo: Send Attraction stopped signal
             }
         }
+    }
+
+    public void AddNPCToQueue(GameObject npc) {
+        npcsWaiting.Enqueue(npc);
+        NPC npcScript = npc.GetComponent<NPC>();
+        npcScript.SetStatus(NPC.status.QUEUE);
     }
 
     public void StartAttraction() {

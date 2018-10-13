@@ -12,8 +12,18 @@ public class AttractionBuildingSpot : MonoBehaviour {
     AttractionController myAttraction = null;
 	// Use this for initialization
 	void Start () {
-        buildingSite = (GameObject)Instantiate(buildingSitePrefab);
-        buildingSite.transform.position = this.transform.position;
+        if (transform.GetChild(0) == null)
+        {
+            buildingSite = (GameObject)Instantiate(buildingSitePrefab);
+            buildingSite.transform.position = this.transform.position;
+            buildingSite.transform.parent = this.transform;
+            Debug.Log("Instantiated building spot");
+        }
+        else
+        {
+            
+            buildingSite = transform.GetChild(0).gameObject;
+        }
 	}
 	
 	// Update is called once per frame
@@ -21,7 +31,7 @@ public class AttractionBuildingSpot : MonoBehaviour {
 #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.C))
         {
-            BuildAttraction(FindObjectOfType<AttractionDatabase>().attractionPrefabs[0]);
+            BuildAttraction(FindObjectOfType<AttractionDatabase>().attractionPrefabs[Random.Range(0, FindObjectOfType<AttractionDatabase>().attractionPrefabs.Count)]);
         }
 #endif
     }
@@ -30,15 +40,21 @@ public class AttractionBuildingSpot : MonoBehaviour {
     public void BuildAttraction(AttractionController _attraction)
     {
         if (myAttraction != null) return; // Wenn bereits eine Attraktion steht, nicht erneut bauen.
-
+        buildingSite.SetActive(false);
         GameObject attraction = (GameObject)Instantiate(_attraction.gameObject);
 
         float spawnHeight = 30f;
         Vector3 spawnPosition = new Vector3(transform.position.x, transform.position.y + spawnHeight, transform.position.z);
         attraction.transform.position = spawnPosition;
+        if(transform.position.x > 0)
+        {
+            Vector3 rot = attraction.transform.eulerAngles;
+
+            attraction.transform.rotation = Quaternion.Euler(rot.x, rot.y+180, rot.z);
+        }
         AttractionController ac = attraction.GetComponent<AttractionController>();
         myAttraction = ac;
-
+        attraction.transform.parent = this.transform;
         //Moved die Attraktion auf Bodenhöhe
         StartCoroutine(MoveToPosition(attraction.transform, spawnPosition, transform.position,spawnAnimationDuration));
 
@@ -47,7 +63,7 @@ public class AttractionBuildingSpot : MonoBehaviour {
 
     IEnumerator MoveToPosition(Transform obj, Vector3 origin, Vector3 target, float duration)
     {
-        buildingSite.SetActive(false);
+        
         float journey = 0f;
         while (journey <= duration)
         {

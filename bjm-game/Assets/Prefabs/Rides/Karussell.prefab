@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 208128571393725056}
   - component: {fileID: 114118951684116704}
   - component: {fileID: 95261684450121160}
+  - component: {fileID: 136856535447595792}
   m_Layer: 0
   m_Name: Karussell
   m_TagString: Untagged
@@ -184,7 +185,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1614421500234242}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.2, y: 0, z: 60.67}
+  m_LocalPosition: {x: -18.3, y: 0, z: 14.400002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4814326324970382}
@@ -606,6 +607,19 @@ MonoBehaviour:
   duration: 15
   npcAmount: 8
   npcsActive: []
+--- !u!136 &136856535447595792
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1614421500234242}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 2.64
+  m_Height: 7.18
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.08, z: 0}
 --- !u!208 &208128571393725056
 NavMeshObstacle:
   m_ObjectHideFlags: 1

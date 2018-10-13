@@ -13,12 +13,39 @@ public class ParkManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            CreateNewAttraction();
+        }
+#endif
+    }
 
     public void CreateNewAttraction()
     {
-
+        //Finde eine Attraktion die noch nicht in der Liste ist
+        AttractionDatabase db = FindObjectOfType<AttractionDatabase>();
+        List<AttractionController> attrAvailable = new List<AttractionController>();
+        for(int i= 0; i < db.attractionPrefabs.Count; i++)
+        {
+            if (!AttractionAlreadyInList(db.attractionPrefabs[i]))
+            {
+                attrAvailable.Add(db.attractionPrefabs[i]);
+            }
+        }
+        if (attrAvailable.Count > 0)
+        {
+            AttractionController attrToBuild = attrAvailable[Random.Range(0, attrAvailable.Count)];
+            AttractionBuildingSpot[] allBuildingSpots = FindObjectsOfType<AttractionBuildingSpot>();
+            for (int i = 0; i < allBuildingSpots.Length; i++)
+            {
+                if (allBuildingSpots[i].myAttraction == null)
+                {
+                    allBuildingSpots[i].BuildAttraction(attrToBuild);
+                    break;
+                }
+            }
+        }
     }
 
     public bool AttractionAlreadyInList(AttractionController _attraction)

@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 4452722203788608}
   - component: {fileID: 95097480464256798}
   - component: {fileID: 114824940564243042}
+  - component: {fileID: 65460558137257568}
   m_Layer: 0
   m_Name: Freefall
   m_TagString: Untagged
@@ -149,7 +150,7 @@ Transform:
   m_GameObject: {fileID: 1397812040255988}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.207, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
   m_Children:
   - {fileID: 4607184266532346}
   - {fileID: 4969409360504314}
@@ -175,14 +176,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1244626538643830}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -9.17, y: 0, z: 8.14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4052929182390370}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!4 &4607184266532346
 Transform:
   m_ObjectHideFlags: 1
@@ -276,7 +277,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 83faf693d38b8554ab1bcf076bf3009b, type: 3}
+  - {fileID: 2100006, guid: 83faf693d38b8554ab1bcf076bf3009b, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -436,6 +437,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1686874949907198}
   m_Mesh: {fileID: 4300000, guid: 83faf693d38b8554ab1bcf076bf3009b, type: 3}
+--- !u!65 &65460558137257568
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1244626538643830}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.2, y: 2.93, z: 5.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &95097480464256798
 Animator:
   serializedVersion: 3

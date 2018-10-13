@@ -20,6 +20,7 @@ ModelImporter:
     2100000: Material
     2100002: Freefall_black
     2100004: Freefall_silver
+    2100006: Freefall_yellow
     2300000: Freefall_base
     2300002: Freefall_thing
     2300004: Freefall_tower

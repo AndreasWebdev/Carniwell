@@ -34,24 +34,32 @@ public class NPC : MonoBehaviour {
     void UpdateEverySecond() {
         if (currentStatus.Equals(status.QUEUE)) {
             if (happiness > 0) {
-                --happiness;
+                AddHappiness(-1);
             }
-        } else if (currentStatus.Equals(status.ATTRACTION)) {
-            if (happiness < 100) {
-                ++happiness;
-            }
+        //} else if (currentStatus.Equals(status.ATTRACTION)) {
+        //    if (happiness < 100) {
+        //        ++happiness;
+        //    }
         }
     }
 
-    status getStatus() {
+    public status GetStatus() {
         return currentStatus;
     }
 
-    void setStatus(status newStatus) {
+    public void SetStatus(status newStatus) {
         currentStatus = newStatus;
     }
 
-    int getHappiness() {
+    public int GetHappiness() {
         return happiness;
+    }
+
+    public void AddHappiness(int reward) {
+        happiness += reward;
+
+        if(happiness <= 0) {
+            // Remove NPC
+        }
     }
 }

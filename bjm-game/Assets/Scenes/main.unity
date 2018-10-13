@@ -1547,6 +1547,48 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54e6dc3cfdc45f0489c1b4946b09c533, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1001 &1361774689
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4858806181333054, guid: 607d13a210f42b4478f95584c9cf6b72, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4858806181333054, guid: 607d13a210f42b4478f95584c9cf6b72, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4858806181333054, guid: 607d13a210f42b4478f95584c9cf6b72, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -12.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 4858806181333054, guid: 607d13a210f42b4478f95584c9cf6b72, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4858806181333054, guid: 607d13a210f42b4478f95584c9cf6b72, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4858806181333054, guid: 607d13a210f42b4478f95584c9cf6b72, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4858806181333054, guid: 607d13a210f42b4478f95584c9cf6b72, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4858806181333054, guid: 607d13a210f42b4478f95584c9cf6b72, type: 2}
+      propertyPath: m_RootOrder
+      value: 23
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 607d13a210f42b4478f95584c9cf6b72, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &1377281349
 GameObject:
   m_ObjectHideFlags: 0
@@ -2382,6 +2424,11 @@ MonoBehaviour:
   currentAttraction: {fileID: 0}
   UIAttractionStartAnim: {fileID: 1749564510}
   UIAttractionControlAnim: {fileID: 2120162198}
+  happinessSlider: {fileID: 313756316}
+  happinessSliderFilling: {fileID: 1389808160}
+  goodColor: {r: 0, g: 0, b: 0, a: 0}
+  mediumColor: {r: 0, g: 0, b: 0, a: 0}
+  badColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &2083075548
 MonoBehaviour:
   m_ObjectHideFlags: 0

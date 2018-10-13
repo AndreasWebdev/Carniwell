@@ -41,6 +41,26 @@ public class NPC : MonoBehaviour {
         vm.allVisitors.Add(this);
     }
 
+    void showNPC() {
+        // Disable NPC renderer/collider/agent
+        SkinnedMeshRenderer render = gameObject.GetComponentInChildren<SkinnedMeshRenderer>();
+        CapsuleCollider collider = gameObject.GetComponent<CapsuleCollider>();
+
+        collider.enabled = true;
+        render.enabled = true;
+        agent.enabled = true;
+    }
+
+    void hideNPC() {
+        // Disable NPC renderer/collider/agent
+        SkinnedMeshRenderer render = gameObject.GetComponentInChildren<SkinnedMeshRenderer>();
+        CapsuleCollider collider = gameObject.GetComponent<CapsuleCollider>();
+
+        collider.enabled = false;
+        render.enabled = false;
+        agent.enabled = false;
+    }
+
     // Update is called once per frame
     void Update() {
         // If the next update is reached
@@ -57,8 +77,7 @@ public class NPC : MonoBehaviour {
             walkRandom = (Random.value > 0.75f);
 
             // Show NPC
-            SkinnedMeshRenderer render = gameObject.GetComponentInChildren<SkinnedMeshRenderer>();
-            render.enabled = true;
+            showNPC();
             currentStatus = status.WALKING;
 
             if (!walkRandom) {
@@ -105,9 +124,7 @@ public class NPC : MonoBehaviour {
                             attraction.AddNPCToQueue(gameObject);
                             remainingIdleTime = 0;
 
-                            // Hide NPC
-                            SkinnedMeshRenderer render = gameObject.GetComponentInChildren<SkinnedMeshRenderer>();
-                            render.enabled = false;
+                            hideNPC();
                         }
 
                         destination = null;

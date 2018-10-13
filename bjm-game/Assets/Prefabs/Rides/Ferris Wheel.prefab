@@ -20,6 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4322458319861794}
   - component: {fileID: 114084619307220058}
+  - component: {fileID: 114639087864332666}
+  - component: {fileID: 65046429993310206}
   m_Layer: 0
   m_Name: Ferris Wheel
   m_TagString: Untagged
@@ -297,7 +299,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1692514838569636}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.70459396, y: 5.5789547, z: 0}
+  m_LocalPosition: {x: -0.22, y: 5.5789547, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4274898520715950}
@@ -424,7 +426,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1631421898352246}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.18, z: -0}
+  m_LocalPosition: {x: -0.924594, y: 0.18, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4384616259284438}
@@ -1038,6 +1040,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1268203899490272}
   m_Mesh: {fileID: 4300000, guid: 951ad284a2d64c1439ed96ccfd7b78c6, type: 3}
+--- !u!65 &65046429993310206
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1118578642372306}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 7.84, y: 2.81, z: 8.44}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &95113241067983478
 Animator:
   serializedVersion: 3
@@ -1079,3 +1093,17 @@ MonoBehaviour:
   - {fileID: 4302672596881584}
   - {fileID: 4410365287366394}
   - {fileID: 4336634736499066}
+--- !u!114 &114639087864332666
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1118578642372306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee55c3823c95b0e4eb7e18e3aec8b37b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 20
+  npcAmount: 8
+  npcsActive: []

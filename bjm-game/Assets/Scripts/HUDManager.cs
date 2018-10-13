@@ -14,6 +14,7 @@ public class HUDManager : MonoBehaviour {
     public Slider happinessSlider;
     public Image happinessSliderFilling;
     public Color goodColor, mediumColor, badColor;
+    public TextMeshProUGUI HappinessPercentageText;
 
     [Header("Waiting for Visitors Panel")]
     public TextMeshProUGUI waitingText;
@@ -108,6 +109,7 @@ public class HUDManager : MonoBehaviour {
         {
             happinessSliderFilling.color = badColor;
         }
+        HappinessPercentageText.text = _val.ToString("N0") + "%";
     }
 
 

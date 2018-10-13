@@ -603,7 +603,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 5
-  entrancePosition: {fileID: 0}
+  entrancePosition: {fileID: 4151170801813138}
   duration: 15
   npcAmount: 8
   npcsActive: []

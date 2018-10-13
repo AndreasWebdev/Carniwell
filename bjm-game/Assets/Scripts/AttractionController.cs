@@ -13,14 +13,14 @@ public class AttractionController : MonoBehaviour {
     public double duration = 120;
     public int npcAmount = 10;
 
-    private bool running = false;
+    public bool running = false;
     private double timeLeft;
 
     private int nextUpdate = 1;
     private bool isAnimation = false;
 
     public List<GameObject> npcsActive = new List<GameObject>();
-    public Queue<GameObject> npcsWaiting = new Queue<GameObject>();
+    public List<GameObject> npcsWaiting = new List<GameObject>();
 
     // Use this for initialization
     void Start() {
@@ -60,7 +60,7 @@ public class AttractionController : MonoBehaviour {
     }
 
     public void AddNPCToQueue(GameObject npc) {
-        npcsWaiting.Enqueue(npc);
+        npcsWaiting.Add(npc);
         NPC npcScript = npc.GetComponent<NPC>();
         npcScript.SetStatus(NPC.status.QUEUE);
     }
@@ -74,7 +74,8 @@ public class AttractionController : MonoBehaviour {
                 if (npcsWaiting.Count == 0) {
                     break;
                 }
-                GameObject npc = npcsWaiting.Dequeue();
+                GameObject npc = npcsWaiting[0];
+                npcsWaiting.Remove(npc);
                 NPC npcScript = npc.GetComponent<NPC>();
                 npcScript.SetStatus(NPC.status.ATTRACTION);
 
@@ -89,6 +90,7 @@ public class AttractionController : MonoBehaviour {
             } else {
                 // TODO: Throw error message - No NPCS
                 Debug.Log("No NPCs available");
+                running = false;
             }
         }
     }

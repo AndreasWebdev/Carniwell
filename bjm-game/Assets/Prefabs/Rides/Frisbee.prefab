@@ -692,7 +692,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 4
-  entrancePosition: {fileID: 0}
+  entrancePosition: {fileID: 4907954729341366}
   duration: 14
   npcAmount: 10
   npcsActive: []

@@ -5,7 +5,8 @@ using UnityEngine;
 public class HUDManager : MonoBehaviour {
     public AttractionController currentAttraction = null;
 
-    public Animator bottomHudAnim;
+    public Animator UIAttractionStartAnim;
+    public Animator UIAttractionControlAnim;
 	// Use this for initialization
 	void Start () {
 		
@@ -14,18 +15,24 @@ public class HUDManager : MonoBehaviour {
     public void SetupCurrentAttraction(AttractionController _attraction)
     {
         currentAttraction = _attraction;
-        _attraction.StartAttraction();
-        bottomHudAnim.SetBool("isOpen", true);
+        if (_attraction.running) {
+            _attraction.StopAttraction();
+        } else {
+            _attraction.StartAttraction();
+        }
+        UIAttractionStartAnim.SetBool("isOpen", true);
     }
     public void LeaveAttraction()
     {
         currentAttraction = null;
-        bottomHudAnim.SetBool("isOpen", false);
+        UIAttractionStartAnim.SetBool("isOpen", false);
     }
 
 	public void Ansage()
     {
         currentAttraction.Ansage();
+        UIAttractionControlAnim.SetBool("isOpen", true);
+        UIAttractionStartAnim.SetBool("isOpen", false);
     }
 
     public void Special()
@@ -36,5 +43,7 @@ public class HUDManager : MonoBehaviour {
     public void Notstop()
     {
         currentAttraction.Notstop();
+        UIAttractionControlAnim.SetBool("isOpen", false);
+        UIAttractionStartAnim.SetBool("isOpen", true);
     }
 }

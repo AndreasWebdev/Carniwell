@@ -1239,11 +1239,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee55c3823c95b0e4eb7e18e3aec8b37b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
+  id: 1
   entrancePosition: {fileID: 4436556508752136}
   duration: 20
   npcAmount: 8
   npcsActive: []
+  npcsWaiting: []
 --- !u!208 &208816443931115290
 NavMeshObstacle:
   m_ObjectHideFlags: 1

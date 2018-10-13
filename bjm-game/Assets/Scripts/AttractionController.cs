@@ -19,8 +19,8 @@ public class AttractionController : MonoBehaviour {
     private int nextUpdate = 1;
     private bool isAnimation = false;
 
-    public List<GameObject> npcsActive;
-    private Queue<GameObject> npcsWaiting;
+    public List<GameObject> npcsActive = new List<GameObject>();
+    public Queue<GameObject> npcsWaiting = new Queue<GameObject>();
 
     // Use this for initialization
     void Start() {
@@ -29,9 +29,6 @@ public class AttractionController : MonoBehaviour {
         if(gameObject.GetComponent<Animator>()) {
             isAnimation = true;
         }
-
-        npcsWaiting = new Queue<GameObject>();
-        npcsActive = new List<GameObject>();
     }
 
     // Update is called once per frame

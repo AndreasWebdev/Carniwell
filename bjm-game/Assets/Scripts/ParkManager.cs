@@ -9,8 +9,8 @@ public class ParkManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
-	}
+        CreateNewAttraction();
+    }
 	
 	// Update is called once per frame
 	void Update () {

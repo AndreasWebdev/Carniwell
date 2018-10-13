@@ -10,6 +10,9 @@ public class AttractionBuildingSpot : MonoBehaviour {
     public AnimationCurve spawnCurve;
     public float spawnAnimationDuration = 2;
     public AttractionController myAttraction = null;
+
+    AudioSource landingSound;
+
 	// Use this for initialization
 	void Start () {
         if (transform.GetChild(0) == null)
@@ -24,8 +27,10 @@ public class AttractionBuildingSpot : MonoBehaviour {
             
             buildingSite = transform.GetChild(0).gameObject;
         }
-	}
-	
+
+        landingSound = GetComponent<AudioSource>();
+    }
+
 
 
     public void BuildAttraction(AttractionController _attraction)
@@ -66,8 +71,9 @@ public class AttractionBuildingSpot : MonoBehaviour {
 
             yield return null;
         }
-       GameObject particles = Instantiate(attractionBuildParticles);
-       particles.transform.position = this.transform.position + Vector3.up;
+        GameObject particles = Instantiate(attractionBuildParticles);
+        particles.transform.position = this.transform.position + Vector3.up;
+        landingSound.Play();
     }
 
     private void OnDrawGizmos()

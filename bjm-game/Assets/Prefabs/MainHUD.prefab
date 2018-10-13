@@ -839,7 +839,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114968965715667412}
-        m_MethodName: Ansage
+        m_MethodName: PlayAttraction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1864,9 +1864,10 @@ MonoBehaviour:
   UIAttractionControlAnim: {fileID: 95579373335787684}
   happinessSlider: {fileID: 114983198921495958}
   happinessSliderFilling: {fileID: 114998342992361912}
-  goodColor: {r: 0, g: 0, b: 0, a: 0}
-  mediumColor: {r: 0, g: 0, b: 0, a: 0}
-  badColor: {r: 0, g: 0, b: 0, a: 0}
+  goodColor: {r: 0, g: 0.9716981, b: 0.09860955, a: 1}
+  mediumColor: {r: 0.972549, g: 0.7814634, b: 0, a: 1}
+  badColor: {r: 0.972549, g: 0.21770558, b: 0, a: 1}
+  waitingText: {fileID: 114367258238726446}
 --- !u!114 &114983198921495958
 MonoBehaviour:
   m_ObjectHideFlags: 1

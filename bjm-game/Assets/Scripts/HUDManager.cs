@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+
 public class HUDManager : MonoBehaviour {
     public AttractionController currentAttraction = null;
 
@@ -23,7 +24,8 @@ public class HUDManager : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        if(currentAttraction != null)
+        
+        if (currentAttraction != null)
         {
             waitingText.text = currentAttraction.npcsWaiting.Count.ToString();
         }

@@ -84,6 +84,13 @@ public class AttractionController : MonoBehaviour {
 
             // Only start attraction if there are some NPCS who wanna drive
             if (npcsActive.Count > 0) {
+
+                // Lock player while running
+                PlayerMovement player = FindObjectOfType<PlayerMovement>();
+                if(player) {
+                    player.lockMovement();
+                }
+
                 // Start attraction
                 timeLeft = duration;
                 StartAnimation();
@@ -107,6 +114,12 @@ public class AttractionController : MonoBehaviour {
                 happinessReward = -5;
             } else {
                 happinessReward = 5;
+            }
+
+            // Unlock player
+            PlayerMovement player = FindObjectOfType<PlayerMovement>();
+            if (player) {
+                player.unlockMovement();
             }
 
             while (npcsActive.Count > 0) {

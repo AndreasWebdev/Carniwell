@@ -111,26 +111,28 @@ public class NPC : MonoBehaviour {
             }
         }
 
-        if (!agent.pathPending) {
-            if (agent.remainingDistance <= agent.stoppingDistance) {
-                if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f) {
-                    if (destination) {
-                        anim.SetBool("moving", false);
+        if (currentStatus == status.WALKING) {
+            if (!agent.pathPending) {
+                if (agent.remainingDistance <= agent.stoppingDistance) {
+                    if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f) {
+                        if (destination) {
+                            anim.SetBool("moving", false);
 
-                        AttractionController attraction = lastVisitedAttraction.GetComponent<AttractionController>();
-                        // Check if target is really an attraction
-                        if (attraction) {
+                            AttractionController attraction = lastVisitedAttraction.GetComponent<AttractionController>();
+                            // Check if target is really an attraction
+                            if (attraction) {
 
-                            attraction.AddNPCToQueue(gameObject);
-                            remainingIdleTime = 0;
+                                attraction.AddNPCToQueue(gameObject);
+                                remainingIdleTime = 0;
 
-                            hideNPC();
+                                hideNPC();
+                            }
+
+                            destination = null;
+                        } else if (walkRandom && remainingIdleTime != 0) {
+                            currentStatus = status.IDLE;
+                            anim.SetBool("moving", false);
                         }
-
-                        destination = null;
-                    } else if(walkRandom && currentStatus == status.WALKING && remainingIdleTime != 0) {
-                        currentStatus = status.IDLE;
-                        anim.SetBool("moving", false);
                     }
                 }
             }

@@ -51,9 +51,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09a8ff1912826c9499570e2e467c52eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingSitePrefab: {fileID: 1726990590969424, guid: b53d31d84338f054298f2bc4d1c88d9a,
-    type: 2}
   attractionPrefabs:
   - {fileID: 114639087864332666, guid: 2475e11f0b777fb418b608b03520510a, type: 2}
   - {fileID: 114068588414489912, guid: 78d262764cd459f42a4aff2386f760e9, type: 2}
   - {fileID: 114824940564243042, guid: 8438265c40dce784bb9d34c108508345, type: 2}
+  - {fileID: 114221178643330690, guid: 2783d6a76ec83cb489721b5d2d679675, type: 2}

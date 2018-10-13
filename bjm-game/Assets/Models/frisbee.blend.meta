@@ -18,6 +18,11 @@ ModelImporter:
     400010: //RootNode
     400012: Schaukel
     2100000: unnamed
+    2100002: Material
+    2100004: frisbee_red
+    2100006: frisbee_yellow
+    2100008: frisbee_base
+    2100010: Material_001
     2300000: Base
     2300002: Cube_001
     2300004: Cube_003
@@ -96,7 +101,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 1
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2

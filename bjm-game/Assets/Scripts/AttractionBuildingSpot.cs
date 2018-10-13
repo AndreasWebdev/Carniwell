@@ -26,15 +26,6 @@ public class AttractionBuildingSpot : MonoBehaviour {
         }
 	}
 	
-	// Update is called once per frame
-	void Update () {
-#if UNITY_EDITOR
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            BuildAttraction(FindObjectOfType<AttractionDatabase>().attractionPrefabs[Random.Range(0, FindObjectOfType<AttractionDatabase>().attractionPrefabs.Count)]);
-        }
-#endif
-    }
 
 
     public void BuildAttraction(AttractionController _attraction)

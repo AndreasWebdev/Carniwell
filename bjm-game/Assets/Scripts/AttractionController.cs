@@ -65,7 +65,7 @@ public class AttractionController : MonoBehaviour {
         npcScript.SetStatus(NPC.status.QUEUE);
     }
 
-    public void StartAttraction() {
+    public bool StartAttraction() {
         if (!running) {
             running = true;
 
@@ -100,6 +100,8 @@ public class AttractionController : MonoBehaviour {
                 running = false;
             }
         }
+
+        return running;
     }
 
     public void StopAttraction() {

@@ -69,6 +69,7 @@ public class HUDManager : MonoBehaviour {
     public void LeaveAttraction()
     {
         currentAttraction = null;
+        UIAttractionControlAnim.SetBool("isOpen", false);
         UIAttractionStartAnim.SetBool("isOpen", false);
     }
 
@@ -108,4 +109,8 @@ public class HUDManager : MonoBehaviour {
             happinessSliderFilling.color = badColor;
         }
     }
+
+
+
+    
 }

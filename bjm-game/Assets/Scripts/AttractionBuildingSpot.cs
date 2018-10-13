@@ -9,7 +9,7 @@ public class AttractionBuildingSpot : MonoBehaviour {
 
     public AnimationCurve spawnCurve;
     public float spawnAnimationDuration = 2;
-    AttractionController myAttraction = null;
+    public AttractionController myAttraction = null;
 	// Use this for initialization
 	void Start () {
         if (transform.GetChild(0) == null)

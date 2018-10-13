@@ -24,10 +24,9 @@ public class PlayerMovement : MonoBehaviour {
 
     void Move()
     {
-        if (Input.touchCount > 0)
+        if (Input.GetMouseButton(0))
         {
-            Touch touch = Input.GetTouch(0);
-            Ray touchRay = Camera.main.ScreenPointToRay(touch.position);
+            Ray touchRay = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             RaycastHit floorHit;
             if (Physics.Raycast(touchRay, out floorHit, touchRayLength, floorMask))

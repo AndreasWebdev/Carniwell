@@ -60,21 +60,25 @@ public class NPC : MonoBehaviour {
             currentStatus = status.WALKING;
 
             if (!walkRandom) {
-                AttractionController[] attractions = GameObject.FindObjectsOfType<AttractionController>();
-                if (attractions.Length > 0) {
-                    int attractionIndex = Random.Range(0, attractions.Length);
+                ParkManager parkManager = GameObject.FindObjectOfType<ParkManager>();
+                if (parkManager) {
+                    List<AttractionController> attractions = parkManager.activeAttractions;
+                    if (attractions.Count > 0) {
+                        int attractionIndex = Random.Range(0, attractions.Count);
 
-                    // Do not move to last attraction again
-                    if (!lastVisitedAttraction || lastVisitedAttraction != attractions[attractionIndex]) {
-                        destination = attractions[attractionIndex].transform;
+                        // Do not move to last attraction again
+                        if (!lastVisitedAttraction || lastVisitedAttraction != attractions[attractionIndex]) {
+                            destination = attractions[attractionIndex].transform;
 
-                        lastVisitedAttraction = attractions[attractionIndex];
+                            lastVisitedAttraction = attractions[attractionIndex];
 
-                        agent.SetDestination(new Vector3(destination.position.x, transform.position.y, destination.position.z));
-                        anim.SetBool("moving", true);
+                            agent.SetDestination(new Vector3(destination.position.x, transform.position.y, destination.position.z));
+                            anim.SetBool("moving", true);
+                        }
+                    } else {
+                        currentStatus = status.IDLE;
                     }
-                }
-                else {
+                } else {
                     currentStatus = status.IDLE;
                 }
             } else {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 public class HUDManager : MonoBehaviour {
     public AttractionController currentAttraction = null;
 
@@ -11,19 +12,46 @@ public class HUDManager : MonoBehaviour {
     public Slider happinessSlider;
     public Image happinessSliderFilling;
     public Color goodColor, mediumColor, badColor;
+
+
+    public TextMeshProUGUI waitingText;
 	// Use this for initialization
 	void Start () {
-		
-	}
-	
+        waitingText.text = "0";
+
+    }
+
+    private void FixedUpdate()
+    {
+        if(currentAttraction != null)
+        {
+            waitingText.text = currentAttraction.npcsWaiting.Count.ToString();
+        }
+        
+    }
+
+    public void PlayAttraction()
+    {
+        if (currentAttraction == null) return;
+
+        if (currentAttraction.running)
+        {
+           currentAttraction.StopAttraction();
+        }
+        else
+        {
+           currentAttraction.StartAttraction();
+        }
+    }
+
     public void SetupCurrentAttraction(AttractionController _attraction)
     {
         currentAttraction = _attraction;
-        if (_attraction.running) {
+        /*if (_attraction.running) {
             _attraction.StopAttraction();
         } else {
             _attraction.StartAttraction();
-        }
+        }*/
         UIAttractionStartAnim.SetBool("isOpen", true);
     }
     public void LeaveAttraction()

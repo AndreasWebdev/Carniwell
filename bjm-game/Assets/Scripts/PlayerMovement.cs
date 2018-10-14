@@ -8,8 +8,6 @@ public class PlayerMovement : MonoBehaviour {
     public float speed = 10f;
 
     Rigidbody playerRigidbody;
-    float touchRayLength = 100f;
-    int floorMask;
 
     public Animator anim;
 
@@ -26,7 +24,6 @@ public class PlayerMovement : MonoBehaviour {
     void Awake()
     {
         playerRigidbody = GetComponent<Rigidbody>();
-        floorMask = LayerMask.GetMask("Floor");
         hud = FindObjectOfType<HUDManager>();
     }
 

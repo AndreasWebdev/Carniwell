@@ -45,6 +45,7 @@ public class HUDManager : MonoBehaviour {
     public Sprite pauseIcon;
     public Sprite resumeIcon;
     public Image pauseButtonBackground;
+    public Animator pausePanelAnimator;
 
     [Header("GameOver")]
     public TextMeshProUGUI gameOverText;
@@ -210,6 +211,13 @@ public class HUDManager : MonoBehaviour {
     public void ShowGameOverPanel() {
         gameOverText.SetText("Du hast " + scoreText.text + " durchgehalten!");
         gameOverPanelAnimator.SetBool("isActive", true);
+    }
 
+    public void ShowPauseMenu() {
+        pausePanelAnimator.SetBool("isActive", true);
+    }
+
+    public void HidePauseMenu() {
+        pausePanelAnimator.SetBool("isActive", false);
     }
 }

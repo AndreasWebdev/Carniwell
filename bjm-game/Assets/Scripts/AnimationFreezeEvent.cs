@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameOverEvent : MonoBehaviour {
+public class AnimationFreezeEvent : MonoBehaviour {
 
     public bool eventReceived = false;
 

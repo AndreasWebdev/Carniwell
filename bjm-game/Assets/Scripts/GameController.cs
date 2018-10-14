@@ -63,7 +63,7 @@ public class GameController : MonoBehaviour {
 
     public void PauseGame() {
         if (gameState == state.RUNNING) {
-            Time.timeScale = 0;
+            hud.ShowPauseMenu();
 
             Scene active = SceneManager.GetActiveScene();
             GameObject[] roots = active.GetRootGameObjects();
@@ -75,6 +75,7 @@ public class GameController : MonoBehaviour {
         } else if (gameState == state.PAUSED) {
             Time.timeScale = 1;
 
+            hud.HidePauseMenu();
             Scene active = SceneManager.GetActiveScene();
             GameObject[] roots = active.GetRootGameObjects();
             foreach (GameObject root in roots) {

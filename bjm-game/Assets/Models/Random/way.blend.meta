@@ -1,43 +1,16 @@
 fileFormatVersion: 2
-guid: 02e33c5e77615c84eb34979b440e80c9
+guid: 9261be504b57ca047829b70ab3c561d3
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Armature
-    100002: Bone
-    100004: Cube
-    100006: Plane
-    100008: //RootNode
-    100010: Text
-    400000: Armature
-    400002: Bone
-    400004: Cube
-    400006: Plane
-    400008: //RootNode
-    400010: Text
-    2100000: scooter_down
-    2100002: scotter
-    2100004: scooter_2_001
-    2100006: scotter_front
-    2100008: scooter_inner
-    2100010: scooter_steel
-    2100012: scooter_2
-    2100014: scooter_roof
-    2100016: scooter_wall
-    2100018: scooter_roof2
-    2100020: scooter_floor
-    2100022: Material_001
-    2300000: Plane
-    2300002: Text
-    3300000: Plane
-    3300002: Text
+    100000: //RootNode
+    400000: //RootNode
+    2100000: floor
+    2300000: //RootNode
+    3300000: //RootNode
     4300000: Cube
-    4300002: Plane
-    4300004: Text
     7400000: Default Take
-    7400002: ArmatureAction
     9500000: //RootNode
-    13700000: Cube
   externalObjects: {}
   materials:
     importMaterials: 1

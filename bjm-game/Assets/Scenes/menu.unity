@@ -1286,7 +1286,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: bcf20a8fc745a694180d3d706e2f09cf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.4180293
+      value: 4.91
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: bcf20a8fc745a694180d3d706e2f09cf, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4113,6 +4113,74 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: f2d3e50d8e9a31e4e8f079d916b51c82,
     type: 3}
   m_PrefabInternal: {fileID: 498347883}
+--- !u!1 &504578681
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 504578684}
+  - component: {fileID: 504578683}
+  - component: {fileID: 504578682}
+  m_Layer: 0
+  m_Name: CreditsDirector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!95 &504578682
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 504578681}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!320 &504578683
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 504578681}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 63fe4f1c9cac430428d8271d6d7e23fd, type: 2}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 114637791499272472, guid: 63fe4f1c9cac430428d8271d6d7e23fd, type: 2}
+    value: {fileID: 504578682}
+  - key: {fileID: 114302359193787502, guid: 63fe4f1c9cac430428d8271d6d7e23fd, type: 2}
+    value: {fileID: 1229497737}
+  m_ExposedReferences:
+    m_References: []
+--- !u!4 &504578684
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 504578681}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &508523993
 Prefab:
   m_ObjectHideFlags: 0
@@ -7822,8 +7890,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1378115952}
-        m_MethodName: 
+      - m_Target: {fileID: 1378115957}
+        m_MethodName: buttonCredits
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12169,8 +12237,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eae215cd1f6eb284e8905c8ff2812af5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  creditsCamera: {fileID: 0}
-  mainCamera: {fileID: 1229497735}
 --- !u!82 &1378115958
 AudioSource:
   m_ObjectHideFlags: 0

@@ -1240,9 +1240,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 1
+  attractionName: Achterrad
   entrancePosition: {fileID: 4436556508752136}
   duration: 20
   npcAmount: 8
+  running: 0
   npcsActive: []
   npcsWaiting: []
 --- !u!208 &208816443931115290

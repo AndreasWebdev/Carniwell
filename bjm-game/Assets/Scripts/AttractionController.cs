@@ -4,10 +4,13 @@ using UnityEngine;
 
 // TODO: NPC status queue
 
-
+[RequireComponent(typeof(BoxCollider))]
+[RequireComponent(typeof(UnityEngine.AI.NavMeshObstacle))]
 public class AttractionController : MonoBehaviour {
 
     public int id = 0;
+    public string attractionName;
+
     public Transform entrancePosition;
     // Duration of one run
     public double duration = 120;
@@ -131,7 +134,10 @@ public class AttractionController : MonoBehaviour {
 
                 npcScript.SetStatus(NPC.status.IDLE);
                 npcScript.AddHappiness(happinessReward);
-                npcScript.DoneAttraction();
+                if (timeLeft <= 0)
+                {
+                    npcScript.DoneAttraction();
+                }
             }
         }
     }
@@ -171,5 +177,6 @@ public class AttractionController : MonoBehaviour {
     public void Notstop()
     {
         //Todo: Spieler bestrafen, NPCs schlechte Laune verpassen
+
     }
 }

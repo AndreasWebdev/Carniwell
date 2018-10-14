@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Timeline;
 
 public class MenuManager : MonoBehaviour
 {
     [Header("Credits")]
-    public Camera creditsCamera;
-    public Camera mainCamera;
+    public DirectorControlPlayable timelineCredits;
 
     public void buttonStart()
     {
@@ -21,7 +21,6 @@ public class MenuManager : MonoBehaviour
 
     public void buttonCredits()
     {
-        mainCamera.gameObject.SetActive(false);
-        creditsCamera.gameObject.SetActive(true);
+        timelineCredits.director.Play();
     }
 }

@@ -19,6 +19,7 @@ public class HUDManager : MonoBehaviour {
     [Header("Waiting for Visitors Panel")]
     public TextMeshProUGUI waitingText;
     public TextMeshProUGUI freeSlotsText;
+    public TextMeshProUGUI attractionNameText;
 
     [Header("Start/Stop Buttons")]
     public GameObject startButton;
@@ -87,6 +88,7 @@ public class HUDManager : MonoBehaviour {
     public void SetupCurrentAttraction(AttractionController _attraction)
     {
         currentAttraction = _attraction;
+        attractionNameText.text = _attraction.attractionName;
         /*if (_attraction.running) {
             _attraction.StopAttraction();
         } else {
@@ -97,6 +99,7 @@ public class HUDManager : MonoBehaviour {
     public void LeaveAttraction()
     {
         currentAttraction = null;
+        attractionNameText.text = "";
         //UIAttractionControlAnim.SetBool("isOpen", false);
         UIAttractionStartAnim.SetBool("isOpen", false);
     }

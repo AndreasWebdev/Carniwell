@@ -1,17 +1,30 @@
 fileFormatVersion: 2
-guid: 9261be504b57ca047829b70ab3c561d3
+guid: fe6f863e60a8dac4592dbc4f5ef349e5
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2100000: floor
-    2100002: Material_001__35_square_stone_tile_texture-seamless_jpg
-    2100004: Material__427_jpg
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Cube
-    4300002: Plane
+    100000: Cube
+    100002: Cylinder
+    100004: Cylinder_001
+    100006: //RootNode
+    400000: Cube
+    400002: Cylinder
+    400004: Cylinder_001
+    400006: //RootNode
+    2100000: Material_004
+    2100002: Material_003
+    2100004: Material
+    2100006: Material_001
+    2100008: Material_002
+    2300000: Cube
+    2300002: Cylinder
+    2300004: Cylinder_001
+    3300000: Cube
+    3300002: Cylinder
+    3300004: Cylinder_001
+    4300000: Cylinder_001
+    4300002: Cylinder
+    4300004: Cube
     7400000: Default Take
     9500000: //RootNode
   externalObjects: {}

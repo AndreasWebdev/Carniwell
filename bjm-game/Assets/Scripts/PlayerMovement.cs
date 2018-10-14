@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class PlayerMovement : MonoBehaviour {
-
-    public float speed = 10f;
+    GameController game;
 
     Rigidbody playerRigidbody;
 
@@ -18,6 +17,7 @@ public class PlayerMovement : MonoBehaviour {
     HUDManager hud;
 
     private void Start() {
+        game = FindObjectOfType<GameController>();
         joystick = FindObjectOfType<Joystick>();
     }
 
@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour {
             playerRigidbody.MoveRotation(rotation);
 
             moveDir.y = 0.2f;
-            moveDir = moveDir.normalized * speed * Time.deltaTime;
+            moveDir = moveDir.normalized * game.playerSpeed * Time.deltaTime;
             playerRigidbody.MovePosition(transform.position + moveDir);
         } else {
             anim.SetBool("moving", false);

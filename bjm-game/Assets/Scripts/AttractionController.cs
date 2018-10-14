@@ -152,6 +152,7 @@ public class AttractionController : MonoBehaviour {
             Animator anim = gameObject.GetComponent<Animator>();
             if (anim) {
                 anim.SetBool("active", true);
+                anim.speed = 1.0f;
             }
         } else {
             gameObject.BroadcastMessage("Activate");
@@ -163,6 +164,7 @@ public class AttractionController : MonoBehaviour {
             Animator anim = gameObject.GetComponent<Animator>();
             if (anim) {
                 anim.SetBool("active", false);
+                anim.speed = 4.0f;
             }
         } else {
             gameObject.BroadcastMessage("Deactivate");

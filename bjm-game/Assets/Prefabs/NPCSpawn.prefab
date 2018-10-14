@@ -52,5 +52,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npc: {fileID: 1046674951104528, guid: 5855c4d47d9d87d429b79110f4f0cc74, type: 2}
-  spawnTime: 5
   spawnPoint: {fileID: 4858806181333054}

@@ -29,6 +29,8 @@ public class NPC : MonoBehaviour {
 
     VisitorManager vm;
 
+    public GameObject happinessPopupPrefab;
+
     Vector3 GetRandomLocation() {
         Vector2 actualPos = new Vector2(transform.position.x, transform.position.z);
         Vector2 randomPos = actualPos + Random.insideUnitCircle * 10;
@@ -177,6 +179,17 @@ public class NPC : MonoBehaviour {
 
     public void AddHappiness(int reward) {
         happiness += reward;
+
+        if(reward > 0)
+        {
+            if(happinessPopupPrefab != null)
+            {
+                GameObject popup = (GameObject)Instantiate(happinessPopupPrefab);
+                popup.transform.position = this.transform.position;
+                popup.transform.parent = this.transform;
+                popup.GetComponent<TMPro.TextMeshPro>().text = "+" + reward.ToString("N0");
+            }
+        }
 
         if (happiness <= 0) {
             // Remove NPC

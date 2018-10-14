@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 114901202715052338}
   - component: {fileID: 114887309579171162}
   - component: {fileID: 114236493932353654}
+  - component: {fileID: 114755553921923342}
   m_Layer: 0
   m_Name: _ParkManager
   m_TagString: Untagged
@@ -54,6 +55,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentTime: 0
+--- !u!114 &114755553921923342
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1733684162164842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aedd1c96b93de6f408456f62f4aaa41f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rewardSatisfiedRide: 5
+  penaltyInQueue: -1
+  penaltyUnsatisfiedRide: -5
+  goodColor: {r: 0, g: 1, b: 0, a: 1}
+  mediumColor: {r: 1, g: 1, b: 0, a: 0}
+  badColor: {r: 1, g: 0, b: 0, a: 1}
+  spawnFrequency: 5
+  spawnAmount: 1
+  playerSpeed: 7
 --- !u!114 &114887309579171162
 MonoBehaviour:
   m_ObjectHideFlags: 1

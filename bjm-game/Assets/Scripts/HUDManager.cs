@@ -186,10 +186,12 @@ public class HUDManager : MonoBehaviour {
     }
 
     public void NavigateToMenu() {
+        Time.timeScale = 1;
         SceneManager.LoadSceneAsync("menu");
     }
 
     public void NavigateToMain() {
+        Time.timeScale = 1;
         SceneManager.LoadSceneAsync("main");
     }
 

@@ -56,8 +56,8 @@ public class AttractionBuildingSpot : MonoBehaviour {
         attraction.transform.parent = this.transform;
         //Moved die Attraktion auf Bodenhöhe
         StartCoroutine(MoveToPosition(attraction.transform, spawnPosition, transform.position,spawnAnimationDuration));
-        audioSource.clip = fallingSound;
-        audioSource.Play();
+
+        audioSource.PlayOneShot(fallingSound, 0.2f);
 
         return ac;
     }
@@ -79,8 +79,9 @@ public class AttractionBuildingSpot : MonoBehaviour {
         }
         GameObject particles = Instantiate(attractionBuildParticles);
         particles.transform.position = this.transform.position + Vector3.up;
-        audioSource.clip = landingSound;
-        audioSource.Play();
+
+        audioSource.Stop(); // fallingSound stoppen
+        audioSource.PlayOneShot(landingSound, 0.9f);
     }
 
     private void OnDrawGizmos()

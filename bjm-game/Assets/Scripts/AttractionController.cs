@@ -27,6 +27,10 @@ public class AttractionController : MonoBehaviour {
     public List<GameObject> npcsActive = new List<GameObject>();
     public List<GameObject> npcsWaiting = new List<GameObject>();
 
+    AudioSource audioSource;
+    public AudioClip successSound;
+    public AudioClip failureSound;
+
     HUDManager hud;
     // Use this for initialization
     void Start() {
@@ -37,6 +41,7 @@ public class AttractionController : MonoBehaviour {
         if (gameObject.GetComponent<Animator>()) {
             isAnimation = true;
         }
+        audioSource = gameObject.AddComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -128,6 +133,8 @@ public class AttractionController : MonoBehaviour {
                 aborted = true;
             }
 
+            PlaySound(aborted);
+
             // Unlock player
             PlayerMovement player = FindObjectOfType<PlayerMovement>();
             if (player) {
@@ -191,5 +198,14 @@ public class AttractionController : MonoBehaviour {
     {
         //Todo: Spieler bestrafen, NPCs schlechte Laune verpassen
 
+    }
+
+    private void PlaySound(bool aborted)
+    {
+        if (aborted)
+            audioSource.PlayOneShot(failureSound, 0.8f);
+        else
+            audioSource.PlayOneShot(successSound, 0.3f);
+        
     }
 }

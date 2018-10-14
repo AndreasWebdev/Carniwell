@@ -152,6 +152,8 @@ public class AttractionController : MonoBehaviour {
                     npcScript.UpdateHappiness(game.penaltyUnsatisfiedRide);
                 } else {
                     npcScript.UpdateHappiness(game.rewardSatisfiedRide);
+                    Debug.Log("AttractionController::Done Attraction, giving visitors happiness");
+                    
                 }
                 if (timeLeft <= 0)
                 {

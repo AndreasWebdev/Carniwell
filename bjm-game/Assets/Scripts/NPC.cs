@@ -191,7 +191,7 @@ public class NPC : MonoBehaviour {
         }
 
         if (happiness <= 0) {
-            // Remove NPC, neee lassen
+            // Dann bleibt er weiter hier
         }
     }
 

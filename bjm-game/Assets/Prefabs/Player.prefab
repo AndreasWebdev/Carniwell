@@ -784,7 +784,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6333413f2ccc86f4bb95ea2bbdfc7b66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7
   anim: {fileID: 95050524075295656}
 --- !u!136 &136087181846559126
 CapsuleCollider:
@@ -817,7 +816,7 @@ SkinnedMeshRenderer:
   - {fileID: 2100000, guid: 359ea15e21eb46347ad6f869fb8c22b3, type: 3}
   - {fileID: 2100000, guid: 729a1c21271befd40922ef04af6d21d1, type: 2}
   - {fileID: 2100004, guid: 359ea15e21eb46347ad6f869fb8c22b3, type: 3}
-  - {fileID: 2100000, guid: ff2b2863923cb99429460d8749d10560, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

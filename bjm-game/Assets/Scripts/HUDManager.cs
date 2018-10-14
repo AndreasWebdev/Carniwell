@@ -32,6 +32,9 @@ public class HUDManager : MonoBehaviour {
 
     }
 
+    [Header("Sound")]
+    public AudioClip[] ansageSoundArray;
+
     private void FixedUpdate()
     {
         if (currentAttraction != null) {
@@ -60,6 +63,8 @@ public class HUDManager : MonoBehaviour {
                 ButtonCooldown cooldown = stopButton.GetComponent<ButtonCooldown>();
                 cooldown.cooldown = (float)currentAttraction.duration;
                 cooldown.cooldownRunning = true;
+
+                PlayRandomAnsage();
 
                 //UIAttractionControlAnim.SetBool("isOpen", true);
                 //UIAttractionStartAnim.SetBool("isOpen", false);
@@ -135,7 +140,12 @@ public class HUDManager : MonoBehaviour {
         HappinessPercentageText.text = _val.ToString("N0") + "%";
     }
 
-
+    public void PlayRandomAnsage()
+    {
+        AudioSource audio = GetComponent<AudioSource>();
+        audio.clip = ansageSoundArray[Random.Range(0, ansageSoundArray.Length)];
+        audio.Play();
+    }
 
     
 }

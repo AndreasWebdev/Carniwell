@@ -11,10 +11,13 @@ public class AttractionBuildingSpot : MonoBehaviour {
     public float spawnAnimationDuration = 2;
     public AttractionController myAttraction = null;
 
-    AudioSource landingSound;
+    AudioSource audioSource;
+    public AudioClip fallingSound;
+    public AudioClip landingSound;
+    
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         if (transform.GetChild(0) == null)
         {
             buildingSite = (GameObject)Instantiate(buildingSitePrefab);
@@ -28,7 +31,7 @@ public class AttractionBuildingSpot : MonoBehaviour {
             buildingSite = transform.GetChild(0).gameObject;
         }
 
-        landingSound = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
     }
 
 
@@ -53,6 +56,8 @@ public class AttractionBuildingSpot : MonoBehaviour {
         attraction.transform.parent = this.transform;
         //Moved die Attraktion auf Bodenhöhe
         StartCoroutine(MoveToPosition(attraction.transform, spawnPosition, transform.position,spawnAnimationDuration));
+        audioSource.clip = fallingSound;
+        audioSource.Play();
 
         return ac;
     }
@@ -74,7 +79,8 @@ public class AttractionBuildingSpot : MonoBehaviour {
         }
         GameObject particles = Instantiate(attractionBuildParticles);
         particles.transform.position = this.transform.position + Vector3.up;
-        landingSound.Play();
+        audioSource.clip = landingSound;
+        audioSource.Play();
     }
 
     private void OnDrawGizmos()

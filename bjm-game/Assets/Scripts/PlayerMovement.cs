@@ -33,7 +33,8 @@ public class PlayerMovement : MonoBehaviour {
     void Move()
     {
         if (Input.GetMouseButton(0)) {
-            if (!EventSystem.current.IsPointerOverGameObject()) {
+            if (EventSystem.current.currentSelectedGameObject == null){ //if (!EventSystem.current.IsPointerOverGameObject())
+
                 Ray touchRay = Camera.main.ScreenPointToRay(Input.mousePosition);
 
                 RaycastHit floorHit;
@@ -53,7 +54,7 @@ public class PlayerMovement : MonoBehaviour {
                     anim.SetBool("moving", true);
                 }
             } else {
-                anim.SetBool("moving", false);
+               anim.SetBool("moving", false);
             }
         } else {
             anim.SetBool("moving", false);

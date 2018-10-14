@@ -22,11 +22,11 @@ public class ScoreManager : MonoBehaviour {
         //int hours;
         string timeString = "";
         if(minutes >= 1) {
-         timeString = minutes.ToString("F0") + ":" + seconds.ToString("F0") + ":" + milliseconds.ToString("F0");
+         timeString = minutes.ToString("00") + ":" + seconds.ToString("00");
 
         }else
         {
-            timeString = seconds.ToString("F0") + ":" + milliseconds.ToString("F0");
+            timeString = seconds.ToString("00") + ":" + milliseconds.ToString("00");
         }
         hud.scoreText.text = timeString;
     }

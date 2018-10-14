@@ -2169,7 +2169,7 @@ MonoBehaviour:
   UIAttractionControlAnim: {fileID: 95579373335787684}
   happinessSlider: {fileID: 114983198921495958}
   happinessSliderFilling: {fileID: 114998342992361912}
-  goodColor: {r: 0, g: 0.9716981, b: 0.09860955, a: 1}
+  goodColor: {r: 0.16078432, g: 0.83137256, b: 0.25882354, a: 1}
   mediumColor: {r: 0.972549, g: 0.7814634, b: 0, a: 1}
   badColor: {r: 0.972549, g: 0.21770558, b: 0, a: 1}
   HappinessPercentageText: {fileID: 114212348572270160}
@@ -2236,7 +2236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.16055535, g: 0.8301887, b: 0.2556616, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

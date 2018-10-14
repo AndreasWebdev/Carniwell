@@ -22,6 +22,7 @@ public class GameController : MonoBehaviour {
     public Color badColor;
     public int mediumTopLimit = 70;
     public int mediumBottomLimit = 30;
+    public int gameOverLimit = 25;
 
     [Header("NPC Configuration")]
     public int spawnFrequency = 5;
@@ -38,6 +39,13 @@ public class GameController : MonoBehaviour {
 
     [Header("Game Information")]
     public state gameState = state.RUNNING;
+    public float happinessPercentage;
+
+    HUDManager hud;
+
+    void Start() {
+        hud = FindObjectOfType<HUDManager>();
+    }
 
     public void StartGame() {
         gameState = state.RUNNING;
@@ -79,7 +87,18 @@ public class GameController : MonoBehaviour {
         }
     }
 
-    IEnumerator LoadLevel(string levelName) {
+    public void CheckGameOver() {
+        if (gameState == state.RUNNING) {
+            if (happinessPercentage < gameOverLimit) {
+                gameState = state.GAMEOVER;
+
+                hud.ShowGameOverPanel();
+                //Time.timeScale = 0;
+            }
+        }
+    }
+
+        IEnumerator LoadLevel(string levelName) {
         yield return null;
 
         AsyncOperation async = SceneManager.LoadSceneAsync(levelName);

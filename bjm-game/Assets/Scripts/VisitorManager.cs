@@ -6,7 +6,6 @@ public class VisitorManager : MonoBehaviour {
     GameController game;
 
     public int visitorsSatisfied;
-    public float happinessPercentage;
 
     public List<NPC> allVisitors = new List<NPC>();
 
@@ -47,17 +46,16 @@ public class VisitorManager : MonoBehaviour {
         }
         int npcCount = allVisitors.Count;
         int globalHappinessPoints = 0;
-       for(int i = 0; i < npcCount; i++)
-       {
+        for(int i = 0; i < npcCount; i++)
+        {
             globalHappinessPoints += allVisitors[i].GetHappiness();
-       }
+        }
 
-        happinessPercentage = globalHappinessPoints / npcCount;
+        game.happinessPercentage = globalHappinessPoints / npcCount;
         if(hud == null) hud = FindObjectOfType<HUDManager>();
 
-        hud.UpdateHappiness(happinessPercentage);
-        
-
+        hud.UpdateHappiness(game.happinessPercentage);
+        game.CheckGameOver();
     }
 
     public void AddSatisfiedVisitors(int _amount)

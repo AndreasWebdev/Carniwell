@@ -4993,6 +4993,8 @@ MonoBehaviour:
   pauseIcon: {fileID: 21300000, guid: 9d9b02285f332a948a6b47158f94366e, type: 3}
   resumeIcon: {fileID: 21300000, guid: e16226774fe54e64eb0cc7f7b43bba17, type: 3}
   pauseButtonBackground: {fileID: 114862666803490280}
+  gameOverText: {fileID: 114785863220593762}
+  gameOverPanelAnimator: {fileID: 95619117155022362}
   ansageSoundArray:
   - {fileID: 8300000, guid: a526dd52902b3ca45a8155e76b516020, type: 3}
   - {fileID: 8300000, guid: 39ebe6f922f4d91488edd70df7d59d9b, type: 3}

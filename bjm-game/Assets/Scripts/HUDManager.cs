@@ -46,6 +46,10 @@ public class HUDManager : MonoBehaviour {
     public Sprite resumeIcon;
     public Image pauseButtonBackground;
 
+    [Header("GameOver")]
+    public TextMeshProUGUI gameOverText;
+    public Animator gameOverPanelAnimator;
+
     [Header("Sound")]
     public AudioClip[] ansageSoundArray;
 
@@ -186,7 +190,7 @@ public class HUDManager : MonoBehaviour {
     }
 
     public void NavigateToMain() {
-        SceneManager.LoadSceneAsync("mai");
+        SceneManager.LoadSceneAsync("main");
     }
 
     public void SkipTutorial() {
@@ -199,5 +203,10 @@ public class HUDManager : MonoBehaviour {
 
     public void onGameResumed() {
         pauseButtonBackground.sprite = pauseIcon;
+    }
+
+    public void ShowGameOverPanel() {
+        gameOverText.SetText("Du hast " + scoreText.text + " durchgehalten!");
+        gameOverPanelAnimator.SetBool("isActive", true);
     }
 }

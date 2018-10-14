@@ -785,12 +785,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2eda8ea242b3f1478bbcdb933689a79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  happiness: 100
   currentStatus: 1
   destination: {fileID: 0}
   agent: {fileID: 195284375610798648}
   anim: {fileID: 95375579762602028}
   remainingIdleTime: 0
+  timeoutWalking: 2
+  agentVelocity: 0
 --- !u!136 &136455920500852980
 CapsuleCollider:
   m_ObjectHideFlags: 1

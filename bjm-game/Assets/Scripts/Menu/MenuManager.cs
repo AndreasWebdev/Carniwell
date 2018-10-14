@@ -8,7 +8,7 @@ using UnityEngine.Timeline;
 public class MenuManager : MonoBehaviour
 {
     public PlayableDirector timelineCredits;
-
+    
     public void buttonStart()
     {
         SceneManager.LoadSceneAsync(1);

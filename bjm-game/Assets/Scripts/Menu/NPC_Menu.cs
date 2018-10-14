@@ -15,35 +15,54 @@ public class NPC_Menu : MonoBehaviour {
     public NavMeshAgent agent;
     public Animator anim;
 
+    Vector2 actualPos;
+    Vector2 randomPos;
 
     private int nextUpdate = 1;
 
     private int idleTime = 5;
     public int remainingIdleTime = 0;
 
+    public float timeoutWalking = 2f;
+    public float agentVelocity = 0f;
+
     Vector3 GetRandomLocation() {
-        Vector2 actualPos = new Vector2(transform.position.x, transform.position.z);
-        Vector2 randomPos = actualPos + Random.insideUnitCircle * 5;
+        actualPos = new Vector2(transform.position.x, transform.position.z);
+        randomPos = actualPos + Random.insideUnitCircle * 5;
         Vector3 newPos = new Vector3();
 
         // Check if Position is reachable
         NavMeshPath path = new NavMeshPath();
-        agent.CalculatePath(randomPos, path);
+        agent.CalculatePath(new Vector3(randomPos.x, 5.2f, randomPos.y), path);
 
-        if (path.status == NavMeshPathStatus.PathPartial)
+        if (path.status == NavMeshPathStatus.PathPartial || path.status == NavMeshPathStatus.PathInvalid)
         {
             newPos = GetRandomLocation();
-            Debug.Log("Position Unreachable!");
         } else
         {
             newPos = randomPos;
         }
 
-        return newPos;
+        return new Vector3(newPos.x, 5.2f, newPos.y);
     }
 
     // Update is called once per frame
     void Update() {
+        Debug.DrawLine(transform.position, new Vector3(randomPos.x, 5.2f, randomPos.y));
+
+        agentVelocity = agent.velocity.sqrMagnitude;
+
+        if(agentVelocity < 0.2f && currentStatus == status.WALKING)
+        {
+            timeoutWalking -= Time.deltaTime;
+
+            if(timeoutWalking < 0)
+            {
+                agent.SetDestination(GetRandomLocation());
+                timeoutWalking = 2f;
+            }
+        }
+
         // If the next update is reached
         if (Time.time >= nextUpdate) {
             nextUpdate = Mathf.FloorToInt(Time.time) + 1;
@@ -85,33 +104,6 @@ public class NPC_Menu : MonoBehaviour {
 
     public void SetStatus(status newStatus) {
         currentStatus = newStatus;
-    }
-
-    void OnDrawGizmosSelected()
-    {
-
-        var nav = GetComponent<NavMeshAgent>();
-        if (nav == null || nav.path == null)
-            return;
-
-        var line = this.GetComponent<LineRenderer>();
-        if (line == null)
-        {
-            line = this.gameObject.AddComponent<LineRenderer>();
-            line.material = new Material(Shader.Find("Sprites/Default")) { color = Color.yellow };
-            line.startWidth = 0.2f;
-            line.startColor = Color.yellow;
-        }
-
-        var path = nav.path;
-
-        line.positionCount = path.corners.Length;
-
-        for (int i = 0; i < path.corners.Length; i++)
-        {
-            line.SetPosition(i, path.corners[i]);
-        }
-
     }
 }
 

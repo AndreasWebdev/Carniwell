@@ -178,7 +178,7 @@ public class NPC : MonoBehaviour {
 
     public void UpdateHappiness(int reward) {
         happiness += reward;
-
+        happiness = Mathf.Clamp(happiness, 0, 100);
         if(reward > 0)
         {
             if(happinessPopupPrefab != null)
@@ -191,7 +191,7 @@ public class NPC : MonoBehaviour {
         }
 
         if (happiness <= 0) {
-            // Remove NPC
+            // Remove NPC, neee lassen
         }
     }
 

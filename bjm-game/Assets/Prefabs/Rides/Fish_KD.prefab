@@ -546,9 +546,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 3
+  attractionName: Fish KD
   entrancePosition: {fileID: 4178782873843240}
   duration: 5
   npcAmount: 10
+  running: 0
   npcsActive: []
   npcsWaiting: []
 --- !u!208 &208014060977429842

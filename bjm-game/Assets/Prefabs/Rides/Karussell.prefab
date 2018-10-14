@@ -603,10 +603,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 5
+  attractionName: Baconcycler
   entrancePosition: {fileID: 4151170801813138}
   duration: 15
   npcAmount: 8
+  running: 0
   npcsActive: []
+  npcsWaiting: []
 --- !u!136 &136856535447595792
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -14,10 +14,12 @@ public class AttractionBuildingSpot : MonoBehaviour {
     AudioSource audioSource;
     public AudioClip fallingSound;
     public AudioClip landingSound;
-    
 
+
+    HUDManager hud;
     // Use this for initialization
     void Start () {
+        hud = FindObjectOfType<HUDManager>();
         if (transform.GetChild(0) == null)
         {
             buildingSite = (GameObject)Instantiate(buildingSitePrefab);
@@ -41,6 +43,7 @@ public class AttractionBuildingSpot : MonoBehaviour {
         if (myAttraction != null) return myAttraction; // Wenn bereits eine Attraktion steht, nicht erneut bauen.
         buildingSite.SetActive(false);
         GameObject attraction = (GameObject)Instantiate(_attraction.gameObject);
+        hud.ShowAlert("Neue Attraktion!");
 
         float spawnHeight = 30f;
         Vector3 spawnPosition = new Vector3(transform.position.x, transform.position.y + spawnHeight, transform.position.z);

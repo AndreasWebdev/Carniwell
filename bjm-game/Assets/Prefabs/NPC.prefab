@@ -792,6 +792,8 @@ MonoBehaviour:
   anim: {fileID: 95375579762602028}
   shirtMaterial: {fileID: 2100000, guid: ff62a6f392278d84b8d15ab87a8b1b58, type: 2}
   remainingIdleTime: 0
+  happinessPopupPrefab: {fileID: 1587299899682022, guid: c3514b0bfd4b32947a33ac5f92d8ec59,
+    type: 2}
 --- !u!136 &136455920500852980
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -50,7 +50,7 @@ public class AttractionController : MonoBehaviour {
             nextUpdate = Mathf.FloorToInt(Time.time) + 1;
             UpdateEverySecond();
         }
-
+#if UNITY_EDITOR
         if (Input.GetKeyUp(KeyCode.A)) {
             Debug.Log("Attraction started");
 
@@ -61,6 +61,7 @@ public class AttractionController : MonoBehaviour {
             
             StopAttraction();
         }
+#endif
     }
 
     // Update is called once per second

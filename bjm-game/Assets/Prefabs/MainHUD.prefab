@@ -4967,9 +4967,6 @@ MonoBehaviour:
   UIAttractionControlAnim: {fileID: 95579373335787684}
   happinessSlider: {fileID: 114983198921495958}
   happinessSliderFilling: {fileID: 114998342992361912}
-  goodColor: {r: 0.16078432, g: 0.83137256, b: 0.25882354, a: 1}
-  mediumColor: {r: 0.972549, g: 0.7814634, b: 0, a: 1}
-  badColor: {r: 0.972549, g: 0.21770558, b: 0, a: 1}
   HappinessPercentageText: {fileID: 114212348572270160}
   waitingText: {fileID: 114103356213755324}
   freeSlotsText: {fileID: 114367258238726446}
@@ -5826,7 +5823,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -74.99988, y: 0}
+  m_AnchoredPosition: {x: -75, y: 0}
   m_SizeDelta: {x: -470, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224317956416558348
@@ -6246,7 +6243,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -139.44995, y: 0}
+  m_AnchoredPosition: {x: -139.44922, y: 0}
   m_SizeDelta: {x: 278.8999, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224672709290683368
@@ -6396,7 +6393,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 65.15015, y: 0}
+  m_AnchoredPosition: {x: 65.14844, y: 0}
   m_SizeDelta: {x: 130.30005, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224843021169447178

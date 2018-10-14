@@ -614,9 +614,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 2
+  attractionName: Falling Mustache
   entrancePosition: {fileID: 4716706730635514}
   duration: 15
   npcAmount: 8
+  running: 0
   npcsActive: []
   npcsWaiting: []
 --- !u!208 &208170100452830328

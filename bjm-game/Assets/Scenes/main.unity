@@ -1154,8 +1154,8 @@ Transform:
   - {fileID: 655053540}
   - {fileID: 1960957015}
   - {fileID: 1036397059}
-  - {fileID: 1164589672}
   - {fileID: 1823075805}
+  - {fileID: 1164589672}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1634,6 +1634,21 @@ Prefab:
         type: 2}
       propertyPath: m_isInputParsingRequired
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224040159213801870, guid: 7c9a94bf41742184da6751ae3a8e5a2d,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 5.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 224040159213801870, guid: 7c9a94bf41742184da6751ae3a8e5a2d,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 10.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 224040159213801870, guid: 7c9a94bf41742184da6751ae3a8e5a2d,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 58.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c9a94bf41742184da6751ae3a8e5a2d, type: 2}

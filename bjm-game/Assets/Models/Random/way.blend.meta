@@ -6,9 +6,11 @@ ModelImporter:
     100000: //RootNode
     400000: //RootNode
     2100000: floor
+    2100002: Material_001__35_square_stone_tile_texture-seamless_jpg
     2300000: //RootNode
     3300000: //RootNode
     4300000: Cube
+    4300002: Plane
     7400000: Default Take
     9500000: //RootNode
   externalObjects: {}

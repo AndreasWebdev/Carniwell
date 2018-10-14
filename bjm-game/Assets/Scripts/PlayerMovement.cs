@@ -33,7 +33,8 @@ public class PlayerMovement : MonoBehaviour {
     void Move()
     {
         if (Input.GetMouseButton(0)) {
-            if (EventSystem.current.currentSelectedGameObject == null){ //if (!EventSystem.current.IsPointerOverGameObject())
+            if (EventSystem.current.currentSelectedGameObject == null && !EventSystem.current.IsPointerOverGameObject())
+            { //if (!EventSystem.current.IsPointerOverGameObject())
 
                 Ray touchRay = Camera.main.ScreenPointToRay(Input.mousePosition);
 

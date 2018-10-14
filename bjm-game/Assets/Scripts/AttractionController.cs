@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 // TODO: NPC status queue
 
 [RequireComponent(typeof(BoxCollider))]
@@ -32,10 +32,13 @@ public class AttractionController : MonoBehaviour {
     public AudioClip failureSound;
 
     HUDManager hud;
+
+
+    public TextMeshPro waitingCountText;
     // Use this for initialization
     void Start() {
         game = FindObjectOfType<GameController>();
-
+        waitingCountText = GetComponentInChildren<TextMeshPro>();
         timeLeft = duration;
         hud = FindObjectOfType<HUDManager>();
         if (gameObject.GetComponent<Animator>()) {
@@ -50,6 +53,7 @@ public class AttractionController : MonoBehaviour {
             nextUpdate = Mathf.FloorToInt(Time.time) + 1;
             UpdateEverySecond();
         }
+        waitingCountText.text = npcsWaiting.Count.ToString("00");
 #if UNITY_EDITOR
         if (Input.GetKeyUp(KeyCode.A)) {
             Debug.Log("Attraction started");

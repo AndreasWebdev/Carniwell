@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.PostProcessing;
 public class CameraControl : MonoBehaviour {
 
 
@@ -14,6 +14,14 @@ public class CameraControl : MonoBehaviour {
 
     void Start ()
     {
+#if UNITY_ANDROID
+        if (GetComponent<PostProcessingBehaviour>() != null)
+        {
+            GetComponent<PostProcessingBehaviour>().enabled = false;
+        }
+#endif
+    
+
         if (playerTransfrom == null)
         {
             playerTransfrom = FindObjectOfType<PlayerMovement>().transform;

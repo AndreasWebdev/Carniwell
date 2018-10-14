@@ -67,14 +67,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rewardSatisfiedRide: 5
-  penaltyInQueue: -1
+  penaltyInQueue: -2
   penaltyUnsatisfiedRide: -5
   goodColor: {r: 0, g: 1, b: 0, a: 1}
   mediumColor: {r: 1, g: 1, b: 0, a: 1}
   badColor: {r: 1, g: 0, b: 0, a: 1}
-  spawnFrequency: 5
+  mediumTopLimit: 70
+  mediumBottomLimit: 30
+  spawnFrequency: 4
   spawnAmount: 1
+  idleTimeMin: 3
+  idleTimeMax: 5
   playerSpeed: 7
+  baseVisitorsNeeded: 15
+  multiplierPerStage: 2
 --- !u!114 &114887309579171162
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -89,9 +95,6 @@ MonoBehaviour:
   visitorsSatisfied: 0
   happinessPercentage: 0
   allVisitors: []
-  baseVisitorsNeeded: 20
-  multiplierPerStage: 2
-  currentVisitorsNeeded: 0
 --- !u!114 &114901202715052338
 MonoBehaviour:
   m_ObjectHideFlags: 1

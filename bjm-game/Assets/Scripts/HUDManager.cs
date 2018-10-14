@@ -30,9 +30,9 @@ public class HUDManager : MonoBehaviour {
 
     [Header("Alert Message")]
     public TextMeshProUGUI alertMessageText;
-    public List<string> alertsQueue;
+    public List<string> alertsQueue = new List<string>();
     public float alertDuration = 4;
-    public float alertDurationStore;
+    bool alertVisible  = false;
     // Use this for initialization
     
 
@@ -41,6 +41,7 @@ public class HUDManager : MonoBehaviour {
 
     void Start()
     {
+        alertMessageText.gameObject.SetActive(false);
         waitingText.text = "0";
 
     }
@@ -59,12 +60,18 @@ public class HUDManager : MonoBehaviour {
                 stopButton.SetActive(false);
             }
         }
-        if(alertsQueue.Count > 0)
-        {
 
+        AlertUpdate();
+        
+    }
+    #region Alert
+    void AlertUpdate()
+    {
+        if (alertsQueue.Count > 0 && !alertVisible)
+        {
+            AlertPopup();
         }
     }
-
     public void ShowAlert(string _text)
     {
 
@@ -73,12 +80,20 @@ public class HUDManager : MonoBehaviour {
     }
     public void AlertPopup()
     {
-        
-        alertMessageText.text = alertsQueue[0];
-        alertsQueue.RemoveAt(0);
-        
+        StartCoroutine(AnimateAlert());
     }
-
+    IEnumerator AnimateAlert()
+    {
+        alertVisible = true;
+        alertMessageText.gameObject.SetActive(true);
+        alertMessageText.text = alertsQueue[0];
+        alertsQueue.RemoveAt(0); //Remove from queue
+        yield return new WaitForSeconds(alertDuration);
+        alertMessageText.text = "";
+        alertVisible = false;
+        alertMessageText.gameObject.SetActive(false);
+    }
+    #endregion
     public void PlayAttraction()
     {
         if (currentAttraction == null) return;

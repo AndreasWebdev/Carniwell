@@ -18,6 +18,7 @@ public class NPC : MonoBehaviour {
     public NavMeshAgent agent;
     public Animator anim;
 
+    public Material shirtMaterial;
 
     private int nextUpdate = 1;
     private AttractionController lastVisitedAttraction;
@@ -36,9 +37,10 @@ public class NPC : MonoBehaviour {
 
     private void Start()
     {
-        
         vm = FindObjectOfType<VisitorManager>();
         vm.allVisitors.Add(this);
+
+        shirtMaterial.SetColor("_Color", Color.green);
     }
 
     void showNPC() {
@@ -64,6 +66,14 @@ public class NPC : MonoBehaviour {
         if (Time.time >= nextUpdate) {
             nextUpdate = Mathf.FloorToInt(Time.time) + 1;
             UpdateEverySecond();
+        }
+
+        if (happiness > 70) {
+            shirtMaterial.SetColor("_Color", Color.green);
+        } else if (happiness < 30) {
+            shirtMaterial.SetColor("_Color", Color.red);
+        } else {
+            shirtMaterial.SetColor("_Color", Color.yellow);
         }
 
         // Create new path

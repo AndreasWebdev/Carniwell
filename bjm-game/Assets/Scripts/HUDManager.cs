@@ -20,6 +20,10 @@ public class HUDManager : MonoBehaviour {
     public TextMeshProUGUI waitingText;
     public TextMeshProUGUI freeSlotsText;
 
+    [Header("Start/Stop Buttons")]
+    public GameObject startButton;
+    public GameObject stopButton;
+
     [Header("Score")]
     public TextMeshProUGUI scoreText;
     // Use this for initialization
@@ -30,13 +34,18 @@ public class HUDManager : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        
-        if (currentAttraction != null)
-        {
+        if (currentAttraction != null) {
             waitingText.text = currentAttraction.npcsWaiting.Count.ToString();
             freeSlotsText.text = currentAttraction.npcsActive.Count.ToString() + "/" + currentAttraction.npcAmount.ToString() + "\n Sitze frei";
+
+            if (currentAttraction.running) {
+                startButton.SetActive(false);
+                stopButton.SetActive(true);
+            } else {
+                startButton.SetActive(true);
+                stopButton.SetActive(false);
+            }
         }
-        
     }
 
     public void PlayAttraction()
@@ -45,9 +54,16 @@ public class HUDManager : MonoBehaviour {
 
         if (!currentAttraction.running)
         {
-            currentAttraction.StartAttraction();
-            UIAttractionControlAnim.SetBool("isOpen", true);
-            UIAttractionStartAnim.SetBool("isOpen", false);
+            bool success = currentAttraction.StartAttraction();
+
+            if (success) {
+                ButtonCooldown cooldown = stopButton.GetComponent<ButtonCooldown>();
+                cooldown.cooldown = (float)currentAttraction.duration;
+                cooldown.cooldownRunning = true;
+
+                //UIAttractionControlAnim.SetBool("isOpen", true);
+                //UIAttractionStartAnim.SetBool("isOpen", false);
+            }
         } 
         
     }
@@ -57,6 +73,9 @@ public class HUDManager : MonoBehaviour {
         if (currentAttraction.running)
         {
             currentAttraction.StopAttraction();
+
+            ButtonCooldown cooldown = stopButton.GetComponent<ButtonCooldown>();
+            cooldown.cooldownRunning = false;
         }
     }
 
@@ -73,7 +92,7 @@ public class HUDManager : MonoBehaviour {
     public void LeaveAttraction()
     {
         currentAttraction = null;
-        UIAttractionControlAnim.SetBool("isOpen", false);
+        //UIAttractionControlAnim.SetBool("isOpen", false);
         UIAttractionStartAnim.SetBool("isOpen", false);
     }
 
@@ -91,9 +110,10 @@ public class HUDManager : MonoBehaviour {
 
     public void Notstop()
     {
+        StopAttraction();
         currentAttraction.Notstop();
-        UIAttractionControlAnim.SetBool("isOpen", false);
-        UIAttractionStartAnim.SetBool("isOpen", true);
+        //UIAttractionControlAnim.SetBool("isOpen", false);
+        //UIAttractionStartAnim.SetBool("isOpen", true);
     }
 
 

@@ -12,6 +12,7 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: Plane_002
+    6400000: //RootNode
     7400000: Default Take
     9500000: //RootNode
   externalObjects: {}
@@ -47,7 +48,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 200
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -65,7 +66,7 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 100
+    previousCalculatedGlobalScale: 200
     hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60

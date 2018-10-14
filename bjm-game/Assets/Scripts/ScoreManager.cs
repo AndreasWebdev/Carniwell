@@ -20,14 +20,8 @@ public class ScoreManager : MonoBehaviour {
         float seconds = currentTime % 60;
         float minutes = currentTime / 60;
         //int hours;
-        string timeString = "";
-        if(minutes >= 1) {
-         timeString = minutes.ToString("00") + ":" + seconds.ToString("00");
+        string timeString = minutes.ToString("00") + ":" + seconds.ToString("00");
 
-        }else
-        {
-            timeString = seconds.ToString("00") + ":" + milliseconds.ToString("00");
-        }
         hud.scoreText.text = timeString;
     }
     

@@ -764,12 +764,13 @@ MonoBehaviour:
   attractionName: Baconcycler
   entrancePosition: {fileID: 4151170801813138}
   duration: 15
-  npcAmount: 8
+  npcAmount: 30
   running: 0
   npcsActive: []
   npcsWaiting: []
   successSound: {fileID: 8300000, guid: d177003e238b6ed40a4150d9824fe335, type: 3}
   failureSound: {fileID: 8300000, guid: f9e7b6bcfe3072d42bb4f6aa531c9df3, type: 3}
+  waitingCountText: {fileID: 0}
 --- !u!114 &114122364980238684
 MonoBehaviour:
   m_ObjectHideFlags: 1

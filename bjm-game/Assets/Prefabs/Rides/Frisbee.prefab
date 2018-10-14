@@ -853,12 +853,13 @@ MonoBehaviour:
   attractionName: Wuergereiz
   entrancePosition: {fileID: 4907954729341366}
   duration: 14
-  npcAmount: 10
+  npcAmount: 28
   running: 0
   npcsActive: []
   npcsWaiting: []
   successSound: {fileID: 8300000, guid: d177003e238b6ed40a4150d9824fe335, type: 3}
   failureSound: {fileID: 8300000, guid: f9e7b6bcfe3072d42bb4f6aa531c9df3, type: 3}
+  waitingCountText: {fileID: 0}
 --- !u!114 &114409050352462888
 MonoBehaviour:
   m_ObjectHideFlags: 1

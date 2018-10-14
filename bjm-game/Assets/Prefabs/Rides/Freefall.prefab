@@ -889,7 +889,7 @@ MonoBehaviour:
   attractionName: Falling Mustache
   entrancePosition: {fileID: 4716706730635514}
   duration: 15
-  npcAmount: 8
+  npcAmount: 30
   running: 0
   npcsActive: []
   npcsWaiting: []

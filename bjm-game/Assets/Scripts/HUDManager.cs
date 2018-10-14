@@ -50,7 +50,6 @@ public class HUDManager : MonoBehaviour {
         game = FindObjectOfType<GameController>();
 
         waitingText.text = "0";
-
     }
 
     private void FixedUpdate()

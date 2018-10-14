@@ -2537,11 +2537,6 @@ Prefab:
     m_Modifications:
     - target: {fileID: 224233184844471212, guid: 6b5bdf65718ebac4db99eb7d6051c731,
         type: 2}
-      propertyPath: m_RootOrder
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 224233184844471212, guid: 6b5bdf65718ebac4db99eb7d6051c731,
-        type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -2633,48 +2628,21 @@ Prefab:
     - target: {fileID: 224635306910189168, guid: 6b5bdf65718ebac4db99eb7d6051c731,
         type: 2}
       propertyPath: m_LocalScale.x
-      value: 0.4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224635306910189168, guid: 6b5bdf65718ebac4db99eb7d6051c731,
         type: 2}
       propertyPath: m_LocalScale.y
-      value: 0.4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224635306910189168, guid: 6b5bdf65718ebac4db99eb7d6051c731,
         type: 2}
       propertyPath: m_LocalScale.z
-      value: 0.4
+      value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114504462170652282, guid: 6b5bdf65718ebac4db99eb7d6051c731, type: 2}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b5bdf65718ebac4db99eb7d6051c731, type: 2}
   m_IsPrefabAsset: 0
---- !u!1 &1709975185 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1167784091502138, guid: 6b5bdf65718ebac4db99eb7d6051c731,
-    type: 2}
-  m_PrefabInternal: {fileID: 1709975184}
---- !u!114 &1709975186
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1709975185}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UiScaleMode: 1
-  m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1080, y: 1920}
-  m_ScreenMatchMode: 1
-  m_MatchWidthOrHeight: 0
-  m_PhysicalUnit: 3
-  m_FallbackScreenDPI: 96
-  m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
 --- !u!114 &1816416071 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114755553921923342, guid: 9b58ef0b6f2c1a7478ac69eb7152a061,

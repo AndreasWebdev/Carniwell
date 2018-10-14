@@ -3727,7 +3727,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114818594858491204}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: PauseGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114624673861448862
@@ -4979,6 +4990,9 @@ MonoBehaviour:
   alertMessageText: {fileID: 114134342409371466}
   alertsQueue: []
   alertDuration: 4
+  pauseIcon: {fileID: 21300000, guid: 9d9b02285f332a948a6b47158f94366e, type: 3}
+  resumeIcon: {fileID: 21300000, guid: e16226774fe54e64eb0cc7f7b43bba17, type: 3}
+  pauseButtonBackground: {fileID: 114862666803490280}
   ansageSoundArray:
   - {fileID: 8300000, guid: a526dd52902b3ca45a8155e76b516020, type: 3}
   - {fileID: 8300000, guid: 39ebe6f922f4d91488edd70df7d59d9b, type: 3}

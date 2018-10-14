@@ -38,22 +38,25 @@ public class HUDManager : MonoBehaviour {
     public TextMeshProUGUI alertMessageText;
     public List<string> alertsQueue = new List<string>();
     public float alertDuration = 4;
-    bool alertVisible  = false;
+    bool alertVisible = false;
     // Use this for initialization
-    
+
+    [Header("Pause Settings")]
+    public Sprite pauseIcon;
+    public Sprite resumeIcon;
+    public Image pauseButtonBackground;
 
     [Header("Sound")]
     public AudioClip[] ansageSoundArray;
 
-    void Start()
-    {
+    void Start() {
         game = FindObjectOfType<GameController>();
 
         waitingText.text = "0";
+
     }
 
-    private void FixedUpdate()
-    {
+    private void FixedUpdate() {
         if (currentAttraction != null) {
             waitingText.text = currentAttraction.npcsWaiting.Count.ToString();
             freeSlotsText.text = currentAttraction.npcsActive.Count.ToString() + " / " + currentAttraction.npcAmount.ToString();
@@ -68,28 +71,23 @@ public class HUDManager : MonoBehaviour {
         }
 
         AlertUpdate();
-        
+
     }
     #region Alert
-    void AlertUpdate()
-    {
-        if (alertsQueue.Count > 0 && !alertVisible)
-        {
+    void AlertUpdate() {
+        if (alertsQueue.Count > 0 && !alertVisible) {
             AlertPopup();
         }
     }
-    public void ShowAlert(string _text)
-    {
+    public void ShowAlert(string _text) {
 
         alertsQueue.Add(_text);
 
     }
-    public void AlertPopup()
-    {
+    public void AlertPopup() {
         StartCoroutine(AnimateAlert());
     }
-    IEnumerator AnimateAlert()
-    {
+    IEnumerator AnimateAlert() {
         alertPanelAnimator.SetBool("isActive", true);
         alertVisible = true;
         alertMessageText.text = alertsQueue[0];
@@ -99,12 +97,10 @@ public class HUDManager : MonoBehaviour {
         alertPanelAnimator.SetBool("isActive", false);
     }
     #endregion
-    public void PlayAttraction()
-    {
+    public void PlayAttraction() {
         if (currentAttraction == null) return;
 
-        if (!currentAttraction.running)
-        {
+        if (!currentAttraction.running) {
             bool success = currentAttraction.StartAttraction();
 
             if (success) {
@@ -117,14 +113,12 @@ public class HUDManager : MonoBehaviour {
                 //UIAttractionControlAnim.SetBool("isOpen", true);
                 //UIAttractionStartAnim.SetBool("isOpen", false);
             }
-        } 
-        
+        }
+
     }
-    public void StopAttraction()
-    {
+    public void StopAttraction() {
         if (currentAttraction == null) return;
-        if (currentAttraction.running)
-        {
+        if (currentAttraction.running) {
             currentAttraction.StopAttraction();
 
             ButtonCooldown cooldown = stopButton.GetComponent<ButtonCooldown>();
@@ -132,8 +126,7 @@ public class HUDManager : MonoBehaviour {
         }
     }
 
-    public void SetupCurrentAttraction(AttractionController _attraction)
-    {
+    public void SetupCurrentAttraction(AttractionController _attraction) {
         currentAttraction = _attraction;
         attractionNameText.text = _attraction.attractionName;
         /*if (_attraction.running) {
@@ -143,28 +136,24 @@ public class HUDManager : MonoBehaviour {
         }*/
         UIAttractionStartAnim.SetBool("isOpen", true);
     }
-    public void LeaveAttraction()
-    {
+    public void LeaveAttraction() {
         currentAttraction = null;
         attractionNameText.text = "";
         //UIAttractionControlAnim.SetBool("isOpen", false);
         UIAttractionStartAnim.SetBool("isOpen", false);
     }
 
-	public void Ansage()
-    {
+    public void Ansage() {
         currentAttraction.Ansage();
         UIAttractionControlAnim.SetBool("isOpen", true);
         UIAttractionStartAnim.SetBool("isOpen", false);
     }
 
-    public void Special()
-    {
+    public void Special() {
         currentAttraction.Special();
     }
 
-    public void Notstop()
-    {
+    public void Notstop() {
         StopAttraction();
         currentAttraction.Notstop();
         //UIAttractionControlAnim.SetBool("isOpen", false);
@@ -173,13 +162,12 @@ public class HUDManager : MonoBehaviour {
 
 
 
-    public void UpdateHappiness(float _val)
-    {
-        
+    public void UpdateHappiness(float _val) {
+
         happinessSlider.value = _val;
         if (_val > game.mediumTopLimit) {
             happinessSliderFilling.color = game.goodColor;
-        } else if(_val < game.mediumBottomLimit) {
+        } else if (_val < game.mediumBottomLimit) {
             happinessSliderFilling.color = game.badColor;
         } else {
             happinessSliderFilling.color = game.mediumColor;
@@ -187,27 +175,29 @@ public class HUDManager : MonoBehaviour {
         HappinessPercentageText.text = _val.ToString("N0") + "%";
     }
 
-    public void PlayRandomAnsage()
-    {
+    public void PlayRandomAnsage() {
         AudioSource audio = GetComponent<AudioSource>();
         audio.clip = ansageSoundArray[Random.Range(0, ansageSoundArray.Length)];
         audio.Play();
     }
 
-    public void NavigateToMenu()
-    {
+    public void NavigateToMenu() {
         SceneManager.LoadSceneAsync("menu");
     }
 
-    public void NavigateToMain()
-    {
+    public void NavigateToMain() {
         SceneManager.LoadSceneAsync("mai");
     }
 
-    public void SkipTutorial()
-    {
+    public void SkipTutorial() {
         UITutorialAnim.SetBool("isActive", false);
     }
 
+    public void onGamePaused() {
+        pauseButtonBackground.sprite = resumeIcon;
+    }
 
+    public void onGameResumed() {
+        pauseButtonBackground.sprite = pauseIcon;
+    }
 }

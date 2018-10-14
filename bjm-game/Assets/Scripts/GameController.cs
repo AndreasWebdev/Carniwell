@@ -1,8 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
+
+    public enum state {
+        STOPPED,
+        RUNNING,
+        PAUSED,
+        GAMEOVER
+    }
 
     [Header("Reward Configuration")]
     public int rewardSatisfiedRide = 5;
@@ -28,4 +36,33 @@ public class GameController : MonoBehaviour {
     [Header("Level Configuration")]
     public int baseVisitorsNeeded = 20;
     public float multiplierPerStage = 2;
+
+    [Header("Game Information")]
+    public state gameState = state.STOPPED;
+
+    public void PauseGame() {
+        if (gameState == state.RUNNING) {
+            Time.timeScale = 0;
+
+            Scene active = SceneManager.GetActiveScene();
+            GameObject[] roots = active.GetRootGameObjects();
+            foreach (GameObject root in roots) {
+                root.BroadcastMessage("onGamePaused", SendMessageOptions.DontRequireReceiver);
+            }
+
+            gameState = state.PAUSED;
+        } else if (gameState == state.PAUSED) {
+            Time.timeScale = 1;
+
+            Scene active = SceneManager.GetActiveScene();
+            GameObject[] roots = active.GetRootGameObjects();
+            foreach (GameObject root in roots) {
+                root.BroadcastMessage("onGameResumed", SendMessageOptions.DontRequireReceiver);
+            }
+
+            gameState = state.RUNNING;
+        } else {
+            Debug.Log("Wrong game state detected");
+        }
+    }
 }

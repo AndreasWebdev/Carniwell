@@ -185,5 +185,23 @@ public class NPC : MonoBehaviour {
     {
         vm.allVisitors.Remove(this);
     }
+
+    private void OnTriggerEnter(Collider other) {
+        AttractionController attraction = other.GetComponentInParent<AttractionController>();
+        if (attraction != null) {
+            agent.obstacleAvoidanceType = ObstacleAvoidanceType.NoObstacleAvoidance;
+            CapsuleCollider collider = gameObject.GetComponent<CapsuleCollider>();
+            collider.enabled = false;
+        }
+    }
+
+    private void OnTriggerExit(Collider other) {
+        AttractionController attraction = other.GetComponentInParent<AttractionController>();
+        if (attraction != null) {
+            agent.obstacleAvoidanceType = ObstacleAvoidanceType.HighQualityObstacleAvoidance;
+            CapsuleCollider collider = gameObject.GetComponent<CapsuleCollider>();
+            collider.enabled = true;
+        }
+    }
 }
 

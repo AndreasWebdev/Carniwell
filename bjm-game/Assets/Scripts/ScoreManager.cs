@@ -20,7 +20,7 @@ public class ScoreManager : MonoBehaviour {
         float seconds = currentTime % 60;
         float minutes = currentTime / 60;
         //int hours;
-        string timeString = minutes.ToString("00") + ":" + seconds.ToString("00");
+        string timeString = Mathf.Floor(minutes).ToString("00") + ":" + Mathf.Floor(seconds).ToString("00");
 
         hud.scoreText.text = timeString;
     }

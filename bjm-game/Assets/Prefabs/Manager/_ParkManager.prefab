@@ -66,7 +66,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aedd1c96b93de6f408456f62f4aaa41f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rewardSatisfiedRide: 5
+  rewardSatisfiedRide: 30
   penaltyInQueue: -2
   penaltyUnsatisfiedRide: -5
   goodColor: {r: 0, g: 1, b: 0, a: 1}
@@ -81,6 +81,7 @@ MonoBehaviour:
   playerSpeed: 7
   baseVisitorsNeeded: 15
   multiplierPerStage: 2
+  gameState: 0
 --- !u!114 &114887309579171162
 MonoBehaviour:
   m_ObjectHideFlags: 1

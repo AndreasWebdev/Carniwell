@@ -50,10 +50,12 @@ public class VisitorManager : MonoBehaviour {
        for(int i = 0; i < npcCount; i++)
        {
             globalHappinessPoints += allVisitors[i].GetHappiness();
+            
        }
-
+        
         happinessPercentage = globalHappinessPoints / npcCount;
-        if(hud == null) hud = FindObjectOfType<HUDManager>();
+        Debug.Log(" " + globalHappinessPoints + " / " + npcCount + " = " + happinessPercentage);
+        if (hud == null) hud = FindObjectOfType<HUDManager>();
 
         hud.UpdateHappiness(happinessPercentage);
         

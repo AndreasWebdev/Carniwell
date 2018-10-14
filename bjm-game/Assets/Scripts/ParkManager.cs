@@ -9,9 +9,13 @@ public class ParkManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
-	}
-	
+        StartCoroutine(DelayedFirstAttractrion());
+    }
+	IEnumerator DelayedFirstAttractrion()
+    {
+        yield return new WaitForSeconds(1);
+        CreateNewAttraction();
+    }
 	// Update is called once per frame
 	void Update () {
 #if UNITY_EDITOR
@@ -74,9 +78,7 @@ public class ParkManager : MonoBehaviour {
         {
             return;
         }
-
         
-
         //Füge Attraktion der Liste hinzu
         activeAttractions.Add(_attraction);
     }

@@ -65,7 +65,7 @@ public class AttractionController : MonoBehaviour {
         npcScript.SetStatus(NPC.status.QUEUE);
     }
 
-    public void StartAttraction() {
+    public bool StartAttraction() {
         if (!running) {
             running = true;
 
@@ -84,6 +84,13 @@ public class AttractionController : MonoBehaviour {
 
             // Only start attraction if there are some NPCS who wanna drive
             if (npcsActive.Count > 0) {
+
+                // Lock player while running
+                PlayerMovement player = FindObjectOfType<PlayerMovement>();
+                if(player) {
+                    player.lockMovement();
+                }
+
                 // Start attraction
                 timeLeft = duration;
                 StartAnimation();
@@ -93,6 +100,8 @@ public class AttractionController : MonoBehaviour {
                 running = false;
             }
         }
+
+        return running;
     }
 
     public void StopAttraction() {
@@ -109,6 +118,12 @@ public class AttractionController : MonoBehaviour {
                 happinessReward = 5;
             }
 
+            // Unlock player
+            PlayerMovement player = FindObjectOfType<PlayerMovement>();
+            if (player) {
+                player.unlockMovement();
+            }
+
             while (npcsActive.Count > 0) {
                 GameObject npc = npcsActive[0];
                 npcsActive.Remove(npc);
@@ -116,6 +131,7 @@ public class AttractionController : MonoBehaviour {
 
                 npcScript.SetStatus(NPC.status.IDLE);
                 npcScript.AddHappiness(happinessReward);
+                npcScript.DoneAttraction();
             }
         }
     }

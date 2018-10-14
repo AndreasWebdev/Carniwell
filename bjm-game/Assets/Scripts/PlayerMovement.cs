@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerMovement : MonoBehaviour {
 
@@ -12,7 +13,16 @@ public class PlayerMovement : MonoBehaviour {
 
     public Animator anim;
 
-    HUDManager hud; 
+    private bool isMovable = true;
+
+    protected Joystick joystick;
+
+    HUDManager hud;
+
+    private void Start() {
+        joystick = FindObjectOfType<Joystick>();
+    }
+
     void Awake()
     {
         playerRigidbody = GetComponent<Rigidbody>();
@@ -22,38 +32,40 @@ public class PlayerMovement : MonoBehaviour {
 
     void FixedUpdate()
     {
+        if (isMovable) {
             Move();
+        }
     }
 
     void Move()
     {
-        if (Input.GetMouseButton(0))
-        {
-            Ray touchRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (joystick.Horizontal != 0 && joystick.Vertical != 0) {
+            anim.SetBool("moving", true);
 
-            RaycastHit floorHit;
-            if (Physics.Raycast(touchRay, out floorHit, touchRayLength, floorMask))
-            {
-                Vector3 moveDir = floorHit.point - transform.position;
+            Vector3 moveDir = new Vector3(joystick.Horizontal, 0f, joystick.Vertical);
 
-                Quaternion rotation = Quaternion.LookRotation(moveDir);
-                rotation.x = rotation.z = 0;
-                playerRigidbody.MoveRotation(rotation);
+            Quaternion rotation = Quaternion.LookRotation(moveDir);
+            rotation.x = rotation.z = 0;
+            playerRigidbody.MoveRotation(rotation);
 
-                moveDir.y = 0.2f;
-                moveDir = moveDir.normalized * speed * Time.deltaTime;
-                playerRigidbody.MovePosition(transform.position + moveDir);
-
-
-
-                anim.SetBool("moving",true);
-                
-            }
-        }else
-        {
+            moveDir.y = 0.2f;
+            moveDir = moveDir.normalized * speed * Time.deltaTime;
+            playerRigidbody.MovePosition(transform.position + moveDir);
+        } else {
             anim.SetBool("moving", false);
         }
-        
+    }
+
+    public void unlockMovement() {
+        isMovable = true;
+        CapsuleCollider collider = gameObject.GetComponent<CapsuleCollider>();
+        collider.enabled = true;
+    }
+
+    public void lockMovement() {
+        isMovable = false;
+        CapsuleCollider collider = gameObject.GetComponent<CapsuleCollider>();
+        collider.enabled = false;
     }
 
     private void OnTriggerEnter(Collider other)

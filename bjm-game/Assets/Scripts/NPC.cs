@@ -26,10 +26,36 @@ public class NPC : MonoBehaviour {
     public int remainingIdleTime = 0;
     private bool walkRandom = true;
 
+    VisitorManager vm;
+
     Vector3 GetRandomLocation() {
         Vector2 actualPos = new Vector2(transform.position.x, transform.position.z);
         Vector2 randomPos = actualPos + Random.insideUnitCircle * 10;
         return new Vector3(randomPos.x, transform.position.y, randomPos.y);
+    }
+
+    private void Start()
+    {
+        
+        vm = FindObjectOfType<VisitorManager>();
+        vm.allVisitors.Add(this);
+    }
+
+    void showNPC() {
+        // Disable NPC renderer/agent
+        SkinnedMeshRenderer render = gameObject.GetComponentInChildren<SkinnedMeshRenderer>();
+        render.enabled = true;
+        agent.enabled = true;
+    }
+
+    void hideNPC() {
+        // Disable NPC renderer/agent
+        SkinnedMeshRenderer render = gameObject.GetComponentInChildren<SkinnedMeshRenderer>();
+        CapsuleCollider collider = gameObject.GetComponent<CapsuleCollider>();
+
+        collider.enabled = false;
+        render.enabled = false;
+        agent.enabled = false;
     }
 
     // Update is called once per frame
@@ -48,8 +74,7 @@ public class NPC : MonoBehaviour {
             walkRandom = (Random.value > 0.75f);
 
             // Show NPC
-            SkinnedMeshRenderer render = gameObject.GetComponentInChildren<SkinnedMeshRenderer>();
-            render.enabled = true;
+            showNPC();
             currentStatus = status.WALKING;
 
             if (!walkRandom) {
@@ -83,28 +108,28 @@ public class NPC : MonoBehaviour {
             }
         }
 
-        if (!agent.pathPending) {
-            if (agent.remainingDistance <= agent.stoppingDistance) {
-                if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f) {
-                    if (destination) {
-                        anim.SetBool("moving", false);
+        if (currentStatus == status.WALKING) {
+            if (!agent.pathPending) {
+                if (agent.remainingDistance <= agent.stoppingDistance) {
+                    if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f) {
+                        if (destination) {
+                            anim.SetBool("moving", false);
 
-                        AttractionController attraction = lastVisitedAttraction.GetComponent<AttractionController>();
-                        // Check if target is really an attraction
-                        if (attraction) {
+                            AttractionController attraction = lastVisitedAttraction.GetComponent<AttractionController>();
+                            // Check if target is really an attraction
+                            if (attraction) {
 
-                            attraction.AddNPCToQueue(gameObject);
-                            remainingIdleTime = 0;
+                                attraction.AddNPCToQueue(gameObject);
+                                remainingIdleTime = 0;
 
-                            // Hide NPC
-                            SkinnedMeshRenderer render = gameObject.GetComponentInChildren<SkinnedMeshRenderer>();
-                            render.enabled = false;
+                                hideNPC();
+                            }
+
+                            destination = null;
+                        } else if (walkRandom && remainingIdleTime != 0) {
+                            currentStatus = status.IDLE;
+                            anim.SetBool("moving", false);
                         }
-
-                        destination = null;
-                    } else if(walkRandom && currentStatus == status.WALKING && remainingIdleTime != 0) {
-                        currentStatus = status.IDLE;
-                        anim.SetBool("moving", false);
                     }
                 }
             }
@@ -145,6 +170,34 @@ public class NPC : MonoBehaviour {
 
         if (happiness <= 0) {
             // Remove NPC
+        }
+    }
+
+    public void DoneAttraction()
+    {
+        vm.AddSatisfiedVisitors(1);
+    }
+
+    private void OnDestroy()
+    {
+        vm.allVisitors.Remove(this);
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        AttractionController attraction = other.GetComponentInParent<AttractionController>();
+        if (attraction != null) {
+            agent.obstacleAvoidanceType = ObstacleAvoidanceType.NoObstacleAvoidance;
+            CapsuleCollider collider = gameObject.GetComponent<CapsuleCollider>();
+            collider.enabled = false;
+        }
+    }
+
+    private void OnTriggerExit(Collider other) {
+        AttractionController attraction = other.GetComponentInParent<AttractionController>();
+        if (attraction != null) {
+            agent.obstacleAvoidanceType = ObstacleAvoidanceType.HighQualityObstacleAvoidance;
+            CapsuleCollider collider = gameObject.GetComponent<CapsuleCollider>();
+            collider.enabled = true;
         }
     }
 }

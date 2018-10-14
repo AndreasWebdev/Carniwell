@@ -25,11 +25,12 @@ public class AttractionController : MonoBehaviour {
     public List<GameObject> npcsActive = new List<GameObject>();
     public List<GameObject> npcsWaiting = new List<GameObject>();
 
+    HUDManager hud;
     // Use this for initialization
     void Start() {
         timeLeft = duration;
-
-        if(gameObject.GetComponent<Animator>()) {
+        hud = FindObjectOfType<HUDManager>();
+        if (gameObject.GetComponent<Animator>()) {
             isAnimation = true;
         }
     }
@@ -43,9 +44,12 @@ public class AttractionController : MonoBehaviour {
 
         if (Input.GetKeyUp(KeyCode.A)) {
             Debug.Log("Attraction started");
+
             StartAttraction();
         } else if (Input.GetKeyUp(KeyCode.B)) {
             Debug.Log("Attraction stopped");
+            hud.ShowAlert("Attraktion gestoppt");
+            
             StopAttraction();
         }
     }
@@ -100,6 +104,7 @@ public class AttractionController : MonoBehaviour {
             } else {
                 // TODO: Throw error message - No NPCS
                 Debug.Log("No NPCs available");
+                hud.ShowAlert("Keiner in der Warteschlange");
                 running = false;
             }
         }

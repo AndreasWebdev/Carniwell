@@ -2625,21 +2625,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224635306910189168, guid: 6b5bdf65718ebac4db99eb7d6051c731,
-        type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224635306910189168, guid: 6b5bdf65718ebac4db99eb7d6051c731,
-        type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224635306910189168, guid: 6b5bdf65718ebac4db99eb7d6051c731,
-        type: 2}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b5bdf65718ebac4db99eb7d6051c731, type: 2}
   m_IsPrefabAsset: 0

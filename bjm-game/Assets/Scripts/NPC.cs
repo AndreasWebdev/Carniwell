@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class NPC : MonoBehaviour {
 
+    GameController game;
+
     public enum status {
         QUEUE,
         WALKING,
@@ -23,7 +25,6 @@ public class NPC : MonoBehaviour {
     private int nextUpdate = 1;
     private AttractionController lastVisitedAttraction;
 
-    private int idleTime = 5;
     public int remainingIdleTime = 0;
     private bool walkRandom = true;
 
@@ -39,10 +40,12 @@ public class NPC : MonoBehaviour {
 
     private void Start()
     {
+        game = FindObjectOfType<GameController>();
+
         vm = FindObjectOfType<VisitorManager>();
         vm.allVisitors.Add(this);
 
-        shirtMaterial.SetColor("_Color", Color.green);
+        shirtMaterial.SetColor("_Color", game.goodColor);
     }
 
     void showNPC() {
@@ -70,12 +73,12 @@ public class NPC : MonoBehaviour {
             UpdateEverySecond();
         }
 
-        if (happiness > 70) {
-            shirtMaterial.SetColor("_Color", Color.green);
-        } else if (happiness < 30) {
-            shirtMaterial.SetColor("_Color", Color.red);
+        if (happiness > game.mediumTopLimit) {
+            shirtMaterial.SetColor("_Color", game.goodColor);
+        } else if (happiness < game.mediumBottomLimit) {
+            shirtMaterial.SetColor("_Color", game.badColor);
         } else {
-            shirtMaterial.SetColor("_Color", Color.yellow);
+            shirtMaterial.SetColor("_Color", game.mediumColor);
         }
 
         // Create new path
@@ -114,7 +117,7 @@ public class NPC : MonoBehaviour {
                     currentStatus = status.IDLE;
                 }
             } else {
-                remainingIdleTime = idleTime;
+                remainingIdleTime = Random.Range(game.idleTimeMin, game.idleTimeMax); ;
                 agent.SetDestination(GetRandomLocation());
                 anim.SetBool("moving", true);
             }
@@ -152,12 +155,8 @@ public class NPC : MonoBehaviour {
     void UpdateEverySecond() {
         if (currentStatus.Equals(status.QUEUE)) {
             if (happiness > 0) {
-                AddHappiness(-1);
+                UpdateHappiness(game.penaltyInQueue);
             }
-            //} else if (currentStatus.Equals(status.ATTRACTION)) {
-            //    if (happiness < 100) {
-            //        ++happiness;
-            //    }
         }
 
         if (walkRandom && currentStatus == status.IDLE && remainingIdleTime > 0) {
@@ -177,7 +176,7 @@ public class NPC : MonoBehaviour {
         return happiness;
     }
 
-    public void AddHappiness(int reward) {
+    public void UpdateHappiness(int reward) {
         happiness += reward;
 
         if(reward > 0)

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class VisitorManager : MonoBehaviour {
+    GameController game;
+
     public int visitorsSatisfied;
     public float happinessPercentage;
 
@@ -10,16 +12,16 @@ public class VisitorManager : MonoBehaviour {
 
 
     [Header("Stages")]
-    public int baseVisitorsNeeded = 20;
-    public float multiplierPerStage = 2;
-    public int currentVisitorsNeeded;
+    private int currentVisitorsNeeded;
 
     private int nextUpdate = 1;
 
     HUDManager hud;
     // Use this for initialization
     void Start () {
-        currentVisitorsNeeded = baseVisitorsNeeded;
+        game = FindObjectOfType<GameController>();
+
+        currentVisitorsNeeded = game.baseVisitorsNeeded;
 
         hud = FindObjectOfType<HUDManager>();
 	}
@@ -64,12 +66,11 @@ public class VisitorManager : MonoBehaviour {
         if(visitorsSatisfied >= currentVisitorsNeeded)
         {
             NextStage();
-            
         }
     }
     public void NextStage()
     {
-        currentVisitorsNeeded = Mathf.RoundToInt(currentVisitorsNeeded * multiplierPerStage);
+        currentVisitorsNeeded = Mathf.RoundToInt(currentVisitorsNeeded * game.multiplierPerStage);
         FindObjectOfType<ParkManager>().CreateNewAttraction();
     }
 

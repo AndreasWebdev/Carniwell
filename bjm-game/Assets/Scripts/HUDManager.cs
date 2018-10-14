@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 using TMPro;
 
 public class HUDManager : MonoBehaviour {
+    GameController game;
+
     public AttractionController currentAttraction = null;
 
     public Animator UIAttractionStartAnim;
@@ -14,7 +16,6 @@ public class HUDManager : MonoBehaviour {
     [Header("Happiness")]
     public Slider happinessSlider;
     public Image happinessSliderFilling;
-    public Color goodColor, mediumColor, badColor;
     public TextMeshProUGUI HappinessPercentageText;
 
     [Header("Waiting for Visitors Panel")]
@@ -46,6 +47,8 @@ public class HUDManager : MonoBehaviour {
 
     void Start()
     {
+        game = FindObjectOfType<GameController>();
+
         waitingText.text = "0";
 
     }
@@ -175,15 +178,12 @@ public class HUDManager : MonoBehaviour {
     {
         
         happinessSlider.value = _val;
-        if (_val >= 70)
-        {
-            happinessSliderFilling.color = goodColor;
-        }else if(_val < 70 && _val > 30)
-        {
-            happinessSliderFilling.color = mediumColor;
-        }else
-        {
-            happinessSliderFilling.color = badColor;
+        if (_val > game.mediumTopLimit) {
+            happinessSliderFilling.color = game.goodColor;
+        } else if(_val < game.mediumBottomLimit) {
+            happinessSliderFilling.color = game.badColor;
+        } else {
+            happinessSliderFilling.color = game.mediumColor;
         }
         HappinessPercentageText.text = _val.ToString("N0") + "%";
     }

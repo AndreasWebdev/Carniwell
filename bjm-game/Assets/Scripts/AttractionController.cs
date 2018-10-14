@@ -8,6 +8,8 @@ using UnityEngine;
 [RequireComponent(typeof(UnityEngine.AI.NavMeshObstacle))]
 public class AttractionController : MonoBehaviour {
 
+    GameController game;
+
     public int id = 0;
     public string attractionName;
 
@@ -28,6 +30,8 @@ public class AttractionController : MonoBehaviour {
     HUDManager hud;
     // Use this for initialization
     void Start() {
+        game = FindObjectOfType<GameController>();
+
         timeLeft = duration;
         hud = FindObjectOfType<HUDManager>();
         if (gameObject.GetComponent<Animator>()) {
@@ -117,13 +121,11 @@ public class AttractionController : MonoBehaviour {
             running = false;
             StopAnimation();
 
-            int happinessReward = 0;
+            bool aborted = false;
 
             // Abort or regular stop?
             if (timeLeft > 0) {
-                happinessReward = -5;
-            } else {
-                happinessReward = 5;
+                aborted = true;
             }
 
             // Unlock player
@@ -138,7 +140,11 @@ public class AttractionController : MonoBehaviour {
                 NPC npcScript = npc.GetComponent<NPC>();
 
                 npcScript.SetStatus(NPC.status.IDLE);
-                npcScript.AddHappiness(happinessReward);
+                if (aborted) {
+                    npcScript.UpdateHappiness(game.penaltyUnsatisfiedRide);
+                } else {
+                    npcScript.UpdateHappiness(game.rewardSatisfiedRide);
+                }
                 if (timeLeft <= 0)
                 {
                     npcScript.DoneAttraction();

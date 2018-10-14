@@ -169,15 +169,23 @@ public class HUDManager : MonoBehaviour {
 
     public void UpdateHappiness(float _val) {
 
-        happinessSlider.value = _val;
-        if (_val > game.mediumTopLimit) {
+        //Calculate new percentage scale
+        float a = _val-game.gameOverLimit;
+        float b = 100 - game.gameOverLimit;
+        
+        float visibleValue = a*100/b;
+
+        
+        happinessSlider.value = visibleValue;
+        if (visibleValue > game.mediumTopLimit) {
             happinessSliderFilling.color = game.goodColor;
-        } else if (_val < game.mediumBottomLimit) {
+        } else if (visibleValue < game.mediumBottomLimit) {
             happinessSliderFilling.color = game.badColor;
         } else {
             happinessSliderFilling.color = game.mediumColor;
         }
-        HappinessPercentageText.text = _val.ToString("N0") + "%";
+        HappinessPercentageText.text = visibleValue.ToString("N0") + "%";
+
     }
 
     public void PlayRandomAnsage() {

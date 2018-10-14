@@ -19,8 +19,11 @@ public class HUDManager : MonoBehaviour {
     [Header("Waiting for Visitors Panel")]
     public TextMeshProUGUI waitingText;
     public TextMeshProUGUI freeSlotsText;
-	// Use this for initialization
-	void Start () {
+
+    [Header("Score")]
+    public TextMeshProUGUI scoreText;
+    // Use this for initialization
+    void Start () {
         waitingText.text = "0";
 
     }

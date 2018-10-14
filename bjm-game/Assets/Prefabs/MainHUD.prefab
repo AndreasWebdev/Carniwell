@@ -2175,6 +2175,7 @@ MonoBehaviour:
   HappinessPercentageText: {fileID: 114212348572270160}
   waitingText: {fileID: 114367258238726446}
   freeSlotsText: {fileID: 114920799385615654}
+  scoreText: {fileID: 114427288392734986}
 --- !u!114 &114983198921495958
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -29,6 +29,7 @@ public class ParkManager : MonoBehaviour {
     public void CreateNewAttraction()
     {
         //Finde eine Attraktion die noch nicht in der Liste ist
+        Debug.Log("Trying to add new Attraction");
         AttractionDatabase db = FindObjectOfType<AttractionDatabase>();
         List<AttractionController> attrAvailable = new List<AttractionController>();
         for(int i= 0; i < db.attractionPrefabs.Count; i++)
@@ -38,19 +39,28 @@ public class ParkManager : MonoBehaviour {
                 attrAvailable.Add(db.attractionPrefabs[i]);
             }
         }
+        
         if (attrAvailable.Count > 0)
         {
             AttractionController attrToBuild = attrAvailable[Random.Range(0, attrAvailable.Count)];
             AttractionBuildingSpot[] allBuildingSpots = FindObjectsOfType<AttractionBuildingSpot>();
+            List<AttractionBuildingSpot> freeBuildingSpots = new List<AttractionBuildingSpot>();
             for (int i = 0; i < allBuildingSpots.Length; i++)
             {
                 if (allBuildingSpots[i].myAttraction == null)
                 {
-                    AttractionController createdAttraction = allBuildingSpots[i].BuildAttraction(attrToBuild);
-                    AddAttraction(createdAttraction);
-                    break;
+                    freeBuildingSpots.Add(allBuildingSpots[i]);
+                    
                 }
             }
+
+            AttractionController createdAttraction = freeBuildingSpots[Random.Range(0,freeBuildingSpots.Count)].BuildAttraction(attrToBuild);
+            AddAttraction(createdAttraction);
+
+        }
+        else
+        {
+            Debug.Log("no Available Attractions");
         }
     }
 

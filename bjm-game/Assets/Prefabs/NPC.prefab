@@ -53,6 +53,7 @@ GameObject:
   - component: {fileID: 136455920500852980}
   - component: {fileID: 195284375610798648}
   - component: {fileID: 114582078515163968}
+  - component: {fileID: 54684935291709136}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -740,6 +741,21 @@ Transform:
   m_Father: {fileID: 4168991220349558}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &54684935291709136
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1046674951104528}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: Infinity
+  m_AngularDrag: Infinity
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!95 &95375579762602028
 Animator:
   serializedVersion: 3
@@ -784,10 +800,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.25
-  m_Height: 1
+  m_Radius: 0.5
+  m_Height: 1.8
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.7, z: 0}
 --- !u!137 &137704635944602070
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -804,7 +820,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 359ea15e21eb46347ad6f869fb8c22b3, type: 3}
-  - {fileID: 2100002, guid: 359ea15e21eb46347ad6f869fb8c22b3, type: 3}
+  - {fileID: 2100000, guid: 729a1c21271befd40922ef04af6d21d1, type: 2}
   - {fileID: 2100004, guid: 359ea15e21eb46347ad6f869fb8c22b3, type: 3}
   - {fileID: 2100006, guid: 359ea15e21eb46347ad6f869fb8c22b3, type: 3}
   m_StaticBatchInfo:

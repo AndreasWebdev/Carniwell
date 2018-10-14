@@ -51,6 +51,9 @@ public class NPC : MonoBehaviour {
     void showNPC() {
         // Disable NPC renderer/agent
         SkinnedMeshRenderer render = gameObject.GetComponentInChildren<SkinnedMeshRenderer>();
+        CapsuleCollider collider = gameObject.GetComponent<CapsuleCollider>();
+
+        collider.enabled = true;
         render.enabled = true;
         agent.enabled = true;
     }

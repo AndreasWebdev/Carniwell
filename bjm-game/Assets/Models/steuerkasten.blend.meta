@@ -19,12 +19,15 @@ ModelImporter:
     2300000: Cube
     2300002: Cylinder
     2300004: Cylinder_001
+    2300006: //RootNode
     3300000: Cube
     3300002: Cylinder
     3300004: Cylinder_001
+    3300006: //RootNode
     4300000: Cylinder_001
     4300002: Cylinder
     4300004: Cube
+    4300006: Steuerkasten
     7400000: Default Take
     9500000: //RootNode
   externalObjects: {}

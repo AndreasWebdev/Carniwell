@@ -35,7 +35,7 @@ public class MenuManager : MonoBehaviour
     }
 
     public void buttonStart() {
-        StartCoroutine(LoadLevel());
+        StartCoroutine(LoadLevel("main"));
     }
 
     public void buttonSettings()
@@ -61,27 +61,15 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadSceneAsync(0);
     }
 
-    IEnumerator LoadLevel() {
+    IEnumerator LoadLevel(string levelName) {
         yield return null;
 
-        AsyncOperation async = SceneManager.LoadSceneAsync(1);
+        AsyncOperation async = SceneManager.LoadSceneAsync(levelName);
 
-        int cnt = 0;
         loadingPanel.SetActive(true);
         while (!async.isDone) {
-            if (Time.time >= nextUpdate) {
-                nextUpdate = Mathf.FloorToInt(Time.time) + 1;
-
-                if (cnt == 2) {
-                    cnt = 0;
-                } else {
-                    ++cnt;
-                }
-            }
-
             yield return null;
         }
-
         loadingPanel.SetActive(false);
     }
 }

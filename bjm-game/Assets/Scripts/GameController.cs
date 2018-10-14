@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour {
 
     public enum state {
-        STOPPED,
         RUNNING,
         PAUSED,
         GAMEOVER
@@ -38,7 +37,21 @@ public class GameController : MonoBehaviour {
     public float multiplierPerStage = 2;
 
     [Header("Game Information")]
-    public state gameState = state.STOPPED;
+    public state gameState = state.RUNNING;
+
+    public void StartGame() {
+        gameState = state.RUNNING;
+        StartCoroutine(LoadLevel("main"));
+    }
+
+    public void StopGame() {
+        if (gameState == state.RUNNING || gameState == state.PAUSED) {
+            StartCoroutine(LoadLevel("menu"));
+
+        } else {
+            Debug.Log("Wrong game state detected");
+        }
+    }
 
     public void PauseGame() {
         if (gameState == state.RUNNING) {
@@ -63,6 +76,16 @@ public class GameController : MonoBehaviour {
             gameState = state.RUNNING;
         } else {
             Debug.Log("Wrong game state detected");
+        }
+    }
+
+    IEnumerator LoadLevel(string levelName) {
+        yield return null;
+
+        AsyncOperation async = SceneManager.LoadSceneAsync(levelName);
+
+        while (!async.isDone) {
+            yield return null;
         }
     }
 }

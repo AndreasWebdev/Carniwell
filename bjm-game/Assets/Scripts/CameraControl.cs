@@ -19,6 +19,10 @@ public class CameraControl : MonoBehaviour {
         {
             playerTransfrom = FindObjectOfType<PlayerMovement>().transform;
         }
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.forward, out hit))
+            playerTransfrom.position = hit.point;
+
         camPosOffset = transform.position - playerTransfrom.position;
         
     }

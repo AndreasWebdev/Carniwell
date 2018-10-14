@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class HUDManager : MonoBehaviour {
@@ -28,7 +29,11 @@ public class HUDManager : MonoBehaviour {
     [Header("Score")]
     public TextMeshProUGUI scoreText;
 
+    [Header("Tutorial")]
+    public Animator UITutorialAnim;
+
     [Header("Alert Message")]
+    public Animator alertPanelAnimator;
     public TextMeshProUGUI alertMessageText;
     public List<string> alertsQueue = new List<string>();
     public float alertDuration = 4;
@@ -41,7 +46,6 @@ public class HUDManager : MonoBehaviour {
 
     void Start()
     {
-        alertMessageText.gameObject.SetActive(false);
         waitingText.text = "0";
 
     }
@@ -50,7 +54,7 @@ public class HUDManager : MonoBehaviour {
     {
         if (currentAttraction != null) {
             waitingText.text = currentAttraction.npcsWaiting.Count.ToString();
-            freeSlotsText.text = currentAttraction.npcsActive.Count.ToString() + "/" + currentAttraction.npcAmount.ToString() + "\n Sitze frei";
+            freeSlotsText.text = currentAttraction.npcsActive.Count.ToString() + " / " + currentAttraction.npcAmount.ToString();
 
             if (currentAttraction.running) {
                 startButton.SetActive(false);
@@ -84,14 +88,13 @@ public class HUDManager : MonoBehaviour {
     }
     IEnumerator AnimateAlert()
     {
+        alertPanelAnimator.SetBool("isActive", true);
         alertVisible = true;
-        alertMessageText.gameObject.SetActive(true);
         alertMessageText.text = alertsQueue[0];
         alertsQueue.RemoveAt(0); //Remove from queue
         yield return new WaitForSeconds(alertDuration);
-        alertMessageText.text = "";
         alertVisible = false;
-        alertMessageText.gameObject.SetActive(false);
+        alertPanelAnimator.SetBool("isActive", false);
     }
     #endregion
     public void PlayAttraction()
@@ -192,5 +195,20 @@ public class HUDManager : MonoBehaviour {
         audio.Play();
     }
 
-    
+    public void NavigateToMenu()
+    {
+        SceneManager.LoadSceneAsync("menu");
+    }
+
+    public void NavigateToMain()
+    {
+        SceneManager.LoadSceneAsync("mai");
+    }
+
+    public void SkipTutorial()
+    {
+        UITutorialAnim.SetBool("isActive", false);
+    }
+
+
 }

@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class NPCSpawner : MonoBehaviour {
 
+    GameController game;
+
     public GameObject npc;
-    public int spawnTime = 5;
     public Transform spawnPoint;
 
     // Use this for initialization
     void Start () {
-        InvokeRepeating("Spawn", spawnTime, spawnTime);
+        game = FindObjectOfType<GameController>();
+
+        InvokeRepeating("Spawn", game.spawnFrequency, game.spawnFrequency);
     }
     
     // Update is called once per frame
@@ -18,6 +21,8 @@ public class NPCSpawner : MonoBehaviour {
     }
 
     void Spawn() {
-        Instantiate(npc, spawnPoint.position, spawnPoint.rotation);
+        for (int i = 0; i < game.spawnAmount; ++i) {
+            Instantiate(npc, spawnPoint.position, spawnPoint.rotation);
+        }
     }
 }

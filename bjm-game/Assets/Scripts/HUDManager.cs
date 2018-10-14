@@ -208,5 +208,6 @@ public class HUDManager : MonoBehaviour {
     public void ShowGameOverPanel() {
         gameOverText.SetText("Du hast " + scoreText.text + " durchgehalten!");
         gameOverPanelAnimator.SetBool("isActive", true);
+
     }
 }

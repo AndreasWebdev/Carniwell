@@ -93,12 +93,11 @@ public class GameController : MonoBehaviour {
                 gameState = state.GAMEOVER;
 
                 hud.ShowGameOverPanel();
-                //Time.timeScale = 0;
             }
         }
     }
 
-        IEnumerator LoadLevel(string levelName) {
+    IEnumerator LoadLevel(string levelName) {
         yield return null;
 
         AsyncOperation async = SceneManager.LoadSceneAsync(levelName);

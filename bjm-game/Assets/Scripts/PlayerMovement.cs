@@ -54,31 +54,6 @@ public class PlayerMovement : MonoBehaviour {
         } else {
             anim.SetBool("moving", false);
         }
-
-        //if (Input.GetMouseButton(0)) {
-        //    if (!EventSystem.current.IsPointerOverGameObject()) {
-        //        Ray touchRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-        //        RaycastHit floorHit;
-        //        if (Physics.Raycast(touchRay, out floorHit, touchRayLength, floorMask)) {
-        //            Vector3 moveDir = floorHit.point - transform.position;
-
-        //            Quaternion rotation = Quaternion.LookRotation(moveDir);
-        //            rotation.x = rotation.z = 0;
-        //            playerRigidbody.MoveRotation(rotation);
-
-        //            moveDir.y = 0.2f;
-        //            moveDir = moveDir.normalized * speed * Time.deltaTime;
-        //            playerRigidbody.MovePosition(transform.position + moveDir);
-
-        //            anim.SetBool("moving", true);
-        //        }
-        //    } else {
-        //        anim.SetBool("moving", false);
-        //    }
-        //} else {
-        //    anim.SetBool("moving", false);
-        //}
     }
 
     public void unlockMovement() {

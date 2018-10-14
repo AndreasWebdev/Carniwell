@@ -27,14 +27,23 @@ public class HUDManager : MonoBehaviour {
 
     [Header("Score")]
     public TextMeshProUGUI scoreText;
-    // Use this for initialization
-    void Start () {
-        waitingText.text = "0";
 
-    }
+    [Header("Alert Message")]
+    public TextMeshProUGUI alertMessageText;
+    public List<string> alertsQueue;
+    public float alertDuration = 4;
+    public float alertDurationStore;
+    // Use this for initialization
+    
 
     [Header("Sound")]
     public AudioClip[] ansageSoundArray;
+
+    void Start()
+    {
+        waitingText.text = "0";
+
+    }
 
     private void FixedUpdate()
     {
@@ -50,6 +59,24 @@ public class HUDManager : MonoBehaviour {
                 stopButton.SetActive(false);
             }
         }
+        if(alertsQueue.Count > 0)
+        {
+
+        }
+    }
+
+    public void ShowAlert(string _text)
+    {
+
+        alertsQueue.Add(_text);
+
+    }
+    public void AlertPopup()
+    {
+        
+        alertMessageText.text = alertsQueue[0];
+        alertsQueue.RemoveAt(0);
+        
     }
 
     public void PlayAttraction()

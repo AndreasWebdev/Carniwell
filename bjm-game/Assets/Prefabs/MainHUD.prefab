@@ -5979,7 +5979,7 @@ MonoBehaviour:
   effectsAudioSource: {fileID: 82409776851763096}
   musicAudioSource: {fileID: 82545611798195718}
   mainTheme: {fileID: 8300000, guid: 99a31c4e519b16549aa67c281acf0db0, type: 3}
-  gameOverTheme: {fileID: 8300000, guid: d3abddbad7b8e3b468b15636d112f878, type: 3}
+  gameOverTheme: {fileID: 8300000, guid: 0ae760a15c3c5c844b8223c2e5079a43, type: 3}
 --- !u!114 &114983198921495958
 MonoBehaviour:
   m_ObjectHideFlags: 1

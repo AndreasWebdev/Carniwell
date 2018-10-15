@@ -201,7 +201,7 @@ public class HUDManager : MonoBehaviour
         float a = _val-game.gameOverLimit;
         float b = 100 - game.gameOverLimit;
         
-        float visibleValue = a*100/b;
+        float visibleValue = Mathf.Clamp(a*100/b,0,100);
 
         
         happinessSlider.value = visibleValue;

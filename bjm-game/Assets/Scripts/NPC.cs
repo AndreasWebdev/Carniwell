@@ -34,6 +34,8 @@ public class NPC : MonoBehaviour
     public Renderer _shirtRenderer;
     MaterialPropertyBlock _propBlock;
 
+    string npcName;
+
     Vector3 GetRandomLocation()
     {
         Vector2 actualPos = new Vector2(transform.position.x, transform.position.z);
@@ -55,7 +57,8 @@ public class NPC : MonoBehaviour
 
         vm = FindObjectOfType<VisitorManager>();
         vm.allVisitors.Add(this);
-        
+        npcName = NameDatabase.instance.GetRandomName();
+        Debug.Log("New NPC: " + npcName);
     }
 
 
@@ -107,7 +110,7 @@ public class NPC : MonoBehaviour
             currentStatus = status.WALKING;
 
             if (!walkRandom) {
-                ParkManager parkManager = GameObject.FindObjectOfType<ParkManager>();
+                ParkManager parkManager = FindObjectOfType<ParkManager>();
                 if (parkManager) {
                     List<AttractionController> attractions = parkManager.activeAttractions;
                     if (attractions.Count > 0) {
@@ -251,6 +254,11 @@ public class NPC : MonoBehaviour
     public void DoneAttraction()
     {
         vm.AddSatisfiedVisitors(1);
+    }
+
+    private void OnMouseDown()
+    {
+        Debug.Log("clicked on " + gameObject.name);
     }
 
     private void OnDestroy()

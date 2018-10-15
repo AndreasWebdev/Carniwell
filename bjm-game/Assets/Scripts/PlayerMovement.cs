@@ -81,12 +81,30 @@ public class PlayerMovement : MonoBehaviour
         {
             hud.SetupCurrentAttraction(other.GetComponentInParent<AttractionController>());
         }
+        else if(other.GetComponentInParent<TreeController>() != null)
+        {
+            TreeController treeController = other.GetComponentInParent<TreeController>();
+            treeController.UpdateTransparency(0.3f);
+        }
+        else
+        {
+            // Nothing to do
+        }
     }
     void OnTriggerExit(Collider other)
     {
         if(other.GetComponentInParent<AttractionController>())
         {
             hud.LeaveAttraction();
+        }
+        else if(other.GetComponentInParent<TreeController>() != null)
+        {
+            TreeController treeController = other.GetComponentInParent<TreeController>();
+            treeController.UpdateTransparency(1f);
+        }
+        else
+        {
+            // Nothing to do
         }
     }
 }

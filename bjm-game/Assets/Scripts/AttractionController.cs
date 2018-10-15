@@ -40,7 +40,6 @@ public class AttractionController : MonoBehaviour
     void Start()
     {
         game = FindObjectOfType<GameController>();
-        waitingCountText = GetComponentInChildren<TextMeshPro>();
         timeLeft = duration;
         hud = FindObjectOfType<HUDManager>();
         if(gameObject.GetComponent<Animator>())
@@ -48,6 +47,11 @@ public class AttractionController : MonoBehaviour
             isAnimation = true;
         }
         audioSource = gameObject.AddComponent<AudioSource>();
+
+        if(transform.position.x > 0)
+        {
+            waitingCountText.transform.parent.Rotate(Vector3.up, 180, Space.Self);
+        }
     }
 
     // Update is called once per frame

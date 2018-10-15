@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4540297014682950}
+  - component: {fileID: 65712746914134274}
   m_Layer: 0
   m_Name: Shootybooty
   m_TagString: Untagged
@@ -311,6 +312,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1499346928683510}
   m_Mesh: {fileID: 4300002, guid: 2d43ead514ab09f4e8b62745e2048468, type: 3}
+--- !u!65 &65712746914134274
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000140834668428}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.5, y: 4, z: 1.4}
+  m_Center: {x: 0.05, y: 0, z: -0.6}
 --- !u!95 &95219439770482386
 Animator:
   serializedVersion: 3

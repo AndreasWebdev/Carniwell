@@ -12,7 +12,17 @@ ModelImporter:
     4300000: Cylinder
     7400000: Default Take
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tree_branch
+    second: {fileID: 2100000, guid: 16522c1f2f637aa448a85061ef0475f0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tree_leaves
+    second: {fileID: 2100000, guid: 77a05e95d0843bc4ea8afe7b9f3a2f89, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

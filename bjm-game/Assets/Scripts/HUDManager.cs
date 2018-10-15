@@ -55,13 +55,18 @@ public class HUDManager : MonoBehaviour
 
     [Header("Sound")]
     public AudioClip[] ansageSoundArray;
+    public AudioSource effectsAudioSource;
+    public AudioSource musicAudioSource;
 
+    public AudioClip mainTheme, gameOverTheme;
 
     void Start()
     {
         game = FindObjectOfType<GameController>();
 
         waitingText.text = "0";
+        musicAudioSource.clip = mainTheme;
+        musicAudioSource.Play();
     }
 
     private void FixedUpdate()
@@ -217,9 +222,8 @@ public class HUDManager : MonoBehaviour
 
     public void PlayRandomAnsage()
     {
-        AudioSource audio = GetComponent<AudioSource>();
-        audio.clip = ansageSoundArray[Random.Range(0, ansageSoundArray.Length)];
-        audio.Play();
+        effectsAudioSource.clip = ansageSoundArray[Random.Range(0, ansageSoundArray.Length)];
+        effectsAudioSource.Play();
     }
 
     public void NavigateToMenu()
@@ -251,6 +255,8 @@ public class HUDManager : MonoBehaviour
 
     public void ShowGameOverPanel()
     {
+        musicAudioSource.clip = gameOverTheme;
+        musicAudioSource.Play();
         gameOverText.SetText("Du hast " + scoreText.text + " durchgehalten!");
         gameOverPanelAnimator.SetBool("isActive", true);
     }

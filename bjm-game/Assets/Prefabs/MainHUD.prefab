@@ -5799,6 +5799,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 424be01c913df2f469142bffe94fd39a, type: 3}
   - {fileID: 8300000, guid: c7fc5a59c03da9043bb6a6d042294b6a, type: 3}
   - {fileID: 8300000, guid: 78186671cfff52346a556af0dd320f56, type: 3}
+  effectsAudioSource: {fileID: 82409776851763096}
+  musicAudioSource: {fileID: 82545611798195718}
+  mainTheme: {fileID: 8300000, guid: 99a31c4e519b16549aa67c281acf0db0, type: 3}
+  gameOverTheme: {fileID: 8300000, guid: d3abddbad7b8e3b468b15636d112f878, type: 3}
 --- !u!114 &114983198921495958
 MonoBehaviour:
   m_ObjectHideFlags: 1

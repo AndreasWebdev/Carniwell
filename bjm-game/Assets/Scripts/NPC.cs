@@ -31,8 +31,6 @@ public class NPC : MonoBehaviour
 
     VisitorManager vm;
 
-    public GameObject happinessPopupPrefab;
-
     public Renderer _shirtRenderer;
     MaterialPropertyBlock _propBlock;
 
@@ -240,16 +238,7 @@ public class NPC : MonoBehaviour
     public void UpdateHappiness(int reward){
         happiness += reward;
         happiness = Mathf.Clamp(happiness, 0, 100);
-        if(reward > 0)
-        {
-            if(happinessPopupPrefab != null)
-            {
-                GameObject popup = (GameObject)Instantiate(happinessPopupPrefab);
-                popup.transform.position = this.transform.position;
-                popup.transform.parent = this.transform;
-                popup.GetComponent<TMPro.TextMeshPro>().text = "+" + reward.ToString("N0");
-            }
-        }
+
 
         if(happiness <= 0)
         {

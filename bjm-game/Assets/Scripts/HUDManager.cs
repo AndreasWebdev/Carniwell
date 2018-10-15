@@ -9,7 +9,7 @@ using TMPro;
 public class HUDManager : MonoBehaviour
 {
     GameController game;
-
+    ScoreManager scoreManager;
     public AttractionController currentAttraction = null;
 
     public Animator UIAttractionStartAnim;
@@ -50,7 +50,8 @@ public class HUDManager : MonoBehaviour
     public Animator pausePanelAnimator;
 
     [Header("GameOver")]
-    public TextMeshProUGUI gameOverText;
+    public TextMeshProUGUI gameOverTimeText;
+    public TextMeshProUGUI gameOverHighscoreText;
     public Animator gameOverPanelAnimator;
 
     [Header("Sound")]
@@ -63,10 +64,12 @@ public class HUDManager : MonoBehaviour
     void Start()
     {
         game = FindObjectOfType<GameController>();
-
+        scoreManager = FindObjectOfType<ScoreManager>();
         waitingText.text = "0";
         musicAudioSource.clip = mainTheme;
         musicAudioSource.Play();
+
+       
     }
 
     private void FixedUpdate()
@@ -257,7 +260,9 @@ public class HUDManager : MonoBehaviour
     {
         musicAudioSource.clip = gameOverTheme;
         musicAudioSource.Play();
-        gameOverText.SetText("Du hast " + scoreText.text + " durchgehalten!");
+        scoreManager.GameOver();
+        gameOverTimeText.SetText(string.Format("Du hast {0} durchgehalten!", scoreManager.GetScoreString()));
+        gameOverHighscoreText.SetText(string.Format("Dein Highscore: {0}", scoreManager.GetHighscoreString()));
         gameOverPanelAnimator.SetBool("isActive", true);
     }
 

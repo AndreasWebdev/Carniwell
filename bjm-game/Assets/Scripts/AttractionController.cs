@@ -35,7 +35,7 @@ public class AttractionController : MonoBehaviour
 
     public TextMeshPro waitingCountText;
 
-
+    public GameObject happinessPopupTextPrefab;
     // Use this for initialization
     void Start()
     {
@@ -172,7 +172,19 @@ public class AttractionController : MonoBehaviour
                 player.UnlockMovement();
             }
 
-            while(npcsActive.Count > 0)
+            if (!aborted)
+            {
+                if (happinessPopupTextPrefab != null)
+                {
+                    float gainedHappiness = npcsActive.Count * game.rewardSatisfiedRide;
+                    GameObject popup = (GameObject)Instantiate(happinessPopupTextPrefab);
+                    popup.transform.position = entrancePosition.transform.position + (Vector3.up);
+                    popup.transform.parent = entrancePosition.transform;
+                    popup.GetComponent<TMPro.TextMeshPro>().text = "+" + gainedHappiness.ToString("N0");
+                }
+            }
+
+            while (npcsActive.Count > 0)
             {
                 GameObject npc = npcsActive[0];
                 npcsActive.Remove(npc);
@@ -193,6 +205,7 @@ public class AttractionController : MonoBehaviour
                     npcScript.DoneAttraction();
                 }
             }
+            
         }
     }
 

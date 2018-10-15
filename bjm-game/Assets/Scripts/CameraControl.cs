@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.PostProcessing;
-public class CameraControl : MonoBehaviour {
 
 
+public class CameraControl : MonoBehaviour
+{
     public float minX, maxX;
     public float minZ, maxZ;
     public Transform playerTransfrom;
@@ -20,23 +21,21 @@ public class CameraControl : MonoBehaviour {
             GetComponent<PostProcessingBehaviour>().enabled = false;
         }
 #endif
-    
-
         if (playerTransfrom == null)
         {
             playerTransfrom = FindObjectOfType<PlayerMovement>().transform;
         }
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit))
+        {
             playerTransfrom.position = hit.point;
-        
+        }
+
         camPosOffset = transform.position - playerTransfrom.position;
-        
     }
-	
-	void FixedUpdate ()
+
+    void FixedUpdate ()
     {
-        
         Vector3 targetCamPos = playerTransfrom.position + camPosOffset;
         targetCamPos.y = transform.position.y;
         Vector3 newPosClamped = new Vector3(Mathf.Clamp(targetCamPos.x, minX, maxX), targetCamPos.y/*Mathf.Clamp(targetCamPos.y, minY, maxY)*/, Mathf.Clamp(targetCamPos.z, minZ, maxZ));

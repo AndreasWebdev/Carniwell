@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameController : MonoBehaviour {
 
+public class GameController : MonoBehaviour
+{
     public enum state {
         RUNNING,
         PAUSED,
@@ -43,36 +44,47 @@ public class GameController : MonoBehaviour {
 
     HUDManager hud;
 
-    void Start() {
+
+    void Start()
+    {
         hud = FindObjectOfType<HUDManager>();
     }
 
-    public void StartGame() {
+    public void StartGame()
+    {
         gameState = state.RUNNING;
         StartCoroutine(LoadLevel("main"));
     }
 
-    public void StopGame() {
-        if (gameState == state.RUNNING || gameState == state.PAUSED) {
+    public void StopGame()
+    {
+        if(gameState == state.RUNNING || gameState == state.PAUSED)
+        {
             StartCoroutine(LoadLevel("menu"));
-
-        } else {
+        }
+        else
+        {
             Debug.Log("Wrong game state detected");
         }
     }
 
-    public void PauseGame() {
-        if (gameState == state.RUNNING) {
+    public void PauseGame()
+    {
+        if(gameState == state.RUNNING)
+        {
             hud.ShowPauseMenu();
 
             Scene active = SceneManager.GetActiveScene();
             GameObject[] roots = active.GetRootGameObjects();
-            foreach (GameObject root in roots) {
+            foreach (GameObject root in roots)
+            {
                 root.BroadcastMessage("onGamePaused", SendMessageOptions.DontRequireReceiver);
             }
 
             gameState = state.PAUSED;
-        } else if (gameState == state.PAUSED) {
+        }
+        else if (gameState == state.PAUSED)
+        {
             Time.timeScale = 1;
 
             hud.HidePauseMenu();
@@ -83,14 +95,19 @@ public class GameController : MonoBehaviour {
             }
 
             gameState = state.RUNNING;
-        } else {
+        }
+        else
+        {
             Debug.Log("Wrong game state detected");
         }
     }
 
-    public void CheckGameOver() {
-        if (gameState == state.RUNNING) {
-            if (happinessPercentage < gameOverLimit) {
+    public void CheckGameOver()
+    {
+        if(gameState == state.RUNNING)
+        {
+            if(happinessPercentage < gameOverLimit)
+            {
                 gameState = state.GAMEOVER;
 
                 hud.ShowGameOverPanel();
@@ -98,12 +115,14 @@ public class GameController : MonoBehaviour {
         }
     }
 
-    IEnumerator LoadLevel(string levelName) {
+    IEnumerator LoadLevel(string levelName)
+    {
         yield return null;
 
         AsyncOperation async = SceneManager.LoadSceneAsync(levelName);
 
-        while (!async.isDone) {
+        while (!async.isDone)
+        {
             yield return null;
         }
     }

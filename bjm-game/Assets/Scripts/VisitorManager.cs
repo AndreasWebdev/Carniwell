@@ -2,32 +2,37 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VisitorManager : MonoBehaviour {
+
+public class VisitorManager : MonoBehaviour
+{
     GameController game;
 
     public int visitorsSatisfied;
 
     public List<NPC> allVisitors = new List<NPC>();
 
-
     [Header("Stages")]
-    private int currentVisitorsNeeded;
+    int currentVisitorsNeeded;
 
-    private int nextUpdate = 1;
+    int nextUpdate = 1;
 
     HUDManager hud;
+
+
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         game = FindObjectOfType<GameController>();
 
         currentVisitorsNeeded = game.baseVisitorsNeeded;
 
         hud = FindObjectOfType<HUDManager>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        if (Time.time >= nextUpdate)
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if(Time.time >= nextUpdate)
         {
             nextUpdate = Mathf.FloorToInt(Time.time) + 1;
             UpdateEverySecond();
@@ -41,7 +46,8 @@ public class VisitorManager : MonoBehaviour {
 
     public void CalculateHappiness()
     {
-        if(allVisitors.Count == 0){
+        if(allVisitors.Count == 0)
+        {
             return;
         }
         int npcCount = allVisitors.Count;
@@ -52,7 +58,10 @@ public class VisitorManager : MonoBehaviour {
         }
 
         game.happinessPercentage = globalHappinessPoints / npcCount;
-        if(hud == null) hud = FindObjectOfType<HUDManager>();
+        if(hud == null)
+        {
+            hud = FindObjectOfType<HUDManager>();
+        }
 
         hud.UpdateHappiness(game.happinessPercentage);
         game.CheckGameOver();
@@ -66,11 +75,10 @@ public class VisitorManager : MonoBehaviour {
             NextStage();
         }
     }
+
     public void NextStage()
     {
         currentVisitorsNeeded = Mathf.RoundToInt(currentVisitorsNeeded * game.multiplierPerStage);
         FindObjectOfType<ParkManager>().CreateNewAttraction();
     }
-
-
 }

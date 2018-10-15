@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class NPC : MonoBehaviour {
 
+public class NPC : MonoBehaviour
+{
     GameController game;
 
-    public enum status {
+
+    public enum status
+    {
         QUEUE,
         WALKING,
         ATTRACTION,
@@ -32,7 +35,8 @@ public class NPC : MonoBehaviour {
 
     public GameObject happinessPopupPrefab;
 
-    Vector3 GetRandomLocation() {
+    Vector3 GetRandomLocation()
+    {
         Vector2 actualPos = new Vector2(transform.position.x, transform.position.z);
         Vector2 randomPos = actualPos + Random.insideUnitCircle * 10;
         return new Vector3(randomPos.x, transform.position.y, randomPos.y);
@@ -48,7 +52,8 @@ public class NPC : MonoBehaviour {
         shirtMaterial.SetColor("_Color", game.goodColor);
     }
 
-    void showNPC() {
+    void ShowNPC()
+    {
         // Disable NPC renderer/agent
         SkinnedMeshRenderer render = gameObject.GetComponentInChildren<SkinnedMeshRenderer>();
         CapsuleCollider collider = gameObject.GetComponent<CapsuleCollider>();
@@ -58,7 +63,8 @@ public class NPC : MonoBehaviour {
         agent.enabled = true;
     }
 
-    void hideNPC() {
+    void HideNPC()
+    {
         // Disable NPC renderer/agent
         SkinnedMeshRenderer render = gameObject.GetComponentInChildren<SkinnedMeshRenderer>();
         CapsuleCollider collider = gameObject.GetComponent<CapsuleCollider>();
@@ -69,18 +75,25 @@ public class NPC : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update() {
+    void Update()
+    {
         // If the next update is reached
-        if (Time.time >= nextUpdate) {
+        if(Time.time >= nextUpdate)
+        {
             nextUpdate = Mathf.FloorToInt(Time.time) + 1;
             UpdateEverySecond();
         }
 
-        if (happiness > game.mediumTopLimit) {
+        if(happiness > game.mediumTopLimit)
+        {
             shirtMaterial.SetColor("_Color", game.goodColor);
-        } else if (happiness < game.mediumBottomLimit) {
+        }
+        else if (happiness < game.mediumBottomLimit)
+        {
             shirtMaterial.SetColor("_Color", game.badColor);
-        } else {
+        }
+        else
+        {
             shirtMaterial.SetColor("_Color", game.mediumColor);
         }
 
@@ -92,7 +105,7 @@ public class NPC : MonoBehaviour {
             walkRandom = (Random.value > 0.75f);
 
             // Show NPC
-            showNPC();
+            ShowNPC();
             currentStatus = status.WALKING;
 
             if (!walkRandom) {
@@ -126,25 +139,32 @@ public class NPC : MonoBehaviour {
             }
         }
 
-        if (currentStatus == status.WALKING) {
-            if (!agent.pathPending) {
-                if (agent.remainingDistance <= agent.stoppingDistance) {
-                    if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f) {
-                        if (destination) {
+        if(currentStatus == status.WALKING)
+        {
+            if(!agent.pathPending)
+            {
+                if(agent.remainingDistance <= agent.stoppingDistance)
+                {
+                    if(!agent.hasPath || agent.velocity.sqrMagnitude == 0f)
+                    {
+                        if(destination)
+                        {
                             anim.SetBool("moving", false);
 
                             AttractionController attraction = lastVisitedAttraction.GetComponent<AttractionController>();
                             // Check if target is really an attraction
-                            if (attraction) {
-
+                            if (attraction)
+                            {
                                 attraction.AddNPCToQueue(gameObject);
                                 remainingIdleTime = 0;
 
-                                hideNPC();
+                                HideNPC();
                             }
 
                             destination = null;
-                        } else if (walkRandom && remainingIdleTime != 0) {
+                        }
+                        else if (walkRandom && remainingIdleTime != 0)
+                        {
                             currentStatus = status.IDLE;
                             anim.SetBool("moving", false);
                         }
@@ -155,31 +175,38 @@ public class NPC : MonoBehaviour {
     }
 
     // Update is called once per second
-    void UpdateEverySecond() {
-        if (currentStatus.Equals(status.QUEUE)) {
-            if (happiness > 0) {
+    void UpdateEverySecond()
+    {
+        if(currentStatus.Equals(status.QUEUE))
+        {
+            if(happiness > 0)
+            {
                 UpdateHappiness(game.penaltyInQueue);
             }
         }
 
-        if (walkRandom && currentStatus == status.IDLE && remainingIdleTime > 0) {
+        if(walkRandom && currentStatus == status.IDLE && remainingIdleTime > 0)
+        {
             --remainingIdleTime;
         }
     }
 
-    public status GetStatus() {
+    public status GetStatus()
+    {
         return currentStatus;
     }
 
-    public void SetStatus(status newStatus) {
+    public void SetStatus(status newStatus)
+    {
         currentStatus = newStatus;
     }
 
-    public int GetHappiness() {
+    public int GetHappiness()
+    {
         return happiness;
     }
 
-    public void UpdateHappiness(int reward) {
+    public void UpdateHappiness(int reward){
         happiness += reward;
         happiness = Mathf.Clamp(happiness, 0, 100);
         if(reward > 0)
@@ -193,7 +220,8 @@ public class NPC : MonoBehaviour {
             }
         }
 
-        if (happiness <= 0) {
+        if(happiness <= 0)
+        {
             // Dann bleibt er weiter hier
         }
     }
@@ -208,18 +236,22 @@ public class NPC : MonoBehaviour {
         vm.allVisitors.Remove(this);
     }
 
-    private void OnTriggerEnter(Collider other) {
+    void OnTriggerEnter(Collider other)
+    {
         AttractionController attraction = other.GetComponentInParent<AttractionController>();
-        if (attraction != null) {
+        if(attraction != null)
+        {
             agent.obstacleAvoidanceType = ObstacleAvoidanceType.NoObstacleAvoidance;
             CapsuleCollider collider = gameObject.GetComponent<CapsuleCollider>();
             collider.enabled = false;
         }
     }
 
-    private void OnTriggerExit(Collider other) {
+    void OnTriggerExit(Collider other)
+    {
         AttractionController attraction = other.GetComponentInParent<AttractionController>();
-        if (attraction != null) {
+        if(attraction != null)
+        {
             agent.obstacleAvoidanceType = ObstacleAvoidanceType.HighQualityObstacleAvoidance;
             CapsuleCollider collider = gameObject.GetComponent<CapsuleCollider>();
             collider.enabled = true;

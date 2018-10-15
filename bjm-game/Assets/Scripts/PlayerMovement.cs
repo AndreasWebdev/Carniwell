@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class PlayerMovement : MonoBehaviour {
+
+public class PlayerMovement : MonoBehaviour
+{
     GameController game;
 
     Rigidbody playerRigidbody;
@@ -16,7 +18,9 @@ public class PlayerMovement : MonoBehaviour {
 
     HUDManager hud;
 
-    private void Start() {
+
+    void Start()
+    {
         game = FindObjectOfType<GameController>();
         joystick = FindObjectOfType<Joystick>();
     }
@@ -29,14 +33,16 @@ public class PlayerMovement : MonoBehaviour {
 
     void FixedUpdate()
     {
-        if (isMovable) {
+        if(isMovable)
+        {
             Move();
         }
     }
 
     void Move()
     {
-        if (joystick.Horizontal != 0 && joystick.Vertical != 0) {
+        if(joystick.Horizontal != 0 && joystick.Vertical != 0)
+        {
             anim.SetBool("moving", true);
 
             Vector3 moveDir = new Vector3(joystick.Horizontal, 0f, joystick.Vertical);
@@ -48,33 +54,37 @@ public class PlayerMovement : MonoBehaviour {
             moveDir.y = 0.2f;
             moveDir = moveDir.normalized * game.playerSpeed * Time.deltaTime;
             playerRigidbody.MovePosition(transform.position + moveDir);
-        } else {
+        }
+        else
+        {
             anim.SetBool("moving", false);
         }
     }
 
-    public void unlockMovement() {
+    public void UnlockMovement()
+    {
         isMovable = true;
         CapsuleCollider collider = gameObject.GetComponent<CapsuleCollider>();
         collider.enabled = true;
     }
 
-    public void lockMovement() {
+    public void LockMovement()
+    {
         isMovable = false;
         CapsuleCollider collider = gameObject.GetComponent<CapsuleCollider>();
         collider.enabled = false;
     }
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponentInParent<AttractionController>() != null)
+        if(other.GetComponentInParent<AttractionController>() != null)
         {
             hud.SetupCurrentAttraction(other.GetComponentInParent<AttractionController>());
         }
     }
-    private void OnTriggerExit(Collider other)
+    void OnTriggerExit(Collider other)
     {
-        if (other.GetComponentInParent<AttractionController>())
+        if(other.GetComponentInParent<AttractionController>())
         {
             hud.LeaveAttraction();
         }

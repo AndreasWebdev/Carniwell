@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PinchZoom : MonoBehaviour {
 
+public class PinchZoom : MonoBehaviour
+{
     public Camera mainCamera;
 
     public float perspectiveZoomSpeed = 0.5f;
@@ -11,8 +12,12 @@ public class PinchZoom : MonoBehaviour {
 
     public float minXRot = 25, maxXRot = 80;
     public float minYPos = 4, maxYPos = 26;
-    void Update() {
-        if(Input.touchCount == 2) {
+
+
+    void Update()
+    {
+        if(Input.touchCount == 2)
+        {
             Touch touchZero = Input.GetTouch(0);
             Touch touchOne = Input.GetTouch(1);
 
@@ -26,13 +31,13 @@ public class PinchZoom : MonoBehaviour {
 
             Vector3 rot = mainCamera.transform.eulerAngles;
             Vector3 pos = mainCamera.transform.position;
-            if (!mainCamera.orthographic) {
-                
+            if (!mainCamera.orthographic)
+            {
                 rot.x += deltaMagnitudeDiff * perspectiveZoomSpeed;
                 pos.y += deltaMagnitudeDiff * perspectiveZoomSpeed;
                 //mainCamera.fieldOfView = Mathf.Clamp(mainCamera.fieldOfView, 0.1f, 179.9f);
             }
-            
+
             rot.x = Mathf.Clamp(rot.x, minXRot, maxXRot);
             pos.y = Mathf.Clamp(pos.y, minYPos, maxYPos);
 

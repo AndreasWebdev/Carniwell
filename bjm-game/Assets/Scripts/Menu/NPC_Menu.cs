@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class NPC_Menu : MonoBehaviour {
 
-    public enum status {
+public class NPC_Menu : MonoBehaviour
+{
+    public enum status
+    {
         WALKING,
         IDLE
     }
@@ -18,15 +20,17 @@ public class NPC_Menu : MonoBehaviour {
     Vector2 actualPos;
     Vector2 randomPos;
 
-    private int nextUpdate = 1;
+    int nextUpdate = 1;
 
-    private int idleTime = 5;
+    int idleTime = 5;
     public int remainingIdleTime = 0;
 
     public float timeoutWalking = 2f;
     public float agentVelocity = 0f;
 
-    Vector3 GetRandomLocation() {
+
+    Vector3 GetRandomLocation()
+    {
         actualPos = new Vector2(transform.position.x, transform.position.z);
         randomPos = actualPos + Random.insideUnitCircle * 5;
         Vector3 newPos = new Vector3();
@@ -35,10 +39,11 @@ public class NPC_Menu : MonoBehaviour {
         NavMeshPath path = new NavMeshPath();
         agent.CalculatePath(new Vector3(randomPos.x, 5.2f, randomPos.y), path);
 
-        if (path.status == NavMeshPathStatus.PathPartial || path.status == NavMeshPathStatus.PathInvalid)
+        if(path.status == NavMeshPathStatus.PathPartial || path.status == NavMeshPathStatus.PathInvalid)
         {
             newPos = GetRandomLocation();
-        } else
+        }
+        else
         {
             newPos = randomPos;
         }
@@ -47,7 +52,8 @@ public class NPC_Menu : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update() {
+    void Update()
+    {
         Debug.DrawLine(transform.position, new Vector3(randomPos.x, 5.2f, randomPos.y));
 
         agentVelocity = agent.velocity.sqrMagnitude;
@@ -64,14 +70,15 @@ public class NPC_Menu : MonoBehaviour {
         }
 
         // If the next update is reached
-        if (Time.time >= nextUpdate) {
+        if(Time.time >= nextUpdate)
+        {
             nextUpdate = Mathf.FloorToInt(Time.time) + 1;
             UpdateEverySecond();
         }
 
         // Create new path
-        if (currentStatus == status.IDLE && remainingIdleTime == 0) {
-
+        if(currentStatus == status.IDLE && remainingIdleTime == 0)
+        {
             // Show NPC
             currentStatus = status.WALKING;
 
@@ -80,10 +87,14 @@ public class NPC_Menu : MonoBehaviour {
             anim.SetBool("moving", true);
         }
 
-        if (currentStatus == status.WALKING) {
-            if (!agent.pathPending) {
-                if (agent.remainingDistance <= agent.stoppingDistance) {
-                    if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f) {
+        if(currentStatus == status.WALKING)
+        {
+            if(!agent.pathPending)
+            {
+                if(agent.remainingDistance <= agent.stoppingDistance)
+                {
+                    if(!agent.hasPath || agent.velocity.sqrMagnitude == 0f)
+                    {
                         currentStatus = status.IDLE;
                         anim.SetBool("moving", false);
                     }
@@ -92,17 +103,21 @@ public class NPC_Menu : MonoBehaviour {
         }
     }
     
-    void UpdateEverySecond() {
-        if (currentStatus == status.IDLE && remainingIdleTime > 0) {
+    void UpdateEverySecond()
+    {
+        if (currentStatus == status.IDLE && remainingIdleTime > 0)
+        {
             --remainingIdleTime;
         }
     }
 
-    public status GetStatus() {
+    public status GetStatus()
+    {
         return currentStatus;
     }
 
-    public void SetStatus(status newStatus) {
+    public void SetStatus(status newStatus)
+    {
         currentStatus = newStatus;
     }
 }

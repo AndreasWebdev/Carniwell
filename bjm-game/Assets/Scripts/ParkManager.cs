@@ -2,24 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ParkManager : MonoBehaviour {
 
+public class ParkManager : MonoBehaviour
+{
     public List<AttractionController> activeAttractions = new List<AttractionController>();
 
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         StartCoroutine(DelayedFirstAttractrion());
     }
-	IEnumerator DelayedFirstAttractrion()
+
+    IEnumerator DelayedFirstAttractrion()
     {
         yield return new WaitForSeconds(1);
         CreateNewAttraction();
     }
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
 #if UNITY_EDITOR
-        if (Input.GetKeyDown(KeyCode.C))
+        if(Input.GetKeyDown(KeyCode.C))
         {
             CreateNewAttraction();
         }
@@ -34,23 +39,22 @@ public class ParkManager : MonoBehaviour {
         List<AttractionController> attrAvailable = new List<AttractionController>();
         for(int i= 0; i < db.attractionPrefabs.Count; i++)
         {
-            if (!AttractionAlreadyInList(db.attractionPrefabs[i]))
+            if(!AttractionAlreadyInList(db.attractionPrefabs[i]))
             {
                 attrAvailable.Add(db.attractionPrefabs[i]);
             }
         }
         
-        if (attrAvailable.Count > 0)
+        if(attrAvailable.Count > 0)
         {
             AttractionController attrToBuild = attrAvailable[Random.Range(0, attrAvailable.Count)];
             AttractionBuildingSpot[] allBuildingSpots = FindObjectsOfType<AttractionBuildingSpot>();
             List<AttractionBuildingSpot> freeBuildingSpots = new List<AttractionBuildingSpot>();
-            for (int i = 0; i < allBuildingSpots.Length; i++)
+            for(int i = 0; i < allBuildingSpots.Length; i++)
             {
-                if (allBuildingSpots[i].myAttraction == null)
+                if(allBuildingSpots[i].myAttraction == null)
                 {
                     freeBuildingSpots.Add(allBuildingSpots[i]);
-                    
                 }
             }
 
@@ -67,10 +71,13 @@ public class ParkManager : MonoBehaviour {
     public bool AttractionAlreadyInList(AttractionController _attraction)
     {
         //Suche ob genau diese Attraction (dieses gameObject) schon in Liste vorhanden ist.
-        if (activeAttractions.Contains(_attraction)) return true;
+        if(activeAttractions.Contains(_attraction))
+        {
+            return true;
+        }
 
         //Gibt es schon eine Attraktion dieser Art?
-        for (int i = 0; i < activeAttractions.Count; i++)
+        for(int i = 0; i < activeAttractions.Count; i++)
         {
             if(activeAttractions[i].id == _attraction.id)
             {
@@ -83,12 +90,11 @@ public class ParkManager : MonoBehaviour {
 
     public void AddAttraction(AttractionController _attraction)
     {
-        
         if (AttractionAlreadyInList(_attraction))
         {
             return;
         }
-        
+
         //Füge Attraktion der Liste hinzu
         activeAttractions.Add(_attraction);
     }

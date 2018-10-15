@@ -2,16 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttractionDatabase : MonoBehaviour {
-    
+
+public class AttractionDatabase : MonoBehaviour
+{
     public List<AttractionController> attractionPrefabs;
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

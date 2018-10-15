@@ -5,7 +5,9 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-public class HUDManager : MonoBehaviour {
+
+public class HUDManager : MonoBehaviour
+{
     GameController game;
 
     public AttractionController currentAttraction = null;
@@ -54,22 +56,28 @@ public class HUDManager : MonoBehaviour {
     [Header("Sound")]
     public AudioClip[] ansageSoundArray;
 
-    void Start() {
+
+    void Start()
+    {
         game = FindObjectOfType<GameController>();
 
         waitingText.text = "0";
-
     }
 
-    private void FixedUpdate() {
-        if (currentAttraction != null) {
+    private void FixedUpdate()
+    {
+        if(currentAttraction != null)
+        {
             waitingText.text = currentAttraction.npcsWaiting.Count.ToString();
             freeSlotsText.text = currentAttraction.npcsActive.Count.ToString() + " / " + currentAttraction.npcAmount.ToString();
 
-            if (currentAttraction.running) {
+            if(currentAttraction.running)
+            {
                 startButton.SetActive(false);
                 stopButton.SetActive(true);
-            } else {
+            }
+            else
+            {
                 startButton.SetActive(true);
                 stopButton.SetActive(false);
             }
@@ -78,6 +86,7 @@ public class HUDManager : MonoBehaviour {
         AlertUpdate();
 
     }
+
     #region Alert
     void AlertUpdate() {
         if (alertsQueue.Count > 0 && !alertVisible) {
@@ -102,13 +111,20 @@ public class HUDManager : MonoBehaviour {
         alertPanelAnimator.SetBool("isActive", false);
     }
     #endregion
-    public void PlayAttraction() {
-        if (currentAttraction == null) return;
 
-        if (!currentAttraction.running) {
+    public void PlayAttraction()
+    {
+        if(currentAttraction == null)
+        {
+            return;
+        }
+
+        if(!currentAttraction.running)
+        {
             bool success = currentAttraction.StartAttraction();
 
-            if (success) {
+            if(success)
+            {
                 ButtonCooldown cooldown = stopButton.GetComponent<ButtonCooldown>();
                 cooldown.cooldown = (float)currentAttraction.duration;
                 cooldown.cooldownRunning = true;
@@ -121,9 +137,16 @@ public class HUDManager : MonoBehaviour {
         }
 
     }
-    public void StopAttraction() {
-        if (currentAttraction == null) return;
-        if (currentAttraction.running) {
+
+    public void StopAttraction()
+    {
+        if(currentAttraction == null)
+        {
+            return;
+        }
+
+        if (currentAttraction.running)
+        {
             currentAttraction.StopAttraction();
 
             ButtonCooldown cooldown = stopButton.GetComponent<ButtonCooldown>();
@@ -131,44 +154,44 @@ public class HUDManager : MonoBehaviour {
         }
     }
 
-    public void SetupCurrentAttraction(AttractionController _attraction) {
+    public void SetupCurrentAttraction(AttractionController _attraction)
+    {
         currentAttraction = _attraction;
         attractionNameText.text = _attraction.attractionName;
-        /*if (_attraction.running) {
-            _attraction.StopAttraction();
-        } else {
-            _attraction.StartAttraction();
-        }*/
+
         UIAttractionStartAnim.SetBool("isOpen", true);
     }
-    public void LeaveAttraction() {
+
+    public void LeaveAttraction()
+    {
         currentAttraction = null;
         attractionNameText.text = "";
         //UIAttractionControlAnim.SetBool("isOpen", false);
         UIAttractionStartAnim.SetBool("isOpen", false);
     }
 
-    public void Ansage() {
+    public void Ansage()
+    {
         currentAttraction.Ansage();
         UIAttractionControlAnim.SetBool("isOpen", true);
         UIAttractionStartAnim.SetBool("isOpen", false);
     }
 
-    public void Special() {
+    public void Special()
+    {
         currentAttraction.Special();
     }
 
-    public void Notstop() {
+    public void Notstop()
+    {
         StopAttraction();
         currentAttraction.Notstop();
         //UIAttractionControlAnim.SetBool("isOpen", false);
         //UIAttractionStartAnim.SetBool("isOpen", true);
     }
 
-
-
-    public void UpdateHappiness(float _val) {
-
+    public void UpdateHappiness(float _val)
+    {
         //Calculate new percentage scale
         float a = _val-game.gameOverLimit;
         float b = 100 - game.gameOverLimit;
@@ -177,55 +200,68 @@ public class HUDManager : MonoBehaviour {
 
         
         happinessSlider.value = visibleValue;
-        if (visibleValue > game.mediumTopLimit) {
+        if (visibleValue > game.mediumTopLimit)
+        {
             happinessSliderFilling.color = game.goodColor;
-        } else if (visibleValue < game.mediumBottomLimit) {
+        }
+        else if (visibleValue < game.mediumBottomLimit)
+        {
             happinessSliderFilling.color = game.badColor;
-        } else {
+        }
+        else
+        {
             happinessSliderFilling.color = game.mediumColor;
         }
         HappinessPercentageText.text = visibleValue.ToString("N0") + "%";
-
     }
 
-    public void PlayRandomAnsage() {
+    public void PlayRandomAnsage()
+    {
         AudioSource audio = GetComponent<AudioSource>();
         audio.clip = ansageSoundArray[Random.Range(0, ansageSoundArray.Length)];
         audio.Play();
     }
 
-    public void NavigateToMenu() {
+    public void NavigateToMenu()
+    {
         Time.timeScale = 1;
         SceneManager.LoadSceneAsync("menu");
     }
 
-    public void NavigateToMain() {
+    public void NavigateToMain()
+    {
         Time.timeScale = 1;
         SceneManager.LoadSceneAsync("main");
     }
 
-    public void SkipTutorial() {
+    public void SkipTutorial()
+    {
         UITutorialAnim.SetBool("isActive", false);
     }
 
-    public void onGamePaused() {
+    public void OnGamePaused()
+    {
         pauseButtonBackground.sprite = resumeIcon;
     }
 
-    public void onGameResumed() {
+    public void OnGameResumed()
+    {
         pauseButtonBackground.sprite = pauseIcon;
     }
 
-    public void ShowGameOverPanel() {
+    public void ShowGameOverPanel()
+    {
         gameOverText.SetText("Du hast " + scoreText.text + " durchgehalten!");
         gameOverPanelAnimator.SetBool("isActive", true);
     }
 
-    public void ShowPauseMenu() {
+    public void ShowPauseMenu()
+    {
         pausePanelAnimator.SetBool("isActive", true);
     }
 
-    public void HidePauseMenu() {
+    public void HidePauseMenu()
+    {
         pausePanelAnimator.SetBool("isActive", false);
     }
 }

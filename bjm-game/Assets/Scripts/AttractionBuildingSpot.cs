@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttractionBuildingSpot : MonoBehaviour {
+
+public class AttractionBuildingSpot : MonoBehaviour
+{
     public GameObject buildingSitePrefab;
     public GameObject attractionBuildParticles;
     GameObject buildingSite;
@@ -15,12 +17,14 @@ public class AttractionBuildingSpot : MonoBehaviour {
     public AudioClip fallingSound;
     public AudioClip landingSound;
 
-
     HUDManager hud;
+
+
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
         hud = FindObjectOfType<HUDManager>();
-        if (transform.GetChild(0) == null)
+        if(transform.GetChild(0) == null)
         {
             buildingSite = (GameObject)Instantiate(buildingSitePrefab);
             buildingSite.transform.position = this.transform.position;
@@ -40,7 +44,10 @@ public class AttractionBuildingSpot : MonoBehaviour {
 
     public AttractionController BuildAttraction(AttractionController _attraction)
     {
-        if (myAttraction != null) return myAttraction; // Wenn bereits eine Attraktion steht, nicht erneut bauen.
+        if(myAttraction != null)
+        {
+            return myAttraction; // Wenn bereits eine Attraktion steht, nicht erneut bauen.
+        }
         buildingSite.SetActive(false);
         GameObject attraction = (GameObject)Instantiate(_attraction.gameObject);
         hud.ShowAlert("Neue Attraktion!");
@@ -85,7 +92,7 @@ public class AttractionBuildingSpot : MonoBehaviour {
         audioSource.PlayOneShot(landingSound, 1.0f);
     }
 
-    private void OnDrawGizmos()
+    void OnDrawGizmos()
     {
         Gizmos.color = Color.black;
         Gizmos.DrawWireCube(transform.position, Vector3.one * 5);

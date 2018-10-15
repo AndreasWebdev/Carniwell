@@ -10,13 +10,12 @@ public class NPCSpawner : MonoBehaviour
     public GameObject npc;
     public Transform spawnPoint;
 
-
     // Use this for initialization
     void Start()
     {
         game = FindObjectOfType<GameController>();
 
-        InvokeRepeating("Spawn", game.spawnFrequency, game.spawnFrequency);
+        Spawn();
     }
 
     void Spawn()
@@ -25,5 +24,6 @@ public class NPCSpawner : MonoBehaviour
         {
             Instantiate(npc, spawnPoint.position, spawnPoint.rotation);
         }
+        Invoke("Spawn", 1 + game.currentLevel * 2);
     }
 }

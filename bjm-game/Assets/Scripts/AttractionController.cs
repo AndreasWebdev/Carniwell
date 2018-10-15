@@ -33,6 +33,8 @@ public class AttractionController : MonoBehaviour
 
     HUDManager hud;
 
+    VisitorManager visitorMangager;
+
     public TextMeshPro waitingCountText;
 
     public GameObject happinessPopupTextPrefab;
@@ -42,7 +44,8 @@ public class AttractionController : MonoBehaviour
         game = FindObjectOfType<GameController>();
         timeLeft = duration;
         hud = FindObjectOfType<HUDManager>();
-        if(gameObject.GetComponent<Animator>())
+        visitorMangager = FindObjectOfType<VisitorManager>();
+        if (gameObject.GetComponent<Animator>())
         {
             isAnimation = true;
         }
@@ -205,7 +208,8 @@ public class AttractionController : MonoBehaviour
                     npcScript.DoneAttraction();
                 }
             }
-            
+
+            visitorMangager.CalculateHappiness();
         }
     }
 

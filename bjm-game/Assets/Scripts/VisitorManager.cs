@@ -80,5 +80,6 @@ public class VisitorManager : MonoBehaviour
     {
         currentVisitorsNeeded = Mathf.RoundToInt(currentVisitorsNeeded * game.multiplierPerStage);
         FindObjectOfType<ParkManager>().CreateNewAttraction();
+        game.currentLevel++;
     }
 }

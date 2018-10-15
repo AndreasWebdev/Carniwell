@@ -177,13 +177,15 @@ public class NPC : MonoBehaviour
     {
         if(currentStatus.Equals(status.QUEUE))
         {
-            if(happiness > 0)
-            {
-                UpdateHappiness(game.penaltyInQueue);
-            }
+            UpdateHappiness(game.penaltyInQueue);
         }
 
-        if(walkRandom && currentStatus == status.IDLE && remainingIdleTime > 0)
+        if (currentStatus.Equals(status.ATTRACTION))
+        {
+            UpdateHappiness(game.rewardInAttraction);
+        }
+
+        if (walkRandom && currentStatus == status.IDLE && remainingIdleTime > 0)
         {
             --remainingIdleTime;
         }

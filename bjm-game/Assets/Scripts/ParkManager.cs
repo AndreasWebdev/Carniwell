@@ -18,6 +18,8 @@ public class ParkManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         CreateNewAttraction();
+        yield return new WaitForSeconds(2);
+        CreateNewAttraction();
     }
 
     // Update is called once per frame

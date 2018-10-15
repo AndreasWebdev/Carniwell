@@ -236,7 +236,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1871428017285734}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.110183, y: 0.20000224, z: -15.4122}
+  m_LocalPosition: {x: 6.5246463, y: 0.20000438, z: -33.381138}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4243576730667412}
@@ -714,6 +714,8 @@ MonoBehaviour:
   successSound: {fileID: 8300000, guid: d177003e238b6ed40a4150d9824fe335, type: 3}
   failureSound: {fileID: 8300000, guid: f9e7b6bcfe3072d42bb4f6aa531c9df3, type: 3}
   waitingCountText: {fileID: 114421635773820400}
+  happinessPopupTextPrefab: {fileID: 1587299899682022, guid: c3514b0bfd4b32947a33ac5f92d8ec59,
+    type: 2}
 --- !u!114 &114214274754919506
 MonoBehaviour:
   m_ObjectHideFlags: 1

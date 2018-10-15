@@ -821,8 +821,6 @@ MonoBehaviour:
   agent: {fileID: 195284375610798648}
   anim: {fileID: 95106275884510050}
   remainingIdleTime: 0
-  happinessPopupPrefab: {fileID: 1587299899682022, guid: c3514b0bfd4b32947a33ac5f92d8ec59,
-    type: 2}
   _shirtRenderer: {fileID: 137205346983197502}
 --- !u!136 &136455920500852980
 CapsuleCollider:

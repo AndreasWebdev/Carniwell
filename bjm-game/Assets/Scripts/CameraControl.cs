@@ -8,6 +8,9 @@ public class CameraControl : MonoBehaviour
 {
     public float minX, maxX;
     public float minZ, maxZ;
+
+    public float minYRot = -40, maxYRot = 40;
+
     public Transform playerTransfrom;
     public float cameraSmoothing = 3f;
 
@@ -36,10 +39,23 @@ public class CameraControl : MonoBehaviour
 
     void FixedUpdate ()
     {
+        //Calculating Position;
         Vector3 targetCamPos = playerTransfrom.position + camPosOffset;
         targetCamPos.y = transform.position.y;
         Vector3 newPosClamped = new Vector3(Mathf.Clamp(targetCamPos.x, minX, maxX), targetCamPos.y/*Mathf.Clamp(targetCamPos.y, minY, maxY)*/, Mathf.Clamp(targetCamPos.z, minZ, maxZ));
-        transform.LookAt(playerTransfrom);
+
+        //Rotation
+        /*transform.LookAt(playerTransfrom);
+        Vector3 camRot = transform.eulerAngles;
+        camRot.y = Mathf.Clamp(camRot.y,minYRot, maxYRot);
+        transform.eulerAngles = camRot;*/
+
+        Vector3 lookPos = playerTransfrom.position - transform.position;
+        lookPos.y = Mathf.Clamp(lookPos.y, minYRot, maxYRot);
+        Quaternion rotation = Quaternion.LookRotation(lookPos);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * cameraSmoothing);
+
+        //Applying Position
         transform.position = Vector3.Lerp(transform.position, newPosClamped, cameraSmoothing * Time.deltaTime);
 
         transform.position = newPosClamped;

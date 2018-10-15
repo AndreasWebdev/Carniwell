@@ -309,6 +309,7 @@ GameObject:
   - component: {fileID: 54084044182505916}
   - component: {fileID: 136087181846559126}
   - component: {fileID: 114766288080142332}
+  - component: {fileID: 208111687122725192}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -966,3 +967,18 @@ SkinnedMeshRenderer:
     m_Center: {x: -1.1564181, y: 0.064220905, z: 0.0019072294}
     m_Extent: {x: 0.7945846, y: 1.4070599, z: 2.8797789}
   m_DirtyAABB: 0
+--- !u!208 &208111687122725192
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1523243072182630}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.4, y: 0.9, z: 0.4}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 0
+  m_Center: {x: 0, y: 0.8, z: 0}
+  m_TimeToStationary: 0.5

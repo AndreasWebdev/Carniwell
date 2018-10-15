@@ -23,8 +23,6 @@ public class NPC : MonoBehaviour
     public NavMeshAgent agent;
     public Animator anim;
 
-    public Material shirtMaterial;
-
     private int nextUpdate = 1;
     private AttractionController lastVisitedAttraction;
 
@@ -35,6 +33,9 @@ public class NPC : MonoBehaviour
 
     public GameObject happinessPopupPrefab;
 
+    public Renderer _shirtRenderer;
+    MaterialPropertyBlock _propBlock;
+
     Vector3 GetRandomLocation()
     {
         Vector2 actualPos = new Vector2(transform.position.x, transform.position.z);
@@ -42,26 +43,37 @@ public class NPC : MonoBehaviour
         return new Vector3(randomPos.x, transform.position.y, randomPos.y);
     }
 
+
+    private void Awake()
+    {
+        _propBlock = new MaterialPropertyBlock();
+
+    }
+
+
     private void Start()
     {
         game = FindObjectOfType<GameController>();
 
         vm = FindObjectOfType<VisitorManager>();
         vm.allVisitors.Add(this);
-
-        shirtMaterial.SetColor("_Color", game.goodColor);
+        
     }
+
 
     void ShowNPC()
     {
         // Disable NPC renderer/agent
         SkinnedMeshRenderer render = gameObject.GetComponentInChildren<SkinnedMeshRenderer>();
+
         CapsuleCollider collider = gameObject.GetComponent<CapsuleCollider>();
 
         collider.enabled = true;
         render.enabled = true;
+        _shirtRenderer.enabled = true;
         agent.enabled = true;
     }
+
 
     void HideNPC()
     {
@@ -71,10 +83,11 @@ public class NPC : MonoBehaviour
 
         collider.enabled = false;
         render.enabled = false;
+        _shirtRenderer.enabled = false;
         agent.enabled = false;
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         // If the next update is reached
@@ -82,19 +95,6 @@ public class NPC : MonoBehaviour
         {
             nextUpdate = Mathf.FloorToInt(Time.time) + 1;
             UpdateEverySecond();
-        }
-
-        if(happiness > game.mediumTopLimit)
-        {
-            shirtMaterial.SetColor("_Color", game.goodColor);
-        }
-        else if (happiness < game.mediumBottomLimit)
-        {
-            shirtMaterial.SetColor("_Color", game.badColor);
-        }
-        else
-        {
-            shirtMaterial.SetColor("_Color", game.mediumColor);
         }
 
         // Create new path
@@ -189,22 +189,53 @@ public class NPC : MonoBehaviour
         {
             --remainingIdleTime;
         }
+
+        UpdateShirtColor();
+        
+#if UNITY_EDITOR
+        gameObject.name = "NPC [" + currentStatus.ToString() + "]";
+#endif
     }
+
+
+    void UpdateShirtColor()
+    {
+        _shirtRenderer.GetPropertyBlock(_propBlock);
+        
+        if (happiness > game.mediumTopLimit)
+        {
+            _propBlock.SetColor("_Color", game.goodColor);
+            
+        }
+        else if (happiness < game.mediumBottomLimit)
+        {
+            _propBlock.SetColor("_Color", game.badColor);
+        }
+        else
+        {
+            _propBlock.SetColor("_Color", game.mediumColor);
+        }
+        _shirtRenderer.SetPropertyBlock(_propBlock);
+    }
+
 
     public status GetStatus()
     {
         return currentStatus;
     }
 
+
     public void SetStatus(status newStatus)
     {
         currentStatus = newStatus;
     }
 
+
     public int GetHappiness()
     {
         return happiness;
     }
+
 
     public void UpdateHappiness(int reward){
         happiness += reward;

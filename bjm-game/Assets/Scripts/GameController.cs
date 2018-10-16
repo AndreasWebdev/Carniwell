@@ -74,6 +74,7 @@ public class GameController : MonoBehaviour
 
     public void LoadGame()
     {
+        Time.timeScale = 1;
         gameState = state.STOPPED;
         StartCoroutine(LoadLevel("main"));
     }

@@ -4,8 +4,8 @@ using System.Collections;
 public class ScoreUploader : MonoBehaviour
 {
     private string secretKey = "62HUYi5xq|k>Q2mqr$-2jJHmH0,#$)"; 
-    public string addScoreURL = "http://kindaworking.mineplace.de/carniwell/highscore/addscore.php?";
-    public string highscoreURL = "http://kindaworking.mineplace.de/carniwell/highscore/display.php";
+    private string addScoreURL = "http://kindaworking.de/carniwell/addscore.php?";
+    private string highscoreURL = "http://kindaworking.de/carniwell/display.php";
 
     void Start()
     {
@@ -35,8 +35,7 @@ public class ScoreUploader : MonoBehaviour
     // remember to use StartCoroutine when calling this function!
     IEnumerator GetScores()
     {
-        gameObject.GetComponent<GUIText>().text = "Loading Scores";
-        WWW hs_get = new WWW(highscoreURL);
+        WWW hs_get = new WWW(highscoreURL + "?limit=" + 10);
         yield return hs_get;
 
         if(hs_get.error != null)
@@ -45,7 +44,7 @@ public class ScoreUploader : MonoBehaviour
         }
         else
         {
-            gameObject.GetComponent<GUIText>().text = hs_get.text; // this is a GUIText that will display the scores in game.
+          //Show Scores
         }
     }
 

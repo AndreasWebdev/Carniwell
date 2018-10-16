@@ -34,13 +34,10 @@ public class CameraControl : MonoBehaviour
         {
             playerTransfrom = FindObjectOfType<PlayerMovement>().transform;
         }
-        //RaycastHit hit;
-        //if(Physics.Raycast(transform.position, transform.forward, out hit))
-        //{
-        //    playerTransfrom.position = hit.point;
-        //}
 
-        //camPosOffset = transform.position - playerTransfrom.position;
+        transform.position = new Vector3(0, 2, -40);
+        transform.rotation = new Quaternion();
+        transform.localScale = new Vector3();
     }
 
     public void OnIntroSceneFinished()

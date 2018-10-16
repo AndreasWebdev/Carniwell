@@ -6,7 +6,7 @@ using UnityEngine;
 public class NameDatabase : MonoBehaviour
 {
 
-    public NPCNames npcNames;
+    public List<string> npcNames;
 
     public static  NameDatabase instance = null;
 
@@ -21,22 +21,28 @@ public class NameDatabase : MonoBehaviour
         npcNames = LoadNamesFromDocument();
     }
 
-    NPCNames LoadNamesFromDocument()
+    List<string> LoadNamesFromDocument()
     {
-        string jsonNames = Resources.Load<TextAsset>("npc_names").text;
-            
-        return JsonUtility.FromJson<NPCNames>(jsonNames);
+        string rawNames = Resources.Load<TextAsset>("npc_names").text;
+
+        //Old version with json
+
+        //return JsonUtility.FromJson<NPCNames>(rawNames);
+
+        //New version with names seperated by \n
+        string[] seperatedNames = rawNames.Split('\n');
+        List<string> namesList = new List<string>();
+        foreach(string n in seperatedNames)
+        {
+            namesList.Add(n);
+        }
+
+        return namesList;
     }
 
     public string GetRandomName()
     {
-        return npcNames.names[Random.Range(0,npcNames.names.Length)];
+        return npcNames[Random.Range(0,npcNames.Count)];
     }
 
-}
-
-[System.Serializable]
-public class NPCNames
-{
-    public string[] names;
 }

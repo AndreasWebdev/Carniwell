@@ -12,12 +12,11 @@ public class PlayerMovement : MonoBehaviour
 
     public Animator anim;
 
-    private bool isMovable = true;
-
     protected Joystick joystick;
 
     HUDManager hud;
 
+    bool isLocked = false;
 
     void Start()
     {
@@ -33,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(isMovable)
+        if(game.gameState == GameController.state.RUNNING && !isLocked)
         {
             Move();
         }
@@ -63,14 +62,14 @@ public class PlayerMovement : MonoBehaviour
 
     public void UnlockMovement()
     {
-        isMovable = true;
+        isLocked = false;
         CapsuleCollider collider = gameObject.GetComponent<CapsuleCollider>();
         collider.enabled = true;
     }
 
     public void LockMovement()
     {
-        isMovable = false;
+        isLocked = true;
         CapsuleCollider collider = gameObject.GetComponent<CapsuleCollider>();
         collider.enabled = false;
     }

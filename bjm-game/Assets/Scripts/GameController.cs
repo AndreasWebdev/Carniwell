@@ -123,6 +123,7 @@ public class GameController : MonoBehaviour
         {
             if(happinessPercentage < gameOverLimit)
             {
+                Broadcast("OnGameStopped", SendMessageOptions.DontRequireReceiver);
                 gameState = state.GAMEOVER;
 
                 hud.ShowGameOverPanel();

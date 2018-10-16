@@ -23,12 +23,23 @@ public class PlayerMovement : MonoBehaviour
     {
         game = FindObjectOfType<GameController>();
         joystick = FindObjectOfType<Joystick>();
+        joystick.gameObject.SetActive(false);
     }
 
     void Awake()
     {
         playerRigidbody = GetComponent<Rigidbody>();
         hud = FindObjectOfType<HUDManager>();
+    }
+
+    public void OnGameStarted()
+    {
+        joystick.gameObject.SetActive(true);
+    }
+
+    public void OnGameStopped()
+    {
+        joystick.gameObject.SetActive(false);
     }
 
     void FixedUpdate()

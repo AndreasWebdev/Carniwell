@@ -81,6 +81,7 @@ public class GameController : MonoBehaviour
 
     public void StopGame()
     {
+        Time.timeScale = 1;
         if(gameState == state.RUNNING || gameState == state.PAUSED || gameState == state.GAMEOVER)
         {
             gameState = state.STOPPED;

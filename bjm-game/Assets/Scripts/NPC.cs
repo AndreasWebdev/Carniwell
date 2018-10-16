@@ -23,8 +23,8 @@ public class NPC : MonoBehaviour
     public NavMeshAgent agent;
     public Animator anim;
 
-    private int nextUpdate = 1;
-    private AttractionController lastVisitedAttraction;
+    int nextUpdate = 1;
+    AttractionController lastVisitedAttraction;
 
     public int remainingIdleTime = 0;
     private bool walkRandom = true;
@@ -54,7 +54,7 @@ public class NPC : MonoBehaviour
     private void Start()
     {
         game = FindObjectOfType<GameController>();
-
+        happiness = Random.Range(80, 100);
         vm = FindObjectOfType<VisitorManager>();
         vm.allVisitors.Add(this);
         npcName = NameDatabase.instance.GetRandomName();

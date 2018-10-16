@@ -20,6 +20,8 @@ public class AttractionController : MonoBehaviour
 
     public bool running = false;
     double timeLeft;
+    [HideInInspector]
+    public int completedRides = 0; //Wie oft ist diese Attraktion bereits gefahren
 
     int nextUpdate = 1;
     bool isAnimation = false;
@@ -185,6 +187,8 @@ public class AttractionController : MonoBehaviour
                     popup.transform.parent = entrancePosition.transform;
                     popup.GetComponent<TMPro.TextMeshPro>().text = "+" + gainedHappiness.ToString("N0");
                 }
+                completedRides++;
+
             }
 
             while (npcsActive.Count > 0)

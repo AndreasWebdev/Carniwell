@@ -58,8 +58,10 @@ public class HUDManager : MonoBehaviour
     public AudioClip[] ansageSoundArray;
     public AudioSource effectsAudioSource;
     public AudioSource musicAudioSource;
-
     public AudioClip mainTheme, gameOverTheme;
+
+    [Header("Misc")]
+    public GameObject loadingPanel;
 
     void Start()
     {
@@ -69,7 +71,7 @@ public class HUDManager : MonoBehaviour
         musicAudioSource.clip = mainTheme;
         musicAudioSource.Play();
 
-       
+        loadingPanel.SetActive(false);
     }
 
     private void FixedUpdate()
@@ -273,5 +275,15 @@ public class HUDManager : MonoBehaviour
     public void HidePauseMenu()
     {
         pausePanelAnimator.SetBool("isActive", false);
+    }
+
+    public void ShowLoadingPanel()
+    {
+        loadingPanel.SetActive(true);
+    }
+
+    public void HideLoadingPanel()
+    {
+        loadingPanel.SetActive(false);
     }
 }

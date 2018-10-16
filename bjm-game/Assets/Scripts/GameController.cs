@@ -76,15 +76,15 @@ public class GameController : MonoBehaviour
     {
         Time.timeScale = 1;
         gameState = state.STOPPED;
-        StartCoroutine(LoadLevel("main"));
+        StartCoroutine(LoadScene("main"));
     }
 
     public void StopGame()
     {
-        if(gameState == state.RUNNING || gameState == state.PAUSED)
+        if(gameState == state.RUNNING || gameState == state.PAUSED || gameState == state.GAMEOVER)
         {
             gameState = state.STOPPED;
-            StartCoroutine(LoadLevel("menu"));
+            StartCoroutine(LoadScene("menu"));
         }
         else
         {
@@ -129,16 +129,18 @@ public class GameController : MonoBehaviour
         }
     }
 
-    IEnumerator LoadLevel(string levelName)
+    IEnumerator LoadScene(string levelName)
     {
         yield return null;
 
         AsyncOperation async = SceneManager.LoadSceneAsync(levelName);
 
+        hud.ShowLoadingPanel();
         while (!async.isDone)
         {
             yield return null;
         }
+        hud.HideLoadingPanel();
     }
 
     void Broadcast(string functionName, SendMessageOptions messageOptions)

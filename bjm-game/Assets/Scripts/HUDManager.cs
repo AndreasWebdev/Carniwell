@@ -244,6 +244,8 @@ public class HUDManager : MonoBehaviour
     public void SkipTutorial()
     {
         UITutorialAnim.SetBool("isActive", false);
+        Time.timeScale = 1;
+        game.StartIntro();
     }
 
     public void OnGamePaused()

@@ -9,7 +9,8 @@ public class GameController : MonoBehaviour
     public enum state {
         RUNNING,
         PAUSED,
-        GAMEOVER
+        GAMEOVER,
+        STOPPED
     }
 
     [Header("Reward Configuration")]
@@ -43,6 +44,10 @@ public class GameController : MonoBehaviour
     public state gameState = state.RUNNING;
     public float happinessPercentage;
 
+    [Header("Global Settings")]
+    public Animation mainCameraAnimation;
+    public Animator entranceAnimation;
+
     HUDManager hud;
 
 
@@ -51,9 +56,15 @@ public class GameController : MonoBehaviour
         hud = FindObjectOfType<HUDManager>();
     }
 
+    public void StartIntro()
+    {
+        mainCameraAnimation.Play();
+        entranceAnimation.SetBool("isActive", true);
+    }
+
     public void StartGame()
     {
-        gameState = state.RUNNING;
+        gameState = state.STOPPED;
         StartCoroutine(LoadLevel("main"));
     }
 

@@ -6,22 +6,29 @@ using System;
 
 public class ScoreManager : MonoBehaviour
 {
-    bool counting;
+    GameController game;
+
     public float currentTime;
 
     HUDManager hud;
 
     string timeString = "00:00";
+
+
     // Use this for initialization
     void Start()
     {
+        game = FindObjectOfType<GameController>();
+
         hud = FindObjectOfType<HUDManager>();
-        counting = true;
     }
 
     void Update()
     {
-        if(!counting) return;
+        if(game.gameState != GameController.state.RUNNING)
+        {
+            return;
+        }
         currentTime += Time.deltaTime;
 
         //float milliseconds = (currentTime * 100) % 100;
@@ -35,8 +42,6 @@ public class ScoreManager : MonoBehaviour
 
     public void GameOver()
     {
-        counting = false;
-
         CheckForNewHighscore();
     }
 

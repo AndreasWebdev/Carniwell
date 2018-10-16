@@ -126,8 +126,10 @@ MonoBehaviour:
   currentLevel: 1
   baseVisitorsNeeded: 15
   multiplierPerStage: 2
-  gameState: 0
+  gameState: 3
   happinessPercentage: 0
+  mainCameraAnimation: {fileID: 0}
+  entranceAnimation: {fileID: 0}
 --- !u!114 &114887309579171162
 MonoBehaviour:
   m_ObjectHideFlags: 1

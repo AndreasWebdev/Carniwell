@@ -20,9 +20,12 @@ public class NPCSpawner : MonoBehaviour
 
     void Spawn()
     {
-        for(int i = 0; i < game.spawnAmount; ++i)
+        if(game.gameState == GameController.state.RUNNING)
         {
-            Instantiate(npc, spawnPoint.position, spawnPoint.rotation);
+            for(int i = 0; i < game.spawnAmount; ++i)
+            {
+                Instantiate(npc, spawnPoint.position, spawnPoint.rotation);
+            }
         }
         Invoke("Spawn", 1 + game.currentLevel * 2);
     }

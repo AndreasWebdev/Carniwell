@@ -84,7 +84,7 @@ public class PlayerMovement : MonoBehaviour
         else if(other.GetComponentInParent<TreeController>() != null)
         {
             TreeController treeController = other.GetComponentInParent<TreeController>();
-            treeController.UpdateTransparency(0.3f);
+            treeController.UpdateTransparency(0.2f);
         }
         else
         {

@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114128141463634462}
   - component: {fileID: 114878529972868372}
   - component: {fileID: 114631445354944054}
+  - component: {fileID: 111263756965956410}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -37,8 +38,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1405334133976522}
-  m_LocalRotation: {x: 0.42261827, y: 0, z: 0, w: 0.9063079}
-  m_LocalPosition: {x: -0.59, y: 20, z: -30.3}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2, z: -40}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -91,6 +92,21 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1405334133976522}
   m_Enabled: 1
+--- !u!111 &111263756965956410
+Animation:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1405334133976522}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 88e6d4302d460404fbe3956d96146ad2, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 88e6d4302d460404fbe3956d96146ad2, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!114 &114128141463634462
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -104,7 +120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minX: -25
   maxX: 25
-  minZ: -22
+  minZ: -40
   maxZ: 20
   minYRot: -40
   maxYRot: 40

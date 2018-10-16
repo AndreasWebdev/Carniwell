@@ -46,6 +46,10 @@ public class VisitorManager : MonoBehaviour
 
     public void CalculateHappiness()
     {
+        if(game.gameState != GameController.state.RUNNING)
+        {
+            return;
+        }
         if(allVisitors.Count == 0)
         {
             return;

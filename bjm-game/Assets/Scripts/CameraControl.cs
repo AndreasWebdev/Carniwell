@@ -6,6 +6,8 @@ using UnityEngine.PostProcessing;
 
 public class CameraControl : MonoBehaviour
 {
+    GameController game;
+
     public float minX, maxX;
     public float minZ, maxZ;
 
@@ -16,8 +18,12 @@ public class CameraControl : MonoBehaviour
 
     Vector3 camPosOffset;
 
+    bool introAnimationFinished = false;
+
     void Start ()
     {
+        game = FindObjectOfType<GameController>();
+
 #if UNITY_ANDROID
         if (GetComponent<PostProcessingBehaviour>() != null)
         {
@@ -28,36 +34,48 @@ public class CameraControl : MonoBehaviour
         {
             playerTransfrom = FindObjectOfType<PlayerMovement>().transform;
         }
+        //RaycastHit hit;
+        //if(Physics.Raycast(transform.position, transform.forward, out hit))
+        //{
+        //    playerTransfrom.position = hit.point;
+        //}
+
+        //camPosOffset = transform.position - playerTransfrom.position;
+    }
+
+    public void OnIntroSceneFinished()
+    {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit))
+        if(Physics.Raycast(transform.position, transform.forward, out hit))
         {
             playerTransfrom.position = hit.point;
         }
 
         camPosOffset = transform.position - playerTransfrom.position;
+
+        introAnimationFinished = true;
+
+        game.gameState = GameController.state.RUNNING;
     }
 
     void FixedUpdate ()
     {
-        //Calculating Position;
-        Vector3 targetCamPos = playerTransfrom.position + camPosOffset;
-        targetCamPos.y = transform.position.y;
-        Vector3 newPosClamped = new Vector3(Mathf.Clamp(targetCamPos.x, minX, maxX), targetCamPos.y/*Mathf.Clamp(targetCamPos.y, minY, maxY)*/, Mathf.Clamp(targetCamPos.z, minZ, maxZ));
+        if(introAnimationFinished)
+        {
+            //Calculating Position;
+            Vector3 targetCamPos = playerTransfrom.position + camPosOffset;
+            targetCamPos.y = transform.position.y;
+            Vector3 newPosClamped = new Vector3(Mathf.Clamp(targetCamPos.x, minX, maxX), targetCamPos.y/*Mathf.Clamp(targetCamPos.y, minY, maxY)*/, Mathf.Clamp(targetCamPos.z, minZ, maxZ));
 
-        //Rotation
-        /*transform.LookAt(playerTransfrom);
-        Vector3 camRot = transform.eulerAngles;
-        camRot.y = Mathf.Clamp(camRot.y,minYRot, maxYRot);
-        transform.eulerAngles = camRot;*/
+            Vector3 lookPos = playerTransfrom.position - transform.position;
+            lookPos.y = Mathf.Clamp(lookPos.y, minYRot, maxYRot);
+            Quaternion rotation = Quaternion.LookRotation(lookPos);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * cameraSmoothing);
 
-        Vector3 lookPos = playerTransfrom.position - transform.position;
-        lookPos.y = Mathf.Clamp(lookPos.y, minYRot, maxYRot);
-        Quaternion rotation = Quaternion.LookRotation(lookPos);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * cameraSmoothing);
+            //Applying Position
+            transform.position = Vector3.Lerp(transform.position, newPosClamped, cameraSmoothing * Time.deltaTime);
 
-        //Applying Position
-        transform.position = Vector3.Lerp(transform.position, newPosClamped, cameraSmoothing * Time.deltaTime);
-
-        transform.position = newPosClamped;
+            transform.position = newPosClamped;
+        }
     }
 }

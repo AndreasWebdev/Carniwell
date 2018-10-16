@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114887309579171162}
   - component: {fileID: 114236493932353654}
   - component: {fileID: 114755553921923342}
+  - component: {fileID: 114121913011820768}
   m_Layer: 0
   m_Name: _ParkManager
   m_TagString: Untagged
@@ -85,7 +86,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npcNames:
-    names: []
+  - 2:seq
+--- !u!114 &114121913011820768
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1733684162164842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d1fddb67d0f9f54c895b5696a72751d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  addScoreURL: http://kindaworking.mineplace.de/carniwell/highscore/addscore.php?
+  highscoreURL: http://kindaworking.mineplace.de/carniwell/highscore/display.php
 --- !u!114 &114236493932353654
 MonoBehaviour:
   m_ObjectHideFlags: 1

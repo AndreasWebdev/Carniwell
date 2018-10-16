@@ -10,6 +10,7 @@ public class HUDManager : MonoBehaviour
 {
     GameController game;
     ScoreManager scoreManager;
+    ScoreUploader externalScoreService;
     public AttractionController currentAttraction = null;
 
     public Animator UIAttractionStartAnim;
@@ -66,10 +67,12 @@ public class HUDManager : MonoBehaviour
     [Header("Misc")]
     public GameObject loadingPanel;
 
+
     void Start()
     {
         game = FindObjectOfType<GameController>();
         scoreManager = FindObjectOfType<ScoreManager>();
+        externalScoreService = FindObjectOfType<ScoreUploader>();
         waitingText.text = "0";
         musicAudioSource.clip = mainTheme;
         musicAudioSource.Play();
@@ -303,8 +306,7 @@ public class HUDManager : MonoBehaviour
 
         int score = scoreManager.GetHighscoreTimeInSeconds();
 
-
-        //Tell scoreUploader what to do
+        StartCoroutine(externalScoreService.PostScores(name, score));
     }
 
     public void ShowPauseMenu()

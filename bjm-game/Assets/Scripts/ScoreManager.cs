@@ -62,4 +62,13 @@ public class ScoreManager : MonoBehaviour
     {
         return PlayerPrefsConstants.GetHighscoreTimeString();
     }
+
+    public int GetHighscoreTimeInMilliseconds()
+    {
+        return Mathf.RoundToInt(PlayerPrefsConstants.GetHighscoreTime());
+    }
+    public int GetHighscoreTimeInSeconds()
+    {
+        return Mathf.RoundToInt(PlayerPrefsConstants.GetHighscoreTime() % 60);
+    }
 }

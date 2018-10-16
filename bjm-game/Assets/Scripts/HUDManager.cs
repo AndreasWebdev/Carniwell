@@ -53,6 +53,9 @@ public class HUDManager : MonoBehaviour
     public TextMeshProUGUI gameOverTimeText;
     public TextMeshProUGUI gameOverHighscoreText;
     public Animator gameOverPanelAnimator;
+    public GameObject nameInputPanel;
+    public TMP_InputField nameInput;
+    public Button submitHighscoreButton;
 
     [Header("Sound")]
     public AudioClip[] ansageSoundArray;
@@ -262,9 +265,46 @@ public class HUDManager : MonoBehaviour
         musicAudioSource.clip = gameOverTheme;
         musicAudioSource.Play();
         scoreManager.GameOver();
-        gameOverTimeText.SetText(string.Format("Du hast {0} durchgehalten!", scoreManager.GetScoreString()));
-        gameOverHighscoreText.SetText(string.Format("Dein Highscore: {0}", scoreManager.GetHighscoreString()));
+        if(scoreManager.GetScoreString() == scoreManager.GetHighscoreString())
+        {
+            gameOverTimeText.SetText(string.Format("Neuer Highscore: {0}", scoreManager.GetHighscoreString()));
+            gameOverHighscoreText.gameObject.SetActive(false);
+            nameInputPanel.gameObject.SetActive(true);
+            nameInput.onValueChanged.AddListener(OnHighscoreNameInputChange);
+            submitHighscoreButton.interactable = false;
+            submitHighscoreButton.onClick.AddListener(OnSubmitHighscore);
+        }
+        else
+        {
+            nameInputPanel.gameObject.SetActive(false);
+            gameOverHighscoreText.gameObject.SetActive(true);
+            gameOverTimeText.SetText(string.Format("Du hast {0} durchgehalten!", scoreManager.GetScoreString()));
+            gameOverHighscoreText.SetText(string.Format("Dein Highscore: {0}", scoreManager.GetHighscoreString()));
+        }
+
         gameOverPanelAnimator.SetBool("isActive", true);
+    }
+
+    void OnHighscoreNameInputChange(string _text)
+    {
+        if(nameInput.text.Trim().Length <= 3)
+        {
+            submitHighscoreButton.interactable = false;
+        }else
+        {
+            submitHighscoreButton.interactable = true;
+        }
+    }
+
+    void OnSubmitHighscore()
+    {
+        string name = nameInput.text.Trim();
+        if (name.Length <= 3)return;
+
+        int score = scoreManager.GetHighscoreTimeInSeconds();
+
+
+        //Tell scoreUploader what to do
     }
 
     public void ShowPauseMenu()

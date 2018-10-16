@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d1fddb67d0f9f54c895b5696a72751d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  addScoreURL: http://kindaworking.mineplace.de/carniwell/highscore/addscore.php?
-  highscoreURL: http://kindaworking.mineplace.de/carniwell/highscore/display.php
+  addScoreURL: http://kindaworking.de/addscore.php?
+  highscoreURL: http://kindaworking.de/display.php
 --- !u!114 &114236493932353654
 MonoBehaviour:
   m_ObjectHideFlags: 1

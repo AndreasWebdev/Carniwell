@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     HUDManager hud;
 
     bool isLocked = false;
+    bool movementAlertShowed = false;
 
     void Start()
     {
@@ -35,6 +36,19 @@ public class PlayerMovement : MonoBehaviour
         if(game.gameState == GameController.state.RUNNING && !isLocked)
         {
             Move();
+        }
+        else if(isLocked)
+        {
+            if(joystick.Horizontal != 0 && joystick.Vertical != 0 && !movementAlertShowed)
+            {
+                // Show this alert only once per lock cycle
+                movementAlertShowed = true;
+                hud.ShowAlert("Warte bis die Attraktion beendet ist");
+            }
+            else if(joystick.Horizontal == 0 && joystick.Vertical == 0 && movementAlertShowed)
+            {
+                movementAlertShowed = false;
+            }
         }
     }
 
@@ -62,6 +76,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void UnlockMovement()
     {
+        movementAlertShowed = false;
         isLocked = false;
         CapsuleCollider collider = gameObject.GetComponent<CapsuleCollider>();
         collider.enabled = true;

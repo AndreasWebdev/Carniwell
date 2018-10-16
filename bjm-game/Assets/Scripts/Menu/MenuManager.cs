@@ -100,6 +100,15 @@ public class MenuManager : MonoBehaviour
         PlayerPrefsConstants.SetSFXVolume(sfxVal);
         PlayerPrefsConstants.SetMusicVolume(musicVal);
         PlayerPrefsConstants.SetAnnouncerVolume(announcerVal);
+
+        if (FindObjectOfType<SoundSource>())
+        {
+            SoundSource[] allSoundSources = FindObjectsOfType<SoundSource>();
+            foreach(SoundSource s in allSoundSources)
+            {
+                s.SetupSound();
+            }
+        }
     }
 
     #endregion

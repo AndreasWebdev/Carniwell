@@ -8,8 +8,7 @@ public class ParkManager : MonoBehaviour
     public List<AttractionController> activeAttractions = new List<AttractionController>();
 
 
-    // Use this for initialization
-    void Start()
+    void OnGameStarted()
     {
         StartCoroutine(DelayedFirstAttractrion());
     }

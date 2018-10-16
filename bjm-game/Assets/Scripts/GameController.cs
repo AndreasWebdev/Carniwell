@@ -56,13 +56,23 @@ public class GameController : MonoBehaviour
         hud = FindObjectOfType<HUDManager>();
     }
 
-    public void StartIntro()
+    void PlayIntro()
     {
         mainCameraAnimation.Play();
         entranceAnimation.SetBool("isActive", true);
     }
 
-    public void StartGame()
+    public IEnumerator StartGame()
+    {
+        Time.timeScale = 1;
+        PlayIntro();
+        yield return WaitForAnimation(mainCameraAnimation);
+
+        gameState = state.RUNNING;
+        Broadcast("OnGameStarted", SendMessageOptions.DontRequireReceiver);
+    }
+
+    public void LoadGame()
     {
         gameState = state.STOPPED;
         StartCoroutine(LoadLevel("main"));
@@ -72,6 +82,7 @@ public class GameController : MonoBehaviour
     {
         if(gameState == state.RUNNING || gameState == state.PAUSED)
         {
+            gameState = state.STOPPED;
             StartCoroutine(LoadLevel("menu"));
         }
         else
@@ -85,13 +96,7 @@ public class GameController : MonoBehaviour
         if(gameState == state.RUNNING)
         {
             hud.ShowPauseMenu();
-
-            Scene active = SceneManager.GetActiveScene();
-            GameObject[] roots = active.GetRootGameObjects();
-            foreach (GameObject root in roots)
-            {
-                root.BroadcastMessage("onGamePaused", SendMessageOptions.DontRequireReceiver);
-            }
+            Broadcast("onGamePaused", SendMessageOptions.DontRequireReceiver);
 
             gameState = state.PAUSED;
         }
@@ -100,11 +105,7 @@ public class GameController : MonoBehaviour
             Time.timeScale = 1;
 
             hud.HidePauseMenu();
-            Scene active = SceneManager.GetActiveScene();
-            GameObject[] roots = active.GetRootGameObjects();
-            foreach (GameObject root in roots) {
-                root.BroadcastMessage("onGameResumed", SendMessageOptions.DontRequireReceiver);
-            }
+            Broadcast("onGameResumed", SendMessageOptions.DontRequireReceiver);
 
             gameState = state.RUNNING;
         }
@@ -137,5 +138,23 @@ public class GameController : MonoBehaviour
         {
             yield return null;
         }
+    }
+
+    void Broadcast(string functionName, SendMessageOptions messageOptions)
+    {
+        Scene active = SceneManager.GetActiveScene();
+        GameObject[] roots = active.GetRootGameObjects();
+        foreach(GameObject root in roots)
+        {
+            root.BroadcastMessage(functionName, messageOptions);
+        }
+    }
+
+    IEnumerator WaitForAnimation(Animation animation)
+    {
+        do
+        {
+            yield return null;
+        } while(animation.isPlaying);
     }
 }

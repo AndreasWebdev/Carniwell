@@ -1227,6 +1227,7 @@ GameObject:
   - component: {fileID: 222661956480850078}
   - component: {fileID: 114174950521559102}
   - component: {fileID: 95653864758106560}
+  - component: {fileID: 114544692918355804}
   m_Layer: 5
   m_Name: IntroPanel
   m_TagString: Untagged
@@ -2044,7 +2045,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114968965715667412}
-        m_MethodName: NavigateToMain
+        m_MethodName: RestartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4291,6 +4292,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventReceived: 0
+--- !u!114 &114544692918355804
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1887466379145418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88c7291e0a053b34ea5523d84143ae14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventReceived: 0
 --- !u!114 &114561946135996940
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5382,7 +5395,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114968965715667412}
-        m_MethodName: SkipTutorial
+        m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7559,7 +7572,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -139.44922, y: 0}
+  m_AnchoredPosition: {x: -139.45312, y: 0}
   m_SizeDelta: {x: 278.8999, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224672709290683368

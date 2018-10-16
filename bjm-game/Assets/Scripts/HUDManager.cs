@@ -229,23 +229,20 @@ public class HUDManager : MonoBehaviour
         effectsAudioSource.Play();
     }
 
-    public void NavigateToMenu()
+    public void StopGame()
     {
-        Time.timeScale = 1;
-        SceneManager.LoadSceneAsync("menu");
+        game.StopGame();
     }
 
-    public void NavigateToMain()
+    public void RestartGame()
     {
-        Time.timeScale = 1;
-        SceneManager.LoadSceneAsync("main");
+        game.LoadGame();
     }
 
-    public void SkipTutorial()
+    public void StartGame()
     {
         UITutorialAnim.SetBool("isActive", false);
-        Time.timeScale = 1;
-        game.StartIntro();
+        StartCoroutine(game.StartGame());
     }
 
     public void OnGamePaused()

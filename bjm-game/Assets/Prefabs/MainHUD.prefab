@@ -433,8 +433,11 @@ GameObject:
   - component: {fileID: 114284574858330604}
   - component: {fileID: 114968965715667412}
   - component: {fileID: 82409776851763096}
+  - component: {fileID: 114351256326718180}
   - component: {fileID: 82545611798195718}
+  - component: {fileID: 114748686594137106}
   - component: {fileID: 82682769421599512}
+  - component: {fileID: 114261822326660022}
   m_Layer: 5
   m_Name: MainHUD
   m_TagString: Untagged
@@ -1459,7 +1462,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 0568e4b24340c4c4ca24645bb7c62e0b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 99a31c4e519b16549aa67c281acf0db0, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1
@@ -3389,6 +3392,19 @@ MonoBehaviour:
   m_canvasRenderer: {fileID: 222672506836354642}
   m_TextComponent: {fileID: 114482729296614910}
   m_materialReferenceIndex: 1
+--- !u!114 &114261822326660022
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1447099428188500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 488f612c26e96e84db23987f3f882393, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 82682769421599512}
+  soundType: 0
 --- !u!114 &114278043052220370
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3627,6 +3643,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Special
+--- !u!114 &114351256326718180
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1447099428188500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 488f612c26e96e84db23987f3f882393, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 82409776851763096}
+  soundType: 2
 --- !u!114 &114353135359745736
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4914,11 +4943,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -5127,6 +5156,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114748686594137106
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1447099428188500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 488f612c26e96e84db23987f3f882393, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 82545611798195718}
+  soundType: 1
 --- !u!114 &114750009998990860
 MonoBehaviour:
   m_ObjectHideFlags: 1

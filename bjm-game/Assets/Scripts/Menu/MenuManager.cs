@@ -17,6 +17,7 @@ public class MenuManager : MonoBehaviour
     public Animator settingsPanelAnim;
 
     [Header("Settings")]
+
     public Slider sfxSlider;
     public Slider musicSlider;
     public Slider announcerSlider;
@@ -26,6 +27,8 @@ public class MenuManager : MonoBehaviour
         loadingPanel.SetActive(false);
         canvasMain.gameObject.SetActive(true);
         canvasCredits.gameObject.SetActive(false);
+
+        SetupSettings();
     }
 
     void Update()
@@ -34,6 +37,7 @@ public class MenuManager : MonoBehaviour
         {
             CreditsEnd();
         }
+
     }
 
     public void OnButtonStart()
@@ -80,8 +84,14 @@ public class MenuManager : MonoBehaviour
     }
 
     #region Settings
+    void SetupSettings()
+    {
+        sfxSlider.value = PlayerPrefsConstants.GetSFXVolume()*100;
+        musicSlider.value = PlayerPrefsConstants.GetMusicVolume() * 100;
+        announcerSlider.value = PlayerPrefsConstants.GetAnnouncerVolume() * 100;
+    }
 
-    public void SaveSettings()
+    void SaveSettings()
     {
         float sfxVal = sfxSlider.value / 100;
         float musicVal = musicSlider.value / 100;

@@ -60,17 +60,17 @@ public static class PlayerPrefsConstants
 
     public static float GetSFXVolume()
     {
-        return PlayerPrefs.GetFloat(SFXVolumeKey);
+        return PlayerPrefs.GetFloat(SFXVolumeKey,1);
     }
 
     public static float GetMusicVolume()
     {
-        return PlayerPrefs.GetFloat(MusicVolumeKey);
+        return PlayerPrefs.GetFloat(MusicVolumeKey,1);
     }
 
     public static float GetAnnouncerVolume()
     {
-        return PlayerPrefs.GetFloat(AnnouncerVolumeKey);
+        return PlayerPrefs.GetFloat(AnnouncerVolumeKey,1);
     }
 
     #endregion

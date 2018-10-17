@@ -19,6 +19,7 @@ public class DayNightController : MonoBehaviour
 
     void Start()
     {
+        
         sunInitialIntensity = sun.intensity;
         currentTimeOfDay = gameStartTime / 24;
     }

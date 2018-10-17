@@ -282,9 +282,6 @@ public class HUDManager : MonoBehaviour
                 nameInput.text = PlayerPrefsConstants.GetHighscorePlayerName();
                 submitHighscoreButton.interactable = true;
             }
-
-
-            submitHighscoreButton.interactable = false;
             submitHighscoreButton.onClick.AddListener(OnSubmitHighscore);
         }
         else

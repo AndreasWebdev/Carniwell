@@ -8,6 +8,8 @@ public static class PlayerPrefsConstants
     //Score
     public static string HighscoreTimeKey = "HighscoreTime";
 
+    public static string HighscorePlayerNameKey = "HighscorePlayerName";
+
     //Settings
     public static string SFXVolumeKey = "SFX_Volume";
     public static string MusicVolumeKey = "Music_Volume";
@@ -35,9 +37,24 @@ public static class PlayerPrefsConstants
 
         return timeString;
     }
+
+    public static string GetHighscorePlayerName()
+    {
+        if (PlayerPrefs.HasKey(HighscorePlayerNameKey))
+        {
+            return PlayerPrefs.GetString(HighscorePlayerNameKey);
+        }else
+        {
+            return string.Empty;
+        }
+    }
+    public static void SetHighscorePlayerName(string _name)
+    {
+        PlayerPrefs.SetString(HighscorePlayerNameKey,_name);
+    }
     #endregion
 
-    #region
+    #region Settings
 
     public static void SetSFXVolume(float _vol)
     {

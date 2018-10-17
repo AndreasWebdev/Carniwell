@@ -272,6 +272,7 @@ public class HUDManager : MonoBehaviour
         {
             gameOverTimeText.SetText(string.Format("Neuer Highscore: {0}", scoreManager.GetHighscoreString()));
             gameOverHighscoreText.gameObject.SetActive(false);
+            gameOverHighscoreText.text = PlayerPrefsConstants.GetHighscorePlayerName();
             nameInputPanel.gameObject.SetActive(true);
             nameInput.onValueChanged.AddListener(OnHighscoreNameInputChange);
             submitHighscoreButton.interactable = false;
@@ -305,7 +306,7 @@ public class HUDManager : MonoBehaviour
         if (name.Length <= 3)return;
 
         int score = scoreManager.GetHighscoreTimeInSeconds();
-
+        PlayerPrefsConstants.SetHighscorePlayerName(name);
         StartCoroutine(externalScoreService.PostScores(name, score));
     }
 

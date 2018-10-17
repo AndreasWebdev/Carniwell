@@ -69,6 +69,6 @@ public class ScoreManager : MonoBehaviour
     }
     public int GetHighscoreTimeInSeconds()
     {
-        return Mathf.RoundToInt(PlayerPrefsConstants.GetHighscoreTime() % 60);
+        return Mathf.RoundToInt(PlayerPrefsConstants.GetHighscoreTime());
     }
 }

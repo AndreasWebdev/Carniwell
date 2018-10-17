@@ -25,10 +25,12 @@ public class ScoreUploader : MonoBehaviour
         WWW hs_post = new WWW(post_url);
         yield return hs_post; // Wait until the download is done
 
+        
         if(hs_post.error != null)
         {
-            print("There was an error posting the high score: " + hs_post.error);
+            Debug.Log("There was an error posting the high score: " + hs_post.error);
         }
+        Debug.Log(hs_post.text);
     }
 
     // Get the scores from the MySQL DB to display in a GUIText.

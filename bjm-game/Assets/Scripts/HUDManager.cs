@@ -70,6 +70,7 @@ public class HUDManager : MonoBehaviour
 
     void Start()
     {
+        PlayerPrefs.DeleteKey(PlayerPrefsConstants.HighscoreTimeKey);
         game = FindObjectOfType<GameController>();
         scoreManager = FindObjectOfType<ScoreManager>();
         externalScoreService = FindObjectOfType<ScoreUploader>();
@@ -272,9 +273,17 @@ public class HUDManager : MonoBehaviour
         {
             gameOverTimeText.SetText(string.Format("Neuer Highscore: {0}", scoreManager.GetHighscoreString()));
             gameOverHighscoreText.gameObject.SetActive(false);
-            gameOverHighscoreText.text = PlayerPrefsConstants.GetHighscorePlayerName();
             nameInputPanel.gameObject.SetActive(true);
             nameInput.onValueChanged.AddListener(OnHighscoreNameInputChange);
+
+            if(PlayerPrefsConstants.GetHighscorePlayerName() != string.Empty &&
+                PlayerPrefsConstants.GetHighscorePlayerName().Length >= 3)
+            {
+                nameInput.text = PlayerPrefsConstants.GetHighscorePlayerName();
+                submitHighscoreButton.interactable = true;
+            }
+
+
             submitHighscoreButton.interactable = false;
             submitHighscoreButton.onClick.AddListener(OnSubmitHighscore);
         }

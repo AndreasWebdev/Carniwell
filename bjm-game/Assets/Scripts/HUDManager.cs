@@ -70,7 +70,6 @@ public class HUDManager : MonoBehaviour
 
     void Start()
     {
-        PlayerPrefs.DeleteKey(PlayerPrefsConstants.HighscoreTimeKey);
         game = FindObjectOfType<GameController>();
         scoreManager = FindObjectOfType<ScoreManager>();
         externalScoreService = FindObjectOfType<ScoreUploader>();

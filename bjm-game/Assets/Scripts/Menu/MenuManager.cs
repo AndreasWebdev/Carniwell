@@ -38,6 +38,10 @@ public class MenuManager : MonoBehaviour
             CreditsEnd();
         }
 
+        if(Input.GetKey(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
     public void OnButtonStart()

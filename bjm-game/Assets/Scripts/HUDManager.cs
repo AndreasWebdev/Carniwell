@@ -255,6 +255,8 @@ public class HUDManager : MonoBehaviour
 
     public void OnGamePaused()
     {
+        scoreText.text = "PAUSED";
+
         pauseButtonBackground.sprite = resumeIcon;
     }
 

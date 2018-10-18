@@ -5,11 +5,12 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
-
+using UnityEngine.PostProcessing;
 
 public class MenuManager : MonoBehaviour
 {
     public PlayableDirector timelineCredits;
+    public Camera cam;
     public bool isInCredits = false;
     public GameObject loadingPanel;
     public Canvas canvasMain;
@@ -29,6 +30,13 @@ public class MenuManager : MonoBehaviour
         canvasCredits.gameObject.SetActive(false);
 
         SetupSettings();
+#if UNITY_ANDROID
+        if (cam == null) cam = FindObjectOfType<Camera>();
+        if (cam.GetComponent<PostProcessingBehaviour>() != null && cam != null)
+        {
+            cam.GetComponent<PostProcessingBehaviour>().enabled = false;
+        }
+#endif
     }
 
     void Update()

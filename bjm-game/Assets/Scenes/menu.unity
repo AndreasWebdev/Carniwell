@@ -21561,6 +21561,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timelineCredits: {fileID: 504578683}
+  cam: {fileID: 1229497735}
   isInCredits: 0
   loadingPanel: {fileID: 1097085560}
   canvasMain: {fileID: 1378115955}
@@ -31500,6 +31501,7 @@ GameObject:
   - component: {fileID: 1229497735}
   - component: {fileID: 1229497734}
   - component: {fileID: 1229497737}
+  - component: {fileID: 1229497738}
   m_Layer: 0
   m_Name: CreditsCamera
   m_TagString: MainCamera
@@ -31585,6 +31587,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1229497738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1229497733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: be4a38eb80e3f3445a0cec1731ca5829, type: 2}
 --- !u!1 &1235052360
 GameObject:
   m_ObjectHideFlags: 0

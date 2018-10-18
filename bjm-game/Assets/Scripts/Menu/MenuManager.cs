@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
 using UnityEngine.PostProcessing;
+using TMPro;
 
 public class MenuManager : MonoBehaviour
 {
@@ -22,6 +23,13 @@ public class MenuManager : MonoBehaviour
     public Slider sfxSlider;
     public Slider musicSlider;
     public Slider announcerSlider;
+
+    [Header("Highscore")]
+    public GameObject highscorePage;
+    public TextMeshProUGUI highscoreTextPos;
+    public TextMeshProUGUI highscoreTextNames;
+    public TextMeshProUGUI highscoreTextScores;
+    public TextMeshProUGUI highscoreTextConnection;
 
     void Start()
     {
@@ -93,6 +101,48 @@ public class MenuManager : MonoBehaviour
             yield return null;
         }
         loadingPanel.SetActive(false);
+    }
+
+    IEnumerator RefreshHighScoreTable()
+    {
+        CoroutineWithData cd = new CoroutineWithData(this, ScoreUploader.GetScores());
+        yield return cd.coroutine;
+        List<string[]> highscoreTable = (List<string[]>)cd.result;
+
+        highscoreTextPos.text = "";
+        highscoreTextNames.text = "";
+        highscoreTextScores.text = "";
+
+        if(highscoreTable.Count == 0)
+        {
+            highscoreTextConnection.enabled = true;
+        }
+        else
+        {
+            highscoreTextConnection.enabled = false;
+        }
+
+        if(highscoreTable.Count == 3)
+        {
+            for(int i = 0; i < highscoreTable.Count; ++i)
+            {
+                highscoreTextPos.text += (i + 1).ToString() + "\n";
+                highscoreTextNames.text += highscoreTable[i][0] + "\n";
+                highscoreTextScores.text += highscoreTable[i][1] + "\n";
+            }
+        }
+
+        highscorePage.SetActive(true);
+    }
+
+    public void ShowHighScores()
+    {
+        StartCoroutine(RefreshHighScoreTable());
+    }
+
+    public void HideHighScores()
+    {
+        highscorePage.SetActive(false);
     }
 
     #region Settings

@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class ScoreUploader : MonoBehaviour
 {
-    private string secretKey = "62HUYi5xq|k>Q2mqr$-2jJHmH0,#$)"; 
-    private string addScoreURL = "http://kindaworking.de/carniwell/addscore.php?";
-    private string highscoreURL = "http://kindaworking.de/carniwell/display.php";
+    string secretKey = "62HUYi5xq|k>Q2mqr$-2jJHmH0,#$)"; 
+    static string addScoreURL = "http://kindaworking.de/carniwell/addscore.php?";
+    static string highscoreURL = "http://kindaworking.de/carniwell/display.php";
+
 
     void Start()
     {
@@ -35,8 +37,10 @@ public class ScoreUploader : MonoBehaviour
 
     // Get the scores from the MySQL DB to display in a GUIText.
     // remember to use StartCoroutine when calling this function!
-    IEnumerator GetScores()
+    public static IEnumerator GetScores()
     {
+        List<string[]> result = new List<string[]>();
+
         WWW hs_get = new WWW(highscoreURL + "?limit=" + 10);
         yield return hs_get;
 
@@ -46,8 +50,23 @@ public class ScoreUploader : MonoBehaviour
         }
         else
         {
-          //Show Scores
+            string scores = hs_get.text;
+            string[] entries = scores.Split('\n');
+
+            foreach(string entry in entries)
+            {
+                if(entry != "")
+                {
+                    string[] entryInfo = entry.Split('\t');
+                    if(entryInfo.Length == 2)
+                    {
+                        result.Add(entryInfo);
+                    }
+                }
+            }
         }
+
+        yield return result;
     }
 
 }

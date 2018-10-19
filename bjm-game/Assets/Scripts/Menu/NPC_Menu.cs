@@ -82,7 +82,7 @@ public class NPC_Menu : MonoBehaviour
             // Show NPC
             currentStatus = status.WALKING;
 
-            remainingIdleTime = idleTime;
+            remainingIdleTime = Random.Range(idleTime-1,idleTime+1);
             agent.SetDestination(GetRandomLocation());
             anim.SetBool("moving", true);
         }

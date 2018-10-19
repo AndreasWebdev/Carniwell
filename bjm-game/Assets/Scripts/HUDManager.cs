@@ -298,7 +298,7 @@ public class HUDManager : MonoBehaviour
 
     void OnHighscoreNameInputChange(string _text)
     {
-        if(nameInput.text.Trim().Length <= 3)
+        if(nameInput.text.Trim().Length < 3)
         {
             submitHighscoreButton.interactable = false;
         }else
@@ -310,11 +310,32 @@ public class HUDManager : MonoBehaviour
     void OnSubmitHighscore()
     {
         string name = nameInput.text.Trim();
-        if (name.Length <= 3)return;
+        if (name.Length < 3)return;
 
         int score = scoreManager.GetHighscoreTimeInSeconds();
         PlayerPrefsConstants.SetHighscorePlayerName(name);
-        StartCoroutine(externalScoreService.PostScores(name, score));
+
+        StartCoroutine(TryPostHighscore(name, score));
+    }
+
+    IEnumerator TryPostHighscore(string name, float score)
+    {
+        CoroutineWithData cd = new CoroutineWithData(this, externalScoreService.PostScores(name, score));
+        yield return cd.coroutine;
+        int succeeded = (int)cd.result;
+
+        nameInputPanel.gameObject.SetActive(false);
+        gameOverHighscoreText.gameObject.SetActive(true);
+        gameOverTimeText.SetText(string.Format("Du hast {0} durchgehalten!", scoreManager.GetScoreString()));
+
+        if(succeeded == 1)
+        {
+            gameOverHighscoreText.SetText("Dein Highscore wurde hochgeladen!");
+        }
+        else
+        {
+            gameOverHighscoreText.SetText("Highscore konnte nicht hochgeladen werden...");
+        }
     }
 
     public void ShowPauseMenu()

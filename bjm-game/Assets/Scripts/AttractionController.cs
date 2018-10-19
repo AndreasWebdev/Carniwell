@@ -182,7 +182,7 @@ public class AttractionController : MonoBehaviour
                     float gainedHappiness = npcsActive.Count * game.rewardSatisfiedRide;
                     GameObject popup = (GameObject)Instantiate(happinessPopupTextPrefab);
                     popup.transform.position = entrancePosition.transform.position + (Vector3.up);
-                    popup.transform.parent = entrancePosition.transform;
+                    popup.transform.SetParent(entrancePosition.transform);
                     popup.GetComponent<TMPro.TextMeshPro>().text = "+" + gainedHappiness.ToString("N0");
                 }
                 completedRides++;

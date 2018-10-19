@@ -52,11 +52,9 @@ public class AttractionController : MonoBehaviour
             isAnimation = true;
         }
         audioSource = gameObject.AddComponent<AudioSource>();
-
-        if(transform.position.x > 0)
-        {
-            waitingCountText.transform.parent.Rotate(Vector3.up, 180, Space.Self);
-        }
+        
+        transform.localEulerAngles = Vector3.zero;
+        waitingCountText.transform.parent.eulerAngles = Vector3.zero;
     }
 
     // Update is called once per frame

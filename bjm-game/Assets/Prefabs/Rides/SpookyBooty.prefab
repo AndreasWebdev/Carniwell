@@ -1649,7 +1649,7 @@ MonoBehaviour:
   attractionName: Spookybooty
   entrancePosition: {fileID: 4696671666945894}
   duration: 11
-  npcAmount: 10
+  npcAmount: 23
   running: 0
   completedRides: 0
   npcsActive: []

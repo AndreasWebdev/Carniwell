@@ -120,10 +120,7 @@ public class MenuManager : MonoBehaviour
         else
         {
             highscoreTextConnection.enabled = false;
-        }
 
-        if(highscoreTable.Count == 3)
-        {
             for(int i = 0; i < highscoreTable.Count; ++i)
             {
                 highscoreTextPos.text += (i + 1).ToString() + "\n";

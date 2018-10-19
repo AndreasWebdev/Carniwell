@@ -188,7 +188,11 @@ public class AttractionController : MonoBehaviour
                     popup.GetComponent<TMPro.TextMeshPro>().text = "+" + gainedHappiness.ToString("N0");
                 }
                 completedRides++;
-
+                GameStatistics.AddTotalNumberOfSatisfiedVisitors(npcsActive.Count);
+                GameStatistics.AddTotalNumberOfDrivenAttractions(1);
+            }else
+            {
+                GameStatistics.AddTotalNumberOfStoppedAttractions(1);
             }
 
             while (npcsActive.Count > 0)

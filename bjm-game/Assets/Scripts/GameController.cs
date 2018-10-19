@@ -49,11 +49,13 @@ public class GameController : MonoBehaviour
     public Animator entranceAnimation;
 
     HUDManager hud;
-
+    VisitorManager visitorManager;
 
     void Start()
     {
         hud = FindObjectOfType<HUDManager>();
+        visitorManager = FindObjectOfType<VisitorManager>();
+        GameStatistics.AddTotalNumberOfPlays();
     }
 
     void Update()
@@ -142,6 +144,8 @@ public class GameController : MonoBehaviour
                 gameState = state.GAMEOVER;
 
                 hud.ShowGameOverPanel();
+
+                GameStatistics.AddTotalNumberOfVisitors(visitorManager.allVisitors.Count);
             }
         }
     }

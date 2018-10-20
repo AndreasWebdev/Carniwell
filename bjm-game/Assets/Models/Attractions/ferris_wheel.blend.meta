@@ -22,6 +22,7 @@ ModelImporter:
     2100004: Ferris_wheel_base
     2100006: Ferris_wheel_hud
     2100008: Ferris_wheel_blue
+    2100010: None__color-palette_png
     2300000: Ferris_wheel_base
     2300002: Ferris_wheel_bigwheel
     2300004: Ferris_wheel_cabin
@@ -69,7 +70,7 @@ ModelImporter:
       name: Ferris_wheel_red
     second: {fileID: 2100000, guid: 103ace865106dbb499fe6a6c71eb3c91, type: 2}
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -141,10 +142,10 @@ ModelImporter:
     rootMotionBoneName: 
     rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

@@ -32,6 +32,14 @@ ModelImporter:
     2100016: Entrance_cable
     2100018: Entrance_light
     2100020: Entrance_shield__gameLogoSchrift_png
+    2100022: Entrance_out__color-palette_png
+    2100024: Entrance_out_top__color-palette_png
+    2100026: Entrance_flag_1__color-palette_png
+    2100028: Entrance_flag__color-palette_png
+    2100030: Entrance_lamp__color-palette_png
+    2100032: Entrance_cable__color-palette_png
+    2100034: Entrance_light__color-palette_png
+    2100036: None__color-palette_png
     2300000: //RootNode
     2300002: Cube_001
     2300004: Cube_003

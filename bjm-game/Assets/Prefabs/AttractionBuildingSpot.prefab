@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 82163604317374650}
   - component: {fileID: 114925472148919246}
   m_Layer: 0
-  m_Name: AtttractionSpot
+  m_Name: AttractionBuildingSpot
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0

@@ -10,6 +10,7 @@ ModelImporter:
     2100000: hatshop_primary
     2100002: hatshop_secondary
     2100004: hatshop_hat
+    2100006: None__color-palette_png
     2300000: //RootNode
     2300002: Hatshop_top
     3300000: //RootNode
@@ -20,7 +21,7 @@ ModelImporter:
     9500000: //RootNode
   externalObjects: {}
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 1

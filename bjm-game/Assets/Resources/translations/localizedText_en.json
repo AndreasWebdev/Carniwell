@@ -1,0 +1,22 @@
+{"items":[
+	{"key":"intro_header","value":"Welcome"},
+	{"key":"intro_text","value":"Welcome to Carniwell. You are the new Manager, aren't you? Unfortunately all of your colleagues got the winterblues and you are here to manage the park on your own. Hurry up! The crowd doesn't want to wait! If you are not able to satisfy the visitors your park will get closed. Now let's go!"},
+	{"key":"intro_button_submit","value":"Let's go!"},
+	{"key":"pause_menu_button_resign","value":"Resign"},
+	{"key":"attraction_stop","value":"Abort"},
+	{"key":"attraction_queue","value":"Waiting"},
+	{"key":"attraction_attraction","value":"in ride"},
+	{"key":"gameover_header","value":"Your carniwell flopped!"},
+	{"key":"gameover_text","value":"Unfortunately your visitors have been waiting so long that they wanted to leave your park. But stay positive: The next carniwell is coming soon!"},
+	{"key":"gameover_score","value":"You have reached {0}!"},
+	{"key":"gameover_highscore_name","value":"Your name"},
+	{"key":"gameover_highscore_button_submit","value":"Submit"},
+	{"key":"gameover_button_restart","value":"Try again"},
+	{"key":"gameover_button_menu","value":"Back to menu"},
+	{"key":"loading_text","value":"Loading"},
+	{"key":"settings_sfx","value":"SFX volume"},
+	{"key":"settings_music","value":"Music volume"},
+	{"key":"settings_speaker","value":"Speaker volume"},
+	{"key":"highscore_table_score","value":"Time"},
+	{"key":"highscore_error","value":"Could not connect to highscore server"}
+]}

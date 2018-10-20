@@ -1,0 +1,23 @@
+{"items":[
+	{"key":"intro_header","value":"Willkommen"},
+	{"key":"intro_text","value":"Willkommen in Carniwell. Du musst der neue Parkmanager sein! Leider haben alle deine Kollegen den Winterblues. Also musst du hier wohl alles alleine regeln. Mach schnell, die Gäste warten nicht gerne! und solltest du die Fahrt abbrechen, wird ihnen das wohl auch nicht gefallen. Und jetzt Abmarsch!"},
+	{"key":"intro_button_submit","value":"Okay!"},
+	{"key":"pause_menu_button_resign","value":"Aufgeben"},
+	{"key":"attraction_stop","value":"Notstop"},
+	{"key":"attraction_queue","value":"Warten"},
+	{"key":"attraction_attraction","value":"Sitze belegt"},
+	{"key":"gameover_header","value":"Dein Jahrmarkt ist gefloppt!"},
+	{"key":"gameover_text","value":"Leider sind deine Besucher so unglücklich gewesen, dass sie sofort nach Hause gegangen sind. Aber seh es doch positiv: Nach dem Jahrmarkt ist vor dem Jahrmarkt!"},
+	{"key":"gameover_score","value":"Du hast {0} durchgehalten!"},
+	{"key":"gameover_highscore_name","value":"Dein Name"},
+	{"key":"gameover_highscore_button_submit","value":"Absenden"},
+	{"key":"gameover_button_restart","value":"Noch einmal"},
+	{"key":"gameover_button_menu","value":"Zurück zum Menü"},
+	{"key":"loading_text","value":"Laden"},
+	{"key":"settings_sfx","value":"SFX Lautstärke"},
+	{"key":"settings_music","value":"Musik Lautstärke"},
+	{"key":"settings_speaker","value":"Ansager Lautstärke"},
+	{"key":"gameover_panel_button_menu","value":"Zurück zum Menü"},
+	{"key":"highscore_table_score","value":"Zeit"},
+	{"key":"highscore_error","value":"Verbindung zum Highscore-Server fehlgeschlagen"}
+]}

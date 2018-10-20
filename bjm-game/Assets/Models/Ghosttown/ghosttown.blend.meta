@@ -25,6 +25,7 @@ ModelImporter:
     100038: Shirt
     100040: Text
     100042: Cube_001
+    100044: Plane_003
     400000: Armature
     400002: Bone
     400004: Bone_001
@@ -47,6 +48,7 @@ ModelImporter:
     400038: Shirt
     400040: Text
     400042: Cube_001
+    400044: Plane_003
     2100000: Ghost
     2100002: Schrift
     2100004: Geb_ude
@@ -62,11 +64,13 @@ ModelImporter:
     2300004: Plane_002
     2300006: Text
     2300008: Cube_001
+    2300010: Plane_003
     3300000: Plane
     3300002: Plane_001
     3300004: Plane_002
     3300006: Text
     3300008: Cube_001
+    3300010: Plane_003
     4300000: Plane_002
     4300002: Text
     4300004: Plane_001
@@ -74,6 +78,7 @@ ModelImporter:
     4300008: Cube
     4300010: Shirt
     4300012: Cube_001
+    4300014: Plane_003
     7400000: Default Take
     7400002: ArmatureAction
     7400004: Run_Cycle

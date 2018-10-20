@@ -481,7 +481,6 @@ GameObject:
   - component: {fileID: 4241321716250654}
   - component: {fileID: 33563902978436450}
   - component: {fileID: 23636879749815518}
-  - component: {fileID: 95581094444006334}
   m_Layer: 0
   m_Name: entrance_plate
   m_TagString: Untagged
@@ -604,7 +603,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1994768847378294}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.76988, y: 0.20000432, z: -32.8816}
+  m_LocalPosition: {x: -7.1343393, y: 0.20000452, z: -34.48137}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4953089074903316}
@@ -1142,7 +1141,6 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: b52ee294e58b4b143ae856101c8d4cb5, type: 3}
   - {fileID: 2100002, guid: b52ee294e58b4b143ae856101c8d4cb5, type: 3}
   - {fileID: 2100004, guid: b52ee294e58b4b143ae856101c8d4cb5, type: 3}
   - {fileID: 2100006, guid: b52ee294e58b4b143ae856101c8d4cb5, type: 3}
@@ -1380,24 +1378,6 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: cf7efbcc469f44b40a81ab540196288a, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!95 &95581094444006334
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1978267896997044}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: b52ee294e58b4b143ae856101c8d4cb5, type: 3}
-  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

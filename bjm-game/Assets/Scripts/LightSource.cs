@@ -31,7 +31,7 @@ public class LightSource : MonoBehaviour {
            
            if(dnController.currentTimeOfDay > turnOff && dnController.currentTimeOfDay < turnOn && lamp.intensity == 1)
             {
-                Debug.Log("OFF");
+
                 lamp.intensity = 0;
             }
             else if((dnController.currentTimeOfDay < turnOff || dnController.currentTimeOfDay > turnOn) && lamp.intensity == 0)

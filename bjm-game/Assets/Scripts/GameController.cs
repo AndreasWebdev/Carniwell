@@ -43,7 +43,8 @@ public class GameController : MonoBehaviour
     [Header("Game Information")]
     public state gameState = state.RUNNING;
     public float happinessPercentage;
-
+    public int gameOverCountdown = 5;
+    int gameOverCountdownStore;
     [Header("Global Settings")]
     public Animation mainCameraAnimation;
     public Animator entranceAnimation;
@@ -56,6 +57,8 @@ public class GameController : MonoBehaviour
         hud = FindObjectOfType<HUDManager>();
         visitorManager = FindObjectOfType<VisitorManager>();
         GameStatistics.AddTotalNumberOfPlays();
+        gameOverCountdown += 1; //Increase countdown by 1 to start at 5 and end by 0
+        gameOverCountdownStore = gameOverCountdown;
     }
 
     void Update()
@@ -138,14 +141,24 @@ public class GameController : MonoBehaviour
     {
         if(gameState == state.RUNNING)
         {
+            
             if(happinessPercentage < gameOverLimit)
             {
+
+                gameOverCountdown -= 1;
+                hud.ShowGameOverCountdown(gameOverCountdown);
+                Debug.Log(gameOverCountdown + " to gameover");
+                if (gameOverCountdown > 0) return;
                 Broadcast("OnGameStopped", SendMessageOptions.DontRequireReceiver);
                 gameState = state.GAMEOVER;
-
+                hud.HideGameOverCountdown();
                 hud.ShowGameOverPanel();
 
                 GameStatistics.AddTotalNumberOfVisitors(visitorManager.allVisitors.Count);
+            }else
+            {
+                gameOverCountdown = gameOverCountdownStore;
+                hud.HideGameOverCountdown();
             }
         }
     }

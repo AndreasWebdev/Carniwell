@@ -58,6 +58,9 @@ public class HUDManager : MonoBehaviour
     public TMP_InputField nameInput;
     public Button submitHighscoreButton;
 
+    [Header("Game Over Countdown")]
+    public TextMeshProUGUI gameOverCountdownText;
+
     [Header("Sound")]
     public AudioClip[] ansageSoundArray;
     public AudioSource effectsAudioSource;
@@ -76,7 +79,7 @@ public class HUDManager : MonoBehaviour
         waitingText.text = "0";
         musicAudioSource.clip = mainTheme;
         musicAudioSource.Play();
-
+        gameOverCountdownText.gameObject.SetActive(false);
         loadingPanel.SetActive(false);
     }
 
@@ -356,5 +359,16 @@ public class HUDManager : MonoBehaviour
     public void HideLoadingPanel()
     {
         loadingPanel.SetActive(false);
+    }
+
+    public void ShowGameOverCountdown(int num)
+    {
+        if (!gameOverCountdownText.gameObject.activeSelf) gameOverCountdownText.gameObject.SetActive(true);
+
+        gameOverCountdownText.text = num.ToString();
+    }
+    public void HideGameOverCountdown()
+    {
+        gameOverCountdownText.gameObject.SetActive(false);
     }
 }

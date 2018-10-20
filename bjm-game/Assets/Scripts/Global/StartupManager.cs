@@ -9,7 +9,13 @@ using UnityEngine.SceneManagement;
 public class StartupManager : MonoBehaviour
 {
     // Use this for initialization
-    IEnumerator Start()
+
+
+        void Start()
+        {
+        StartCoroutine(StartCo());
+        }
+    IEnumerator StartCo()
     {
         StartCoroutine(InitLocalization());
         while(!LocalizationManager.instance.GetIsReady())
@@ -17,7 +23,19 @@ public class StartupManager : MonoBehaviour
             yield return null;
         }
 
-        SceneManager.LoadScene("menu");
+        StartCoroutine(LoadLevel("menu"));
+    }
+
+    IEnumerator LoadLevel(string levelName)
+    {
+        yield return null;
+
+        AsyncOperation async = SceneManager.LoadSceneAsync(levelName);
+        
+        while (!async.isDone)
+        {
+            yield return null;
+        }
     }
 
     IEnumerator InitLocalization()

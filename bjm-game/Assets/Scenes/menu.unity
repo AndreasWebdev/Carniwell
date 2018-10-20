@@ -20491,6 +20491,7 @@ GameObject:
   - component: {fileID: 1000507380}
   - component: {fileID: 1000507382}
   - component: {fileID: 1000507381}
+  - component: {fileID: 1000507383}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -20637,6 +20638,18 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1000507379}
   m_CullTransparentMesh: 0
+--- !u!114 &1000507383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1000507379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be7ceb0d4a4d46640ad1697963785a0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: highscore_table_score
 --- !u!114 &1029263948 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114713735664144678, guid: c6184ceead0b40c41ae11871d433c115,
@@ -24694,6 +24707,7 @@ GameObject:
   - component: {fileID: 1197092413}
   - component: {fileID: 1197092415}
   - component: {fileID: 1197092414}
+  - component: {fileID: 1197092416}
   m_Layer: 5
   m_Name: NoConnection
   m_TagString: Untagged
@@ -24840,6 +24854,18 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1197092412}
   m_CullTransparentMesh: 0
+--- !u!114 &1197092416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1197092412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be7ceb0d4a4d46640ad1697963785a0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: highscore_error
 --- !u!1 &1199033927
 GameObject:
   m_ObjectHideFlags: 0
@@ -31207,6 +31233,7 @@ GameObject:
   - component: {fileID: 1600471292}
   - component: {fileID: 1600471294}
   - component: {fileID: 1600471293}
+  - component: {fileID: 1600471295}
   m_Layer: 5
   m_Name: TextMeshPro Text
   m_TagString: Untagged
@@ -31353,6 +31380,18 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1600471291}
   m_CullTransparentMesh: 0
+--- !u!114 &1600471295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1600471291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be7ceb0d4a4d46640ad1697963785a0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: settings_speaker
 --- !u!1001 &1610352298
 Prefab:
   m_ObjectHideFlags: 0
@@ -33162,6 +33201,7 @@ GameObject:
   - component: {fileID: 1774997374}
   - component: {fileID: 1774997376}
   - component: {fileID: 1774997375}
+  - component: {fileID: 1774997377}
   m_Layer: 5
   m_Name: TextMeshPro Text (2)
   m_TagString: Untagged
@@ -33308,6 +33348,18 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1774997373}
   m_CullTransparentMesh: 0
+--- !u!114 &1774997377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1774997373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be7ceb0d4a4d46640ad1697963785a0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: settings_sfx
 --- !u!1001 &1776726309
 Prefab:
   m_ObjectHideFlags: 0
@@ -38467,6 +38519,7 @@ GameObject:
   - component: {fileID: 2136423848}
   - component: {fileID: 2136423850}
   - component: {fileID: 2136423849}
+  - component: {fileID: 2136423851}
   m_Layer: 5
   m_Name: TextMeshPro Text (1)
   m_TagString: Untagged
@@ -38613,6 +38666,18 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2136423847}
   m_CullTransparentMesh: 0
+--- !u!114 &2136423851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2136423847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be7ceb0d4a4d46640ad1697963785a0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: settings_music
 --- !u!1 &2143612889
 GameObject:
   m_ObjectHideFlags: 0

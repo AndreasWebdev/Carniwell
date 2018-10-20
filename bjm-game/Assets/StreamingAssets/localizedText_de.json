@@ -1,6 +1,6 @@
 {"items":[
 	{"key":"intro_header","value":"Willkommen"},
-	{"key":"intro_text","value":"Willkommen in Carniwell. Du musst der neue Parkmanager sein! Leider haben alle deine Kollegen den Winterblues. Also musst du hier wohl alles alleine regeln. Mach schnell, die Gäste warten nicht gerne! und solltest du die Fahrt abbrechen, wird ihnen das wohl auch nicht gefallen. Und jetzt Abmarsch!"},
+	{"key":"intro_text","value":"Willkommen in Carniwell.\n Du musst der neue Parkmanager sein! Leider haben alle deine Kollegen den Winterblues. Also musst du hier wohl alles alleine regeln. Mach schnell, die Gäste warten nicht gerne! und solltest du die Fahrt abbrechen, wird ihnen das wohl auch nicht gefallen.\n Und jetzt Abmarsch!"},
 	{"key":"intro_button_submit","value":"Okay!"},
 	{"key":"pause_menu_button_resign","value":"Aufgeben"},
 	{"key":"attraction_stop","value":"Notstop"},

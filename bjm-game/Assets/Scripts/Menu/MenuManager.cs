@@ -31,6 +31,7 @@ public class MenuManager : MonoBehaviour
     public TextMeshProUGUI highscoreTextScores;
     public TextMeshProUGUI highscoreTextConnection;
 
+
     void Start()
     {
         loadingPanel.SetActive(false);

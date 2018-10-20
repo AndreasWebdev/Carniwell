@@ -22,6 +22,7 @@ ModelImporter:
     2100008: House_out_table
     2100010: House_inner_floor
     2100012: House_inner_shield
+    2100014: None__color-palette_png
     2300000: Cylinder
     2300002: Cylinder_001
     2300004: Cylinder_002
@@ -41,7 +42,7 @@ ModelImporter:
     9500000: //RootNode
   externalObjects: {}
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -75,8 +76,8 @@ ModelImporter:
     addColliders: 0
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1

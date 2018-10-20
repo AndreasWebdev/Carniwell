@@ -30,7 +30,7 @@ public class NameDatabase : MonoBehaviour
         //return JsonUtility.FromJson<NPCNames>(rawNames);
 
         //New version with names seperated by \n
-        string[] seperatedNames = rawNames.Split('\n');
+        string[] seperatedNames = rawNames.Trim().Split('\n');
         List<string> namesList = new List<string>();
         foreach(string n in seperatedNames)
         {

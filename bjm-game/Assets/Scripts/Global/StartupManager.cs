@@ -8,13 +8,9 @@ using UnityEngine.SceneManagement;
 
 public class StartupManager : MonoBehaviour
 {
-    public GameObject loadingPanel;
-
-
     // Use this for initialization
     IEnumerator Start()
     {
-        loadingPanel.SetActive(true);
         StartCoroutine(InitLocalization());
         while(!LocalizationManager.instance.GetIsReady())
         {

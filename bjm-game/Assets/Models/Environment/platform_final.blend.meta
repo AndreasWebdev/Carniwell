@@ -9,6 +9,10 @@ ModelImporter:
     2100002: Material_004
     2100004: Material_002
     2100006: Material_001
+    2100008: Material_003__color-palette_png
+    2100010: Material_004__color-palette_png
+    2100012: Material_002__color-palette_png
+    2100014: Material_001__color-palette_png
     2300000: //RootNode
     3300000: //RootNode
     4300000: Plane_002
@@ -17,7 +21,7 @@ ModelImporter:
     9500000: //RootNode
   externalObjects: {}
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 1

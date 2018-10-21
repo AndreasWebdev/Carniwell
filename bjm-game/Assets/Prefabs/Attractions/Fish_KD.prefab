@@ -705,7 +705,7 @@ MonoBehaviour:
   id: 3
   attractionName: Fish KD
   entrancePosition: {fileID: 4178782873843240}
-  duration: 3
+  duration: 5
   npcAmount: 10
   running: 0
   completedRides: 0

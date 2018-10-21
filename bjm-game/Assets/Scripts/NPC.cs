@@ -103,7 +103,7 @@ public class NPC : MonoBehaviour
             // 50:50 Chance calculator
             // 1 = attraction
             // 0 = random
-            walkRandom = (Random.value > 0.75f);
+            walkRandom = (Random.value > 0.55f);
 
             // Show NPC
             ShowNPC();

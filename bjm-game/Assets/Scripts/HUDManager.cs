@@ -299,8 +299,14 @@ public class HUDManager : MonoBehaviour
         {
             nameInputPanel.gameObject.SetActive(false);
             gameOverHighscoreText.gameObject.SetActive(true);
+#if UNITY_EDITOR
+            gameOverTimeText.SetText(string.Format("Du hast {0} durchgehalten!", scoreManager.GetScoreString()));
+            gameOverHighscoreText.SetText(string.Format("Dein Highscore: {0}", scoreManager.GetHighscoreString()));
+#else
             gameOverTimeText.SetText(string.Format(LocalizationManager.instance.GetLocalizedValue("gameover_score"), scoreManager.GetScoreString()));
             gameOverHighscoreText.SetText(string.Format(LocalizationManager.instance.GetLocalizedValue("gameover_highscore_score"), scoreManager.GetHighscoreString())); 
+#endif
+
         }
 
         gameOverPanelAnimator.SetBool("isActive", true);

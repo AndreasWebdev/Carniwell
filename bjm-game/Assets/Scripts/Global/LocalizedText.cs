@@ -13,33 +13,36 @@ public class LocalizedText : MonoBehaviour
 
     void Start()
     {
-
-        try
+        if (LocalizationManager.instance != null)
         {
-            if (GetComponent<TextMeshProUGUI>())
+            try
             {
-                TextMeshProUGUI text = GetComponent<TextMeshProUGUI>();
-                text.text = LocalizationManager.instance.GetLocalizedValue(key);
+                if (GetComponent<TextMeshProUGUI>())
+                {
+                    TextMeshProUGUI text = GetComponent<TextMeshProUGUI>();
+                    text.text = LocalizationManager.instance.GetLocalizedValue(key);
+                }
+                if (GetComponent<TextMeshPro>())
+                {
+                    TextMeshPro text = GetComponent<TextMeshPro>();
+                    text.text = LocalizationManager.instance.GetLocalizedValue(key);
+                }
             }
-            if (GetComponent<TextMeshPro>())
+            catch (NullReferenceException e)
             {
-                TextMeshPro text = GetComponent<TextMeshPro>();
-                text.text = LocalizationManager.instance.GetLocalizedValue(key);
-            }
-        }catch(NullReferenceException e)
-        {
-            string GOpath;
-            if(transform.parent != null)
-            {
-                GOpath = transform.parent.name + " > " + gameObject.name;
-            }
-            else
-            {
-                GOpath = gameObject.name;
-            }
+                string GOpath;
+                if (transform.parent != null)
+                {
+                    GOpath = transform.parent.name + " > " + gameObject.name;
+                }
+                else
+                {
+                    GOpath = gameObject.name;
+                }
 
-            Debug.LogError("NO TEXT on "+ GOpath + ": " + e);
+                Debug.LogError("NO TEXT on " + GOpath + ": " + e);
 
+            }
         }
 
     }

@@ -75,7 +75,8 @@ public class AttractionController : MonoBehaviour
         } else if(Input.GetKeyUp(KeyCode.B))
         {
             Debug.Log("Attraction stopped");
-            hud.ShowAlert(LocalizationManager.instance.GetLocalizedValue("alert_stopped_attraction"));
+
+            hud.ShowAlert(LocalizationManager.instance != null ? LocalizationManager.instance.GetLocalizedValue("alert_stopped_attraction") : "alert_stopped_attraction");
 
             StopAttraction();
         }
@@ -143,7 +144,7 @@ public class AttractionController : MonoBehaviour
             {
                 // TODO: Throw error message - No NPCS
                 Debug.Log("No NPCs available");
-                hud.ShowAlert(LocalizationManager.instance.GetLocalizedValue("alert_no_one_in_queue"));
+                hud.ShowAlert(LocalizationManager.instance != null ? LocalizationManager.instance.GetLocalizedValue("alert_no_one_in_queue") : "alert_no_one_in_queue");
                 running = false;
             }
         }

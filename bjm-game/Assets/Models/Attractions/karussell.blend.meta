@@ -19,6 +19,7 @@ ModelImporter:
     2100002: Material
     2100004: karussell_red
     2100006: Karussell_brown
+    2100008: None__color-palette_png
     2300000: Cube
     2300002: Cube_001
     2300004: Cube_002
@@ -38,7 +39,7 @@ ModelImporter:
     9500000: //RootNode
   externalObjects: {}
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 1

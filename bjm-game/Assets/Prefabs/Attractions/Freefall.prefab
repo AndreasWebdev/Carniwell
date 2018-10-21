@@ -280,7 +280,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1244626538643830}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.0124507, y: 0.2000043, z: -32.68415}
+  m_LocalPosition: {x: -6.9709153, y: 0.20000453, z: -34.625134}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4052929182390370}
@@ -373,8 +373,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100004, guid: 83faf693d38b8554ab1bcf076bf3009b, type: 3}
-  - {fileID: 2100002, guid: 83faf693d38b8554ab1bcf076bf3009b, type: 3}
+  - {fileID: 2100000, guid: d6d5763974da36e49951710feadb0ad6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -448,7 +447,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100006, guid: 83faf693d38b8554ab1bcf076bf3009b, type: 3}
+  - {fileID: 2100000, guid: d6d5763974da36e49951710feadb0ad6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -483,7 +482,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100002, guid: 83faf693d38b8554ab1bcf076bf3009b, type: 3}
+  - {fileID: 2100000, guid: d6d5763974da36e49951710feadb0ad6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -518,7 +517,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100002, guid: 83faf693d38b8554ab1bcf076bf3009b, type: 3}
+  - {fileID: 2100000, guid: d6d5763974da36e49951710feadb0ad6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -623,7 +622,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100004, guid: 83faf693d38b8554ab1bcf076bf3009b, type: 3}
+  - {fileID: 2100000, guid: d6d5763974da36e49951710feadb0ad6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -180,7 +180,13 @@ public class NPC : MonoBehaviour
     {
         if(currentStatus.Equals(status.QUEUE))
         {
-            UpdateHappiness(game.penaltyInQueue);
+            if (lastVisitedAttraction.npcsWaiting.Count <= lastVisitedAttraction.npcAmount)
+            {
+                UpdateHappiness(game.penaltyInQueue);
+            }else if(lastVisitedAttraction.npcsWaiting.Count > lastVisitedAttraction.npcAmount)
+            {
+                UpdateHappiness(game.penaltyInQueue*2);
+            }
         }
 
         if (currentStatus.Equals(status.ATTRACTION))

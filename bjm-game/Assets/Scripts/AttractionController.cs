@@ -66,6 +66,13 @@ public class AttractionController : MonoBehaviour
             UpdateEverySecond();
         }
         waitingCountText.text = npcsWaiting.Count.ToString("00");
+        if(npcsWaiting.Count > npcAmount)
+        {
+            waitingCountText.color = Color.red;
+        }else
+        {
+            waitingCountText.color = Color.black;
+        }
 #if UNITY_EDITOR
         if(Input.GetKeyUp(KeyCode.A))
         {

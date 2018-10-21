@@ -123,7 +123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rewardSatisfiedRide: 20
   rewardInAttraction: 11
-  penaltyInQueue: -5
+  penaltyInQueue: -8
   penaltyUnsatisfiedRide: -10
   goodColor: {r: 0, g: 1, b: 0, a: 1}
   mediumColor: {r: 1, g: 1, b: 0, a: 1}

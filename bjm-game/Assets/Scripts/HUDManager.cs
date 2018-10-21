@@ -49,6 +49,7 @@ public class HUDManager : MonoBehaviour
     public Sprite resumeIcon;
     public Image pauseButtonBackground;
     public Animator pausePanelAnimator;
+    public Image bigPauseSymbol;
 
     [Header("GameOver")]
     public TextMeshProUGUI gameOverTimeText;
@@ -81,6 +82,7 @@ public class HUDManager : MonoBehaviour
         musicAudioSource.Play();
         gameOverCountdownText.gameObject.SetActive(false);
         loadingPanel.SetActive(false);
+        bigPauseSymbol.gameObject.SetActive(false);
     }
 
     private void FixedUpdate()
@@ -261,11 +263,13 @@ public class HUDManager : MonoBehaviour
         scoreText.text = "PAUSED";
 
         pauseButtonBackground.sprite = resumeIcon;
+        bigPauseSymbol.gameObject.SetActive(true);
     }
 
     public void OnGameResumed()
     {
         pauseButtonBackground.sprite = pauseIcon;
+        bigPauseSymbol.gameObject.SetActive(false);
     }
 
     public void ShowGameOverPanel()

@@ -1,6 +1,6 @@
 {"items":[
 	{"key":"intro_header","value":"Welcome"},
-	{"key":"intro_text","value":"Welcome to Carniwell. You are the new Manager, aren't you? Unfortunately all of your colleagues got the winterblues and you are here to manage the park on your own. Hurry up! The crowd doesn't want to wait! If you are not able to satisfy the visitors your park will get closed. Now let's go!"},
+	{"key":"intro_text","value":"Welcome to Carniwell. You are the new manager, aren't you? Unfortunately all of your colleagues got the winterblues and you are here to manage the park on your own. Hurry up! The crowd doesn't want to wait! If you are not able to satisfy the visitors your park will get closed. Now let's go!"},
 	{"key":"intro_button_submit","value":"Let's go!"},
 	{"key":"pause_menu_button_resign","value":"Resign"},
 	{"key":"attraction_stop","value":"Abort"},

@@ -260,6 +260,7 @@ public class HUDManager : MonoBehaviour
 
     public void OnGamePaused()
     {
+        ShowPauseMenu();
         scoreText.text = "PAUSED";
 
         pauseButtonBackground.sprite = resumeIcon;
@@ -270,6 +271,8 @@ public class HUDManager : MonoBehaviour
     {
         pauseButtonBackground.sprite = pauseIcon;
         bigPauseSymbol.gameObject.SetActive(false);
+
+        HidePauseMenu();
     }
 
     public void ShowGameOverPanel()
@@ -345,12 +348,12 @@ public class HUDManager : MonoBehaviour
         }
     }
 
-    public void ShowPauseMenu()
+    void ShowPauseMenu()
     {
         pausePanelAnimator.SetBool("isActive", true);
     }
 
-    public void HidePauseMenu()
+    void HidePauseMenu()
     {
         pausePanelAnimator.SetBool("isActive", false);
     }

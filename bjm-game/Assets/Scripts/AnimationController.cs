@@ -16,11 +16,8 @@ public class AnimationController : MonoBehaviour
 
     public void freeze()
     {
-        if (!eventReceived)
-        {
-            Time.timeScale = 0;
-            eventReceived = true;
-        }
+        Time.timeScale = 0;
+        eventReceived = true;
     }
 
     public void Hide()

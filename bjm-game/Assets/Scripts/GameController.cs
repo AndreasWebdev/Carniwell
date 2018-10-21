@@ -117,7 +117,6 @@ public class GameController : MonoBehaviour
     {
         if(gameState == state.RUNNING)
         {
-            hud.ShowPauseMenu();
             Broadcast("OnGamePaused", SendMessageOptions.DontRequireReceiver);
 
             gameState = state.PAUSED;
@@ -126,7 +125,6 @@ public class GameController : MonoBehaviour
         {
             Time.timeScale = 1;
 
-            hud.HidePauseMenu();
             Broadcast("OnGameResumed", SendMessageOptions.DontRequireReceiver);
 
             gameState = state.RUNNING;

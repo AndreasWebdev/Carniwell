@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 23814656992944142}
   - component: {fileID: 222889659932002948}
   - component: {fileID: 114108673732902088}
+  - component: {fileID: 114618933833307490}
   m_Layer: 0
   m_Name: WaitingText
   m_TagString: Untagged
@@ -881,6 +882,18 @@ MonoBehaviour:
   waitingCountText: {fileID: 114656598749155644}
   happinessPopupTextPrefab: {fileID: 1587299899682022, guid: c3514b0bfd4b32947a33ac5f92d8ec59,
     type: 2}
+--- !u!114 &114618933833307490
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1434664769298816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be7ceb0d4a4d46640ad1697963785a0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: attraction_queue
 --- !u!114 &114656598749155644
 MonoBehaviour:
   m_ObjectHideFlags: 1

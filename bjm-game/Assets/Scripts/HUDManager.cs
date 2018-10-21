@@ -282,7 +282,7 @@ public class HUDManager : MonoBehaviour
         scoreManager.GameOver();
         if(scoreManager.GetScoreString() == scoreManager.GetHighscoreString())
         {
-            gameOverTimeText.SetText(string.Format("Neuer Highscore: {0}", scoreManager.GetHighscoreString()));
+            gameOverTimeText.SetText(string.Format(LocalizationManager.instance.GetLocalizedValue("gameover_new_highscore"), scoreManager.GetHighscoreString())); 
             gameOverHighscoreText.gameObject.SetActive(false);
             nameInputPanel.gameObject.SetActive(true);
             nameInput.onValueChanged.AddListener(OnHighscoreNameInputChange);
@@ -299,8 +299,8 @@ public class HUDManager : MonoBehaviour
         {
             nameInputPanel.gameObject.SetActive(false);
             gameOverHighscoreText.gameObject.SetActive(true);
-            gameOverTimeText.SetText(string.Format("Du hast {0} durchgehalten!", scoreManager.GetScoreString()));
-            gameOverHighscoreText.SetText(string.Format("Dein Highscore: {0}", scoreManager.GetHighscoreString()));
+            gameOverTimeText.SetText(string.Format(LocalizationManager.instance.GetLocalizedValue("gameover_score"), scoreManager.GetScoreString()));
+            gameOverHighscoreText.SetText(string.Format(LocalizationManager.instance.GetLocalizedValue("gameover_highscore_score"), scoreManager.GetHighscoreString())); 
         }
 
         gameOverPanelAnimator.SetBool("isActive", true);
@@ -336,15 +336,15 @@ public class HUDManager : MonoBehaviour
 
         nameInputPanel.gameObject.SetActive(false);
         gameOverHighscoreText.gameObject.SetActive(true);
-        gameOverTimeText.SetText(string.Format("Du hast {0} durchgehalten!", scoreManager.GetScoreString()));
+        gameOverTimeText.SetText(string.Format(LocalizationManager.instance.GetLocalizedValue("gameover_score"), scoreManager.GetScoreString()));
 
         if(succeeded == 1)
         {
-            gameOverHighscoreText.SetText("Dein Highscore wurde hochgeladen!");
+            gameOverHighscoreText.SetText(LocalizationManager.instance.GetLocalizedValue("highscore_uploaded"));
         }
         else
         {
-            gameOverHighscoreText.SetText("Highscore konnte nicht hochgeladen werden...");
+            gameOverHighscoreText.SetText(LocalizationManager.instance.GetLocalizedValue("highscore_upload_error"));
         }
     }
 

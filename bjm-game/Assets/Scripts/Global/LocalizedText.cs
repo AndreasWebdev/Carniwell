@@ -1,5 +1,6 @@
 ﻿// Reference: https://unity3d.com/de/learn/tutorials/topics/scripting/localization-manager
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -12,9 +13,34 @@ public class LocalizedText : MonoBehaviour
 
     void Start()
     {
-#if !UNITY_EDITOR
-        TextMeshProUGUI text = GetComponent<TextMeshProUGUI>();
-        text.text = LocalizationManager.instance.GetLocalizedValue(key);
-#endif
+
+        try
+        {
+            if (GetComponent<TextMeshProUGUI>())
+            {
+                TextMeshProUGUI text = GetComponent<TextMeshProUGUI>();
+                text.text = LocalizationManager.instance.GetLocalizedValue(key);
+            }
+            if (GetComponent<TextMeshPro>())
+            {
+                TextMeshPro text = GetComponent<TextMeshPro>();
+                text.text = LocalizationManager.instance.GetLocalizedValue(key);
+            }
+        }catch(NullReferenceException e)
+        {
+            string GOpath;
+            if(transform.parent != null)
+            {
+                GOpath = transform.parent.name + " > " + gameObject.name;
+            }
+            else
+            {
+                GOpath = gameObject.name;
+            }
+
+            Debug.LogError("NO TEXT on "+ GOpath + ": " + e);
+
+        }
+
     }
 }

@@ -8,7 +8,10 @@ using UnityEngine.SceneManagement;
 
 public class StartupManager : MonoBehaviour
 {
-    // Use this for initialization
+
+        public enum Language { English,German}
+        [Header("Debug only")]
+        public Language loadLanguage;
 
 
         void Start()
@@ -40,6 +43,7 @@ public class StartupManager : MonoBehaviour
 
     IEnumerator InitLocalization()
     {
+#if !UNITY_EDITOR
         if(Application.systemLanguage == SystemLanguage.German)
         {
             LocalizationManager.instance.LoadLocalizedText("localizedText_de.json");
@@ -50,5 +54,18 @@ public class StartupManager : MonoBehaviour
             LocalizationManager.instance.LoadLocalizedText("localizedText_en.json");
             yield return null;
         }
+#endif
+#if UNITY_EDITOR
+        if (loadLanguage == Language.German)
+        {
+            LocalizationManager.instance.LoadLocalizedText("localizedText_de.json");
+            yield return null;
+        }
+        else if(loadLanguage == Language.English)
+        {
+            LocalizationManager.instance.LoadLocalizedText("localizedText_en.json");
+            yield return null;
+        }
+#endif
     }
 }

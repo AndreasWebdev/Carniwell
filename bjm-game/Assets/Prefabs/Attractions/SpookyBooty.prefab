@@ -320,6 +320,7 @@ GameObject:
   - component: {fileID: 23980654528429060}
   - component: {fileID: 222219001895189316}
   - component: {fileID: 114674633883915230}
+  - component: {fileID: 114453006932585310}
   m_Layer: 0
   m_Name: WaitingText
   m_TagString: Untagged
@@ -1490,6 +1491,18 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   m_maskType: 0
+--- !u!114 &114453006932585310
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1638783143877796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be7ceb0d4a4d46640ad1697963785a0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: attraction_queue
 --- !u!114 &114674633883915230
 MonoBehaviour:
   m_ObjectHideFlags: 1

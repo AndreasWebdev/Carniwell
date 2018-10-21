@@ -50,7 +50,7 @@ public class AttractionBuildingSpot : MonoBehaviour
         }
         buildingSite.SetActive(false);
         GameObject attraction = (GameObject)Instantiate(_attraction.gameObject);
-        hud.ShowAlert("Neue Attraktion!");
+        hud.ShowAlert(LocalizationManager.instance.GetLocalizedValue("alert_new_attraction"));
 
         float spawnHeight = 30f;
         Vector3 spawnPosition = new Vector3(transform.position.x, transform.position.y + spawnHeight, transform.position.z);

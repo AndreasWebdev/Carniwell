@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 222564225311756586}
   - component: {fileID: 114720485792378558}
   - component: {fileID: 114162957026246238}
-  - component: {fileID: 114709967591046026}
   m_Layer: 5
   m_Name: HighscoreNameInput
   m_TagString: Untagged
@@ -401,6 +400,7 @@ GameObject:
   - component: {fileID: 224563368146123660}
   - component: {fileID: 222304360851170584}
   - component: {fileID: 114462439610999108}
+  - component: {fileID: 114172804945066412}
   m_Layer: 5
   m_Name: Placeholder
   m_TagString: Untagged
@@ -3369,6 +3369,18 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114172804945066412
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1292180994539366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be7ceb0d4a4d46640ad1697963785a0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: gameover_highscore_name
 --- !u!114 &114174950521559102
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6002,18 +6014,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114709967591046026
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1003461384166758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be7ceb0d4a4d46640ad1697963785a0b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  key: gameover_highscore_name
 --- !u!114 &114717855229317126
 MonoBehaviour:
   m_ObjectHideFlags: 1

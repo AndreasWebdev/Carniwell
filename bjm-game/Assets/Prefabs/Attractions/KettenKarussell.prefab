@@ -1261,7 +1261,7 @@ MonoBehaviour:
   id: 7
   attractionName: Wirbelknirbel
   entrancePosition: {fileID: 4324827663769696}
-  duration: 15
+  duration: 7
   npcAmount: 30
   running: 0
   completedRides: 0

@@ -1628,7 +1628,7 @@ MonoBehaviour:
   id: 9
   attractionName: Spookybooty
   entrancePosition: {fileID: 4696671666945894}
-  duration: 11
+  duration: 5
   npcAmount: 23
   running: 0
   completedRides: 0

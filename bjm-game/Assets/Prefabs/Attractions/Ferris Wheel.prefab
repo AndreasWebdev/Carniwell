@@ -1336,7 +1336,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   active: 0
-  speed: 10
+  speed: 5
   RotatingObject: {fileID: 4291300335721818}
   cabins:
   - {fileID: 4274898520715950}
@@ -1361,7 +1361,7 @@ MonoBehaviour:
   id: 1
   attractionName: Achterrad
   entrancePosition: {fileID: 4436556508752136}
-  duration: 20
+  duration: 10
   npcAmount: 40
   running: 0
   completedRides: 0

@@ -1001,7 +1001,7 @@ MonoBehaviour:
   id: 2
   attractionName: Falling Mustache
   entrancePosition: {fileID: 4716706730635514}
-  duration: 15
+  duration: 7
   npcAmount: 30
   running: 0
   completedRides: 0

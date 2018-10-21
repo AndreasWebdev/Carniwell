@@ -121,9 +121,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aedd1c96b93de6f408456f62f4aaa41f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rewardSatisfiedRide: 30
+  rewardSatisfiedRide: 18
   rewardInAttraction: 10
-  penaltyInQueue: -5
+  penaltyInQueue: -4
   penaltyUnsatisfiedRide: -10
   goodColor: {r: 0, g: 1, b: 0, a: 1}
   mediumColor: {r: 1, g: 1, b: 0, a: 1}
@@ -131,15 +131,16 @@ MonoBehaviour:
   mediumTopLimit: 70
   mediumBottomLimit: 30
   gameOverLimit: 25
-  spawnAmount: 1
+  spawnAmount: 2
   idleTimeMin: 3
-  idleTimeMax: 5
+  idleTimeMax: 7
   playerSpeed: 7
   currentLevel: 1
   baseVisitorsNeeded: 15
-  multiplierPerStage: 2
+  multiplierPerStage: 1.7
   gameState: 3
   happinessPercentage: 0
+  gameOverCountdown: 5
   mainCameraAnimation: {fileID: 0}
   entranceAnimation: {fileID: 0}
 --- !u!114 &114887309579171162

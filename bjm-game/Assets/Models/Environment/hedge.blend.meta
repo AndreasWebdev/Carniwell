@@ -14,6 +14,7 @@ ModelImporter:
     400006: hedge_corner
     400008: hedge_straight
     2100000: hedge
+    2100002: None__color-palette_png
     2300000: Cube
     2300002: Cube_001
     2300004: hedge_corner
@@ -30,7 +31,7 @@ ModelImporter:
     9500000: //RootNode
   externalObjects: {}
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 1

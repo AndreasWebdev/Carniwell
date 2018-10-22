@@ -290,7 +290,7 @@ public class HUDManager : MonoBehaviour
         {
             nameInputPanel.gameObject.SetActive(false);
             gameOverHighscoreText.gameObject.SetActive(true);
-#if UNITY_EDITOR
+
             gameOverTimeText.SetText(string.Format(
                 LocalizationManager.instance != null ? LocalizationManager.instance.GetLocalizedValue("gameover_score") : "Du hast {0} durchgehalten!", 
                 scoreManager.GetScoreString()
@@ -299,10 +299,6 @@ public class HUDManager : MonoBehaviour
                 LocalizationManager.instance != null ? LocalizationManager.instance.GetLocalizedValue("gameover_highscore_score") : "Dein Highscore: {0}", 
                 scoreManager.GetHighscoreString()
             ));
-#else
-            gameOverTimeText.SetText(string.Format(LocalizationManager.instance.GetLocalizedValue("gameover_score"), scoreManager.GetScoreString()));
-            gameOverHighscoreText.SetText(string.Format(LocalizationManager.instance.GetLocalizedValue("gameover_highscore_score"), scoreManager.GetHighscoreString())); 
-#endif
 
         }
 
@@ -340,7 +336,6 @@ public class HUDManager : MonoBehaviour
         nameInputPanel.gameObject.SetActive(false);
         gameOverHighscoreText.gameObject.SetActive(true);
 
-#if UNITY_EDITOR
         gameOverTimeText.SetText(string.Format(
             LocalizationManager.instance != null ? LocalizationManager.instance.GetLocalizedValue("gameover_score") : "Du hast {0} durchgehalten!",
             scoreManager.GetScoreString()
@@ -358,18 +353,6 @@ public class HUDManager : MonoBehaviour
                 LocalizationManager.instance != null ? LocalizationManager.instance.GetLocalizedValue("highscore_upload_error") : "Highscore konnte nicht hochgeladen werden."
                 );
         }
-#else
-        gameOverTimeText.SetText(string.Format(LocalizationManager.instance.GetLocalizedValue("gameover_score"), scoreManager.GetScoreString()));
-
-        if(succeeded == 1)
-        {
-            gameOverHighscoreText.SetText(LocalizationManager.instance.GetLocalizedValue("highscore_uploaded"));
-        }
-        else
-        {
-            gameOverHighscoreText.SetText(LocalizationManager.instance.GetLocalizedValue("highscore_upload_error"));
-        }
-#endif
 
     }
 

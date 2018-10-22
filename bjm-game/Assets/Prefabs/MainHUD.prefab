@@ -6512,7 +6512,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentAttraction: {fileID: 0}
   UIAttractionStartAnim: {fileID: 95578675815526478}
-  UIAttractionControlAnim: {fileID: 0}
   happinessSlider: {fileID: 114983198921495958}
   happinessSliderFilling: {fileID: 114998342992361912}
   HappinessPercentageText: {fileID: 114212348572270160}

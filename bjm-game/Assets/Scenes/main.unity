@@ -207,18 +207,6 @@ Prefab:
       propertyPath: m_Name
       value: AttractionSpot
       objectReference: {fileID: 0}
-    - target: {fileID: 4119333132961862, guid: 372b8f9a2f8f8d34594258a3b7766269, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4119333132961862, guid: 372b8f9a2f8f8d34594258a3b7766269, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4119333132961862, guid: 372b8f9a2f8f8d34594258a3b7766269, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -130
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 372b8f9a2f8f8d34594258a3b7766269, type: 2}
   m_IsPrefabAsset: 0
@@ -1196,11 +1184,6 @@ Prefab:
     - target: {fileID: 4830143316002938, guid: da4f30b8cc9793840b7d1f35e6aba4d5, type: 2}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 108739625111803502, guid: da4f30b8cc9793840b7d1f35e6aba4d5,
-        type: 2}
-      propertyPath: m_Intensity
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da4f30b8cc9793840b7d1f35e6aba4d5, type: 2}
@@ -2399,11 +2382,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114968965715667412, guid: 7c9a94bf41742184da6751ae3a8e5a2d,
-        type: 2}
-      propertyPath: UIAttractionControlAnim
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 114159142101496832, guid: 7c9a94bf41742184da6751ae3a8e5a2d,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -3395,23 +3373,8 @@ Prefab:
     - target: {fileID: 114929800166036324, guid: 43c07581822e76f4e972793b33d9c0da,
         type: 2}
       propertyPath: m_isInputParsingRequired
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114929800166036324, guid: 43c07581822e76f4e972793b33d9c0da,
-        type: 2}
-      propertyPath: m_margin.x
-      value: 9.884634
-      objectReference: {fileID: 0}
-    - target: {fileID: 114929800166036324, guid: 43c07581822e76f4e972793b33d9c0da,
-        type: 2}
-      propertyPath: m_margin.z
-      value: -1.4526982
-      objectReference: {fileID: 0}
-    - target: {fileID: 1387009554095454, guid: 43c07581822e76f4e972793b33d9c0da, type: 2}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000,
-        type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43c07581822e76f4e972793b33d9c0da, type: 2}
   m_IsPrefabAsset: 0

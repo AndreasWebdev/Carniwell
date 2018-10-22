@@ -76,7 +76,7 @@ public class AttractionController : MonoBehaviour
         {
             Debug.Log("Attraction stopped");
 
-            hud.ShowAlert(LocalizationManager.instance != null ? LocalizationManager.instance.GetLocalizedValue("alert_stopped_attraction") : "alert_stopped_attraction");
+            hud.ShowAlert(LocalizationManager.instance != null ? LocalizationManager.instance.GetLocalizedValue("alert_stopped_attraction") : "Attraktion gestoppt!");
 
             StopAttraction();
         }
@@ -144,7 +144,7 @@ public class AttractionController : MonoBehaviour
             {
                 // TODO: Throw error message - No NPCS
                 Debug.Log("No NPCs available");
-                hud.ShowAlert(LocalizationManager.instance != null ? LocalizationManager.instance.GetLocalizedValue("alert_no_one_in_queue") : "alert_no_one_in_queue");
+                hud.ShowAlert(LocalizationManager.instance != null ? LocalizationManager.instance.GetLocalizedValue("alert_no_one_in_queue") : "Keiner in der Warteschlange.");
                 running = false;
             }
         }
@@ -252,20 +252,6 @@ public class AttractionController : MonoBehaviour
         }
     }
 
-    public void Ansage()
-    {
-
-    }
-
-    public void Special()
-    {
-
-    }
-
-    public void Notstop()
-    {
-        //Todo: Spieler bestrafen, NPCs schlechte Laune verpassen
-    }
 
     void PlaySound(bool aborted)
     {

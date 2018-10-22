@@ -257,20 +257,8 @@ public class AttractionController : MonoBehaviour
         }
     }
 
-    public void Ansage()
-    {
 
-    }
 
-    public void Special()
-    {
-
-    }
-
-    public void Notstop()
-    {
-        //Todo: Spieler bestrafen, NPCs schlechte Laune verpassen
-    }
 
     void PlaySound(bool aborted)
     {

@@ -87,7 +87,7 @@ public class MenuManager : MonoBehaviour
 
     public void CreditsEnd()
     {
-        SceneManager.LoadSceneAsync(0);
+        SceneManager.LoadSceneAsync("menu");
     }
 
     IEnumerator LoadLevel(string levelName)

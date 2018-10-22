@@ -50,11 +50,9 @@ public class AttractionBuildingSpot : MonoBehaviour
         }
         buildingSite.SetActive(false);
         GameObject attraction = (GameObject)Instantiate(_attraction.gameObject);
-#if UNITY_EDITOR
-        hud.ShowAlert(LocalizationManager.instance != null ? LocalizationManager.instance.GetLocalizedValue("alert_new_attraction") : "alert_new_attraction");
-#else
-        hud.ShowAlert(LocalizationManager.instance.GetLocalizedValue("alert_new_attraction"));
-#endif
+
+        hud.ShowAlert(LocalizationManager.instance != null ? LocalizationManager.instance.GetLocalizedValue("alert_new_attraction") : "Neue Attraktion!");
+
         float spawnHeight = 30f;
         Vector3 spawnPosition = new Vector3(transform.position.x, transform.position.y + spawnHeight, transform.position.z);
         attraction.transform.position = spawnPosition;

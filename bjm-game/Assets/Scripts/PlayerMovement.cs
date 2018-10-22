@@ -54,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 // Show this alert only once per lock cycle
                 movementAlertShowed = true;
-                hud.ShowAlert(LocalizationManager.instance != null ? LocalizationManager.instance.GetLocalizedValue("alert_wait_until_attraction_over") : "alert_wait_until_attraction_over");
+                hud.ShowAlert(LocalizationManager.instance != null ? LocalizationManager.instance.GetLocalizedValue("alert_wait_until_attraction_over") : "Warte bis die Attraktion beendet ist.");
             }
             else if(joystick.Horizontal == 0 && joystick.Vertical == 0 && movementAlertShowed)
             {

@@ -44,6 +44,7 @@ public class OffscreenIndicator : MonoBehaviour
             indicator.position = targetPosOnScreen;
             indicator.eulerAngles = Vector3.zero;
             ChangeSprite(Exclamation);
+
             return;
         }
         else

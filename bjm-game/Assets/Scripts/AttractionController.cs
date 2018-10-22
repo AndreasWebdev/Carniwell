@@ -8,7 +8,7 @@ using TMPro;
 [RequireComponent(typeof(UnityEngine.AI.NavMeshObstacle))]
 public class AttractionController : MonoBehaviour
 {
-    GameController game;
+
 
     public int id = 0;
     public string attractionName;
@@ -33,13 +33,14 @@ public class AttractionController : MonoBehaviour
     public AudioClip successSound;
     public AudioClip failureSound;
 
-    HUDManager hud;
 
+    GameController game;
+    HUDManager hud;
     VisitorManager visitorMangager;
 
     public TextMeshPro waitingCountText;
 
-    public GameObject happinessPopupTextPrefab;
+    OffscreenIndicator myIndicator;
     // Use this for initialization
     void Start()
     {
@@ -55,6 +56,12 @@ public class AttractionController : MonoBehaviour
         
         transform.localEulerAngles = Vector3.zero;
         waitingCountText.transform.parent.eulerAngles = Vector3.zero;
+
+        GameObject indicator = Instantiate(game.offscreenAttractionIndicator);
+        myIndicator = indicator.GetComponent<OffscreenIndicator>();
+        myIndicator.SetTarget(this.transform);
+        myIndicator.transform.SetParent(this.transform, false);
+        myIndicator.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -65,14 +72,9 @@ public class AttractionController : MonoBehaviour
             nextUpdate = Mathf.FloorToInt(Time.time) + 1;
             UpdateEverySecond();
         }
-        waitingCountText.text = npcsWaiting.Count.ToString("00");
-        if(npcsWaiting.Count > npcAmount)
-        {
-            waitingCountText.color = Color.red;
-        }else
-        {
-            waitingCountText.color = Color.black;
-        }
+
+        HandleFloatingWaitingText();
+
 #if UNITY_EDITOR
         if(Input.GetKeyUp(KeyCode.A))
         {
@@ -87,6 +89,21 @@ public class AttractionController : MonoBehaviour
             StopAttraction();
         }
 #endif
+    }
+
+    void HandleFloatingWaitingText()
+    {
+        waitingCountText.text = npcsWaiting.Count.ToString("00");
+        if (npcsWaiting.Count > npcAmount)
+        {
+            waitingCountText.color = Color.red;
+            myIndicator.gameObject.SetActive(true);
+        }
+        else
+        {
+            waitingCountText.color = Color.black;
+            myIndicator.gameObject.SetActive(false);
+        }
     }
 
     // Update is called once per second
@@ -184,10 +201,10 @@ public class AttractionController : MonoBehaviour
 
             if (!aborted)
             {
-                if (happinessPopupTextPrefab != null)
+                if (game.happinessPopupTextPrefab != null)
                 {
                     float gainedHappiness = npcsActive.Count * game.rewardSatisfiedRide;
-                    GameObject popup = (GameObject)Instantiate(happinessPopupTextPrefab);
+                    GameObject popup = (GameObject)Instantiate(game.happinessPopupTextPrefab);
                     popup.transform.position = entrancePosition.transform.position + (Vector3.up);
                     popup.transform.SetParent(entrancePosition.transform);
                     popup.GetComponent<TMPro.TextMeshPro>().text = "+" + gainedHappiness.ToString("N0");
@@ -258,15 +275,6 @@ public class AttractionController : MonoBehaviour
         }
     }
 
-    public void Ansage()
-    {
-
-    }
-
-    public void Special()
-    {
-
-    }
 
     public void Notstop()
     {

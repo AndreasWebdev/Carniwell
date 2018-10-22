@@ -143,6 +143,10 @@ MonoBehaviour:
   gameOverCountdown: 5
   mainCameraAnimation: {fileID: 0}
   entranceAnimation: {fileID: 0}
+  offscreenAttractionIndicator: {fileID: 1197082405504120, guid: d94564b924c544840a32c66f8b458b40,
+    type: 2}
+  happinessPopupTextPrefab: {fileID: 1587299899682022, guid: c3514b0bfd4b32947a33ac5f92d8ec59,
+    type: 2}
 --- !u!114 &114887309579171162
 MonoBehaviour:
   m_ObjectHideFlags: 1

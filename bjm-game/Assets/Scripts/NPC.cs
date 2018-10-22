@@ -58,7 +58,7 @@ public class NPC : MonoBehaviour
         vm = FindObjectOfType<VisitorManager>();
         vm.allVisitors.Add(this);
         npcName = NameDatabase.instance.GetRandomName();
-        Debug.Log("New NPC: " + npcName);
+
     }
 
 

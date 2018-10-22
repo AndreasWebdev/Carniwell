@@ -14,7 +14,6 @@ public class HUDManager : MonoBehaviour
     public AttractionController currentAttraction = null;
 
     public Animator UIAttractionStartAnim;
-    public Animator UIAttractionControlAnim;
 
     [Header("Happiness")]
     public Slider happinessSlider;
@@ -187,18 +186,6 @@ public class HUDManager : MonoBehaviour
         attractionNameText.text = "";
         //UIAttractionControlAnim.SetBool("isOpen", false);
         UIAttractionStartAnim.SetBool("isOpen", false);
-    }
-
-    public void Ansage()
-    {
-        currentAttraction.Ansage();
-        UIAttractionControlAnim.SetBool("isOpen", true);
-        UIAttractionStartAnim.SetBool("isOpen", false);
-    }
-
-    public void Special()
-    {
-        currentAttraction.Special();
     }
 
     public void Notstop()

@@ -185,7 +185,7 @@ public class NPC : MonoBehaviour
                 UpdateHappiness(game.penaltyInQueue);
             }else if(lastVisitedAttraction.npcsWaiting.Count > lastVisitedAttraction.npcAmount)
             {
-                UpdateHappiness(game.penaltyInQueue*2);
+                UpdateHappiness(Mathf.RoundToInt(game.penaltyInQueue* game.overfilledQueuePenaltyMultiplier));
             }
         }
 

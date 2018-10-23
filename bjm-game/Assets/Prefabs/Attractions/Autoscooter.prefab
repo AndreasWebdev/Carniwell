@@ -1089,7 +1089,7 @@ MonoBehaviour:
   id: 6
   attractionName: Scootybooty
   entrancePosition: {fileID: 4958045334396794}
-  duration: 10
+  duration: 4
   npcAmount: 24
   running: 0
   completedRides: 0

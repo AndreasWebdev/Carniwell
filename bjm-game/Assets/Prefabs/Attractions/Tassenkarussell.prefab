@@ -1070,7 +1070,7 @@ MonoBehaviour:
   id: 8
   attractionName: Shut the cup up!
   entrancePosition: {fileID: 4411928983580816}
-  duration: 10
+  duration: 6
   npcAmount: 20
   running: 0
   completedRides: 0

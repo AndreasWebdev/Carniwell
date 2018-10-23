@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour
     public int rewardSatisfiedRide = 30;
     public int rewardInAttraction = 10;
     public int penaltyInQueue = -5;
+    public float overfilledQueuePenaltyMultiplier = 2;
     public int penaltyUnsatisfiedRide = -10;
 
     [Header("Game Phase Configuration")]
@@ -48,6 +49,12 @@ public class GameController : MonoBehaviour
     [Header("Global Settings")]
     public Animation mainCameraAnimation;
     public Animator entranceAnimation;
+
+
+    [Space(20)]
+    [Header("Prefabs")]
+    public GameObject offscreenAttractionIndicator;
+    public GameObject happinessPopupTextPrefab;
 
     HUDManager hud;
     VisitorManager visitorManager;

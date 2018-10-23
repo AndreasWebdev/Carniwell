@@ -103,7 +103,7 @@ public class NPC : MonoBehaviour
             // 50:50 Chance calculator
             // 1 = attraction
             // 0 = random
-            walkRandom = (Random.value > 0.75f);
+            walkRandom = (Random.value > 0.55f);
 
             // Show NPC
             ShowNPC();
@@ -180,7 +180,13 @@ public class NPC : MonoBehaviour
     {
         if(currentStatus.Equals(status.QUEUE))
         {
-            UpdateHappiness(game.penaltyInQueue);
+            if (lastVisitedAttraction.npcsWaiting.Count <= lastVisitedAttraction.npcAmount)
+            {
+                UpdateHappiness(game.penaltyInQueue);
+            }else if(lastVisitedAttraction.npcsWaiting.Count > lastVisitedAttraction.npcAmount)
+            {
+                UpdateHappiness(Mathf.RoundToInt(game.penaltyInQueue* game.overfilledQueuePenaltyMultiplier));
+            }
         }
 
         if (currentStatus.Equals(status.ATTRACTION))

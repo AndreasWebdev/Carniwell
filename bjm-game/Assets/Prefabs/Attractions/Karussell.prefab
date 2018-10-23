@@ -871,7 +871,7 @@ MonoBehaviour:
   id: 5
   attractionName: Baconcycler
   entrancePosition: {fileID: 4151170801813138}
-  duration: 15
+  duration: 6
   npcAmount: 30
   running: 0
   completedRides: 0

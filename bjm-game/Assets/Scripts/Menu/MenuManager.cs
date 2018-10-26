@@ -30,7 +30,7 @@ public class MenuManager : MonoBehaviour
     public TextMeshProUGUI highscoreTextNames;
     public TextMeshProUGUI highscoreTextScores;
     public TextMeshProUGUI highscoreTextConnection;
-
+    public TextMeshProUGUI highscoreTextLoading;
 
     void Start()
     {
@@ -106,6 +106,8 @@ public class MenuManager : MonoBehaviour
 
     IEnumerator RefreshHighScoreTable()
     {
+        highscoreTextLoading.enabled = true;
+        highscoreTextConnection.enabled = false;
         CoroutineWithData cd = new CoroutineWithData(this, ScoreUploader.GetScores());
         yield return cd.coroutine;
         List<string[]> highscoreTable = (List<string[]>)cd.result;
@@ -113,8 +115,8 @@ public class MenuManager : MonoBehaviour
         highscoreTextPos.text = "";
         highscoreTextNames.text = "";
         highscoreTextScores.text = "";
-
-        if(highscoreTable.Count == 0)
+        highscoreTextLoading.enabled = false;
+        if (highscoreTable.Count == 0)
         {
             highscoreTextConnection.enabled = true;
         }
@@ -122,7 +124,7 @@ public class MenuManager : MonoBehaviour
         {
             highscoreTextConnection.enabled = false;
 
-            for(int i = 0; i < highscoreTable.Count; ++i)
+            for (int i = 0; i < highscoreTable.Count; ++i)
             {
                 highscoreTextPos.text += (i + 1).ToString() + "\n";
                 highscoreTextNames.text += highscoreTable[i][0] + "\n";
@@ -130,11 +132,12 @@ public class MenuManager : MonoBehaviour
             }
         }
 
-        highscorePage.SetActive(true);
+        
     }
 
     public void ShowHighScores()
     {
+        highscorePage.SetActive(true);
         StartCoroutine(RefreshHighScoreTable());
     }
 

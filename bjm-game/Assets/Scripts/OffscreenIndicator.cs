@@ -73,6 +73,7 @@ public class OffscreenIndicator : MonoBehaviour
 
         indicator.eulerAngles = new Vector3(0, 0, angle);
         indicator.position = intersect(edgeLine, center, targetPosOnScreen);
+        Debug.Log(indicator.position);
     }
 
     bool onScreen(Vector2 input)

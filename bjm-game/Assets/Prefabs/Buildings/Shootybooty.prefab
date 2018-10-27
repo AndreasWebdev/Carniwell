@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4540297014682950}
   - component: {fileID: 65712746914134274}
+  - component: {fileID: 208314821684485582}
   m_Layer: 0
   m_Name: Shootybooty
   m_TagString: Untagged
@@ -382,3 +383,18 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.09514195, y: 0.31854212, z: -0.6325045}
     m_Extent: {x: 0.85203177, y: 0.6788182, z: 0.00000017881393}
   m_DirtyAABB: 0
+--- !u!208 &208314821684485582
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000140834668428}
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.75, y: 2, z: 0.7}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.05, y: 0, z: -0.6}
+  m_TimeToStationary: 0.5

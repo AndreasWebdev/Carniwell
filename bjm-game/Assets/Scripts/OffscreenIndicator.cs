@@ -62,7 +62,7 @@ public class OffscreenIndicator : MonoBehaviour
             coef = Screen.height / Screen.width;
 
         float degreeRange = 360f / (coef + 1);
-
+        
         if (angle < 0) angle = angle + 360;
         int edgeLine;
         if (angle < degreeRange / 4f) edgeLine = 0;
@@ -72,8 +72,10 @@ public class OffscreenIndicator : MonoBehaviour
         else edgeLine = 0;
 
         indicator.eulerAngles = new Vector3(0, 0, angle);
-        indicator.position = intersect(edgeLine, center, targetPosOnScreen);
-        Debug.Log(indicator.position);
+        Vector3 pos = intersect(edgeLine, center, targetPosOnScreen);
+        pos.x = Mathf.Clamp(pos.x,0, Screen.width);
+        pos.y = Mathf.Clamp(pos.y, 0, Screen.height);
+        indicator.position = pos;
     }
 
     bool onScreen(Vector2 input)
@@ -83,9 +85,11 @@ public class OffscreenIndicator : MonoBehaviour
 
     Vector3 intersect(int edgeLine, Vector3 line2point1, Vector3 line2point2)
     {
-        float[] A1 = { -Screen.height, 0, Screen.height, 0 };
-        float[] B1 = { 0, -Screen.width, 0, Screen.width };
-        float[] C1 = { -Screen.width * Screen.height, -Screen.width * Screen.height, 0, 0 };
+        float screenWidth = Screen.width;
+        float screenHeight = Screen.height;
+        float[] A1 = { -screenHeight, 0, screenHeight, 0 };
+        float[] B1 = { 0, -screenWidth, 0, screenWidth };
+        float[] C1 = { -screenWidth * screenHeight, -screenWidth * screenHeight, 0, 0 };
 
         float A2 = line2point2.y - line2point1.y;
         float B2 = line2point1.x - line2point2.x;
@@ -93,6 +97,8 @@ public class OffscreenIndicator : MonoBehaviour
 
         float det = A1[edgeLine] * B2 - A2 * B1[edgeLine];
 
+        //Debug.DrawLine(line2point1, line2point2,Color.red);
+        //Debug.DrawLine(line2point1, new Vector3((B2 * C1[edgeLine] - B1[edgeLine] * C2) / det, (A1[edgeLine] * C2 - A2 * C1[edgeLine]) / det, 0));
         return new Vector3((B2 * C1[edgeLine] - B1[edgeLine] * C2) / det, (A1[edgeLine] * C2 - A2 * C1[edgeLine]) / det, 0);
     }
 

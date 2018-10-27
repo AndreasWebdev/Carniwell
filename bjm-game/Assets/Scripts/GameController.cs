@@ -154,11 +154,16 @@ public class GameController : MonoBehaviour
                 hud.ShowGameOverCountdown(gameOverCountdown);
                 Debug.Log(gameOverCountdown + " to gameover");
                 if (gameOverCountdown > 0) return;
+
                 Broadcast("OnGameStopped", SendMessageOptions.DontRequireReceiver);
                 gameState = state.GAMEOVER;
                 hud.HideGameOverCountdown();
                 hud.ShowGameOverPanel();
-
+                OffscreenIndicator[] oi = FindObjectsOfType<OffscreenIndicator>();
+                foreach(OffscreenIndicator o in oi)
+                {
+                    o.indicator.gameObject.SetActive(false);
+                }
                 GameStatistics.AddTotalNumberOfVisitors(visitorManager.allVisitors.Count);
             }else
             {

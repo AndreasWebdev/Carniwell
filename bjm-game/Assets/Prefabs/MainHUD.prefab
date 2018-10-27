@@ -6556,7 +6556,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentAttraction: {fileID: 0}
   UIAttractionStartAnim: {fileID: 95578675815526478}
-  UIAttractionControlAnim: {fileID: 0}
   happinessSlider: {fileID: 114983198921495958}
   happinessSliderFilling: {fileID: 114998342992361912}
   HappinessPercentageText: {fileID: 114212348572270160}
@@ -8251,7 +8250,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224082918994313840}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

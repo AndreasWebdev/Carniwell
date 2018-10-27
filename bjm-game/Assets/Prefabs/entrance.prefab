@@ -210,7 +210,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4903154570567414}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 89.740555, y: -0.0011333803, z: -90.00113}
 --- !u!4 &4500992284891130
 Transform:
   m_ObjectHideFlags: 1
@@ -277,7 +277,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4731689713406944}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 89.65281, y: 0.0005630288, z: -89.99943}
 --- !u!23 &23502456569716712
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -293,8 +293,8 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100012, guid: 87bae461fb67aba48a5fc54853003734, type: 3}
-  - {fileID: 2100012, guid: 87bae461fb67aba48a5fc54853003734, type: 3}
+  - {fileID: 2100000, guid: d3417b37e14079e4ba3ab30b98d73fce, type: 2}
+  - {fileID: 2100000, guid: d3417b37e14079e4ba3ab30b98d73fce, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -329,14 +329,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 87bae461fb67aba48a5fc54853003734, type: 3}
-  - {fileID: 2100002, guid: 87bae461fb67aba48a5fc54853003734, type: 3}
-  - {fileID: 2100004, guid: 87bae461fb67aba48a5fc54853003734, type: 3}
-  - {fileID: 2100006, guid: 87bae461fb67aba48a5fc54853003734, type: 3}
-  - {fileID: 2100012, guid: 87bae461fb67aba48a5fc54853003734, type: 3}
-  - {fileID: 2100014, guid: 87bae461fb67aba48a5fc54853003734, type: 3}
-  - {fileID: 2100016, guid: 87bae461fb67aba48a5fc54853003734, type: 3}
-  - {fileID: 2100018, guid: 87bae461fb67aba48a5fc54853003734, type: 3}
+  - {fileID: 2100000, guid: d6d5763974da36e49951710feadb0ad6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -403,8 +396,7 @@ SkinnedMeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100008, guid: 87bae461fb67aba48a5fc54853003734, type: 3}
-  - {fileID: 2100010, guid: 87bae461fb67aba48a5fc54853003734, type: 3}
+  - {fileID: 2100000, guid: d6d5763974da36e49951710feadb0ad6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -452,8 +444,7 @@ SkinnedMeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100008, guid: 87bae461fb67aba48a5fc54853003734, type: 3}
-  - {fileID: 2100010, guid: 87bae461fb67aba48a5fc54853003734, type: 3}
+  - {fileID: 2100000, guid: d6d5763974da36e49951710feadb0ad6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

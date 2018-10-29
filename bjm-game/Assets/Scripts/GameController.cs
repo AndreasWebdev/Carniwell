@@ -59,6 +59,10 @@ public class GameController : MonoBehaviour
     HUDManager hud;
     VisitorManager visitorManager;
 
+    private void Awake()
+    {
+        Time.timeScale = 1;
+    }
     void Start()
     {
         hud = FindObjectOfType<HUDManager>();

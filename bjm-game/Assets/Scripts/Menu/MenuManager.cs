@@ -32,6 +32,11 @@ public class MenuManager : MonoBehaviour
     public TextMeshProUGUI highscoreTextConnection;
     public TextMeshProUGUI highscoreTextLoading;
 
+    private void Awake()
+    {
+        Time.timeScale = 1;
+    }
+
     void Start()
     {
         loadingPanel.SetActive(false);

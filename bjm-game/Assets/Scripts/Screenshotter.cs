@@ -13,9 +13,9 @@ public class Screenshotter : MonoBehaviour {
     void Update () {
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            string path = Application.persistentDataPath + System.DateTime.Now.ToFileTime() + ".jpg";
+            string path = Application.persistentDataPath + System.DateTime.Now.ToFileTime() + ".png";
             Debug.Log(path);
-            ScreenCapture.CaptureScreenshot(path,1);
+            ScreenCapture.CaptureScreenshot(path,4);
         }
     }
 }

@@ -1257,8 +1257,6 @@ MonoBehaviour:
   successSound: {fileID: 8300000, guid: d177003e238b6ed40a4150d9824fe335, type: 3}
   failureSound: {fileID: 8300000, guid: f9e7b6bcfe3072d42bb4f6aa531c9df3, type: 3}
   waitingCountText: {fileID: 114765612033898262}
-  happinessPopupTextPrefab: {fileID: 1587299899682022, guid: c3514b0bfd4b32947a33ac5f92d8ec59,
-    type: 2}
 --- !u!114 &114746573649422258
 MonoBehaviour:
   m_ObjectHideFlags: 1

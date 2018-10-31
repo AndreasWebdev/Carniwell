@@ -1631,7 +1631,7 @@ MonoBehaviour:
   id: 9
   attractionName: Spookybooty
   entrancePosition: {fileID: 4696671666945894}
-  duration: 5
+  duration: 6
   npcAmount: 23
   running: 0
   completedRides: 0
@@ -1640,8 +1640,6 @@ MonoBehaviour:
   successSound: {fileID: 8300000, guid: d177003e238b6ed40a4150d9824fe335, type: 3}
   failureSound: {fileID: 8300000, guid: f9e7b6bcfe3072d42bb4f6aa531c9df3, type: 3}
   waitingCountText: {fileID: 114258641712452218}
-  happinessPopupTextPrefab: {fileID: 1587299899682022, guid: c3514b0bfd4b32947a33ac5f92d8ec59,
-    type: 2}
 --- !u!137 &137374982969811872
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

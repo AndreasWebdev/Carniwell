@@ -1089,7 +1089,7 @@ MonoBehaviour:
   id: 6
   attractionName: Scootybooty
   entrancePosition: {fileID: 4958045334396794}
-  duration: 4
+  duration: 5
   npcAmount: 24
   running: 0
   completedRides: 0
@@ -1098,8 +1098,6 @@ MonoBehaviour:
   successSound: {fileID: 8300000, guid: d177003e238b6ed40a4150d9824fe335, type: 3}
   failureSound: {fileID: 8300000, guid: f9e7b6bcfe3072d42bb4f6aa531c9df3, type: 3}
   waitingCountText: {fileID: 114302920196663572}
-  happinessPopupTextPrefab: {fileID: 1587299899682022, guid: c3514b0bfd4b32947a33ac5f92d8ec59,
-    type: 2}
 --- !u!114 &114647857920051486
 MonoBehaviour:
   m_ObjectHideFlags: 1
